@@ -1391,7 +1391,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('navLinks');
     if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
+            const isOpen = navLinks.classList.toggle('open');
+            const icon = mobileToggle.querySelector('i');
+            if (icon) {
+                if (isOpen) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
         });
     }
 });
