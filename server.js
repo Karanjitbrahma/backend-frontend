@@ -105,6 +105,50 @@ app.post('/api/verify-payment', (req, res) => {
 const fs = require('fs');
 const path = require('path');
 const LEADS_FILE = path.join(__dirname, 'leads.json');
+const CMS_DATA_FILE = path.join(__dirname, 'cms_data.json');
+
+/**
+ * Route: /api/save-cms-data
+ * Method: POST
+ * Body: CMS configuration/data JSON object
+ * Description: Stores CMS data securely on the server.
+ */
+app.post('/api/save-cms-data', (req, res) => {
+    try {
+        const data = req.body;
+        if (!data || Object.keys(data).length === 0) {
+            return res.status(400).json({ success: false, message: 'Invalid CMS data' });
+        }
+        fs.writeFileSync(CMS_DATA_FILE, JSON.stringify(data, null, 2));
+        res.status(200).json({ success: true, message: 'CMS data saved successfully' });
+    } catch (error) {
+        console.error('Error saving CMS data on server:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
+
+/**
+ * Route: /api/cms-data
+ * Method: GET
+ * Description: Retrieves stored CMS data.
+ */
+app.get('/api/cms-data', (req, res) => {
+    try {
+        if (fs.existsSync(CMS_DATA_FILE)) {
+            const fileData = fs.readFileSync(CMS_DATA_FILE, 'utf8');
+            try {
+                const data = JSON.parse(fileData || '{}');
+                return res.status(200).json(data);
+            } catch (e) {
+                return res.status(500).json({ success: false, message: 'Error parsing CMS file' });
+            }
+        }
+        res.status(200).json({});
+    } catch (error) {
+        console.error('Error fetching CMS data from server:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
 
 /**
  * Route: /api/save-lead

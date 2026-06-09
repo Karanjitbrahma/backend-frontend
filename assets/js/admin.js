@@ -243,9 +243,9 @@ const AdminApp = {
         };
     },
 
-    init() {
+    async init() {
         if (!this.checkLogin()) return;
-        this.loadData();
+        await this.loadData();
         this.renderSidebar();
         this.bindNav();
         this.bindModal();
@@ -273,7 +273,7 @@ const AdminApp = {
 
     logout() { sessionStorage.removeItem('bs_admin_session'); location.reload(); },
 
-    loadData() {
+    async loadData() {
         // Load local and remote data and prefer the most recently modified.
         const s = localStorage.getItem('bs_admin_data');
         let local = null;
@@ -284,23 +284,29 @@ const AdminApp = {
         let remote = null;
         try { remote = this.fetchRemoteData(); } catch (e) { remote = null; }
 
-        if (local && remote) {
-            const lts = Number(local._lastModified || 0);
-            const rts = Number(remote._lastModified || 0);
-            if (rts > lts) {
-                this.data = remote;
-                try { localStorage.setItem('bs_admin_data', JSON.stringify(remote)); } catch(e) {}
-            } else {
-                this.data = local;
+        let serverData = null;
+        try {
+            const resp = await fetch(`${this.getBackendUrl()}/api/cms-data`);
+            if (resp.ok) {
+                const parsed = await resp.json();
+                if (parsed && Object.keys(parsed).length > 0) {
+                    serverData = parsed;
+                }
             }
-        } else if (local) {
-            this.data = local;
-        } else if (remote) {
-            this.data = remote;
-            try { localStorage.setItem('bs_admin_data', JSON.stringify(remote)); } catch(e) {}
+        } catch (e) {
+            console.warn('Local server CMS data fetch failed:', e);
+        }
+
+        // Compare timestamps
+        let candidates = [local, remote, serverData].filter(c => c !== null);
+        if (candidates.length > 0) {
+            candidates.sort((a, b) => Number(b._lastModified || 0) - Number(a._lastModified || 0));
+            this.data = candidates[0];
+            try { localStorage.setItem('bs_admin_data', JSON.stringify(this.data)); } catch(e) {}
         } else {
             this.data = this.getDefaultData();
         }
+
         // ensure all keys exist
         const def = this.getDefaultData();
         Object.keys(def).forEach(k => { if (!(k in this.data)) this.data[k] = def[k]; });
@@ -321,9 +327,22 @@ const AdminApp = {
             console.warn('Local server leads sync failed:', e);
         }
 
+        // Overwrite CMS data to local server db
+        let serverSyncOk = false;
+        try {
+            const resp = await fetch(`${this.getBackendUrl()}/api/save-cms-data`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(this.data)
+            });
+            serverSyncOk = resp.ok;
+        } catch (e) {
+            console.warn('Local server CMS sync failed:', e);
+        }
+
         try {
             const pushed = await this.pushRemoteData();
-            if (pushed) this.showToast('Changes saved and synced remotely.', 'success');
+            if (pushed || serverSyncOk) this.showToast('Changes saved and synced.', 'success');
             else this.showToast('Saved locally. Remote sync pending.', 'success');
         } catch (e) {
             this.showToast('Saved locally. Remote sync failed.', 'error');

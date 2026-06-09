@@ -5,11 +5,26 @@
 // ─────────────────────────────────────────────────────────────────---------
 // CMS Sync & Page Render
 // ─────────────────────────────────────────────────────────────────---------
-(function CMS_Sync() {
-    const raw = localStorage.getItem('bs_admin_data');
-    if (!raw) return; // No admin data yet — use original HTML
-    let data;
-    try { data = JSON.parse(raw); } catch(e) { return; }
+(async function CMS_Sync() {
+    let data = null;
+    try {
+        const resp = await fetch('/api/cms-data');
+        if (resp.ok) {
+            const parsed = await resp.json();
+            if (parsed && Object.keys(parsed).length > 0) {
+                data = parsed;
+                localStorage.setItem('bs_admin_data', JSON.stringify(data));
+            }
+        }
+    } catch (e) {
+        console.warn('Failed to fetch live CMS data from server:', e);
+    }
+
+    if (!data) {
+        const raw = localStorage.getItem('bs_admin_data');
+        if (!raw) return; // No admin data yet — use original HTML
+        try { data = JSON.parse(raw); } catch(e) { return; }
+    }
 
     let page = location.pathname.split('/').pop() || 'index.html';
     if (page && !page.includes('.') && page !== '') page += '.html';
