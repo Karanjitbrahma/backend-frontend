@@ -221,9 +221,9 @@
           <form id="rzpForm" onsubmit="return window._rzpSubmit(event)">
             <div class="rzp-divider"><i class="fa-solid fa-ticket"></i> Coupon Code</div>
             <div class="rzp-fm" style="margin-bottom: 15px;">
-              <label>Coupon Code *</label>
+              <label>Coupon Code (Optional)</label>
               <div style="display: flex; gap: 8px;">
-                <input type="text" id="rzpCouponCode" required placeholder="Enter Coupon Code" style="text-transform: uppercase; flex-grow: 1;">
+                <input type="text" id="rzpCouponCode" placeholder="Enter Coupon Code" style="text-transform: uppercase; flex-grow: 1;">
                 <button type="button" id="rzpApplyCouponBtn" onclick="window._rzpApplyCoupon()" style="padding: 11px 18px; background: #C8873E; color: #fff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: background 0.3s; font-size: 13px; text-transform: uppercase;">Apply</button>
               </div>
               <div id="rzpCouponFeedback" style="font-size: 12px; margin-top: 5px; font-weight: 600;"></div>
@@ -405,22 +405,20 @@
   window._rzpSubmit = async function (e) {
     e.preventDefault();
     
-    // Mandatory coupon check
+    // Coupon check (Optional)
     const couponInput = document.getElementById('rzpCouponCode');
     const enteredCode = couponInput ? couponInput.value.trim().toUpperCase() : '';
-    if (!enteredCode) {
-      const feedback = document.getElementById('rzpCouponFeedback');
-      if (feedback) {
-        feedback.textContent = 'Coupon code is mandatory.';
-        feedback.style.color = '#dc2626';
+    
+    if (enteredCode) {
+      // If not validated yet or code was modified, run validation
+      if (!currentItem.appliedCoupon || currentItem.appliedCoupon.code !== enteredCode) {
+        const isValid = window._rzpApplyCoupon();
+        if (!isValid) return false;
       }
-      return false;
-    }
-
-    // If not validated yet or code was modified, run validation
-    if (!currentItem.appliedCoupon || currentItem.appliedCoupon.code !== enteredCode) {
-      const isValid = window._rzpApplyCoupon();
-      if (!isValid) return false;
+    } else {
+      // Reset coupon if cleared
+      currentItem.appliedCoupon = null;
+      currentItem.discountedPrice = null;
     }
 
     const config = getPayConfig();
