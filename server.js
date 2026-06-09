@@ -111,18 +111,34 @@ const CMS_DATA_FILE = path.join(__dirname, 'cms_data.json');
  * Route: /api/save-cms-data
  * Method: POST
  * Body: CMS configuration/data JSON object
- * Description: Stores CMS data securely on the server.
+ * Description: Stores CMS data securely on the server (disk or Firebase).
  */
-app.post('/api/save-cms-data', (req, res) => {
+app.post('/api/save-cms-data', async (req, res) => {
     try {
         const data = req.body;
         if (!data || Object.keys(data).length === 0) {
             return res.status(400).json({ success: false, message: 'Invalid CMS data' });
         }
+
+        const firebaseDbUrl = process.env.FIREBASE_DB_URL;
+        if (firebaseDbUrl) {
+            const url = firebaseDbUrl.replace(/\/$/, '') + '/bs_admin_data.json';
+            const resp = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (resp.ok) {
+                return res.status(200).json({ success: true, message: 'CMS data saved to Firebase' });
+            } else {
+                throw new Error('Firebase save returned non-ok status: ' + resp.status);
+            }
+        }
+
         fs.writeFileSync(CMS_DATA_FILE, JSON.stringify(data, null, 2));
-        res.status(200).json({ success: true, message: 'CMS data saved successfully' });
+        res.status(200).json({ success: true, message: 'CMS data saved to disk' });
     } catch (error) {
-        console.error('Error saving CMS data on server:', error);
+        console.error('Error saving CMS data:', error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });
@@ -130,10 +146,22 @@ app.post('/api/save-cms-data', (req, res) => {
 /**
  * Route: /api/cms-data
  * Method: GET
- * Description: Retrieves stored CMS data.
+ * Description: Retrieves stored CMS data (from Firebase or disk).
  */
-app.get('/api/cms-data', (req, res) => {
+app.get('/api/cms-data', async (req, res) => {
     try {
+        const firebaseDbUrl = process.env.FIREBASE_DB_URL;
+        if (firebaseDbUrl) {
+            const url = firebaseDbUrl.replace(/\/$/, '') + '/bs_admin_data.json';
+            const resp = await fetch(url);
+            if (resp.ok) {
+                const data = await resp.json();
+                if (data && Object.keys(data).length > 0) {
+                    return res.status(200).json(data);
+                }
+            }
+        }
+
         if (fs.existsSync(CMS_DATA_FILE)) {
             const fileData = fs.readFileSync(CMS_DATA_FILE, 'utf8');
             try {
@@ -145,7 +173,7 @@ app.get('/api/cms-data', (req, res) => {
         }
         res.status(200).json({});
     } catch (error) {
-        console.error('Error fetching CMS data from server:', error);
+        console.error('Error fetching CMS data:', error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });
