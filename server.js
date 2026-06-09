@@ -184,7 +184,7 @@ app.get('/api/cms-data', async (req, res) => {
  * Body: { name, phone, email, source, product, amount, paymentId, date, status, details }
  * Description: Stores customer purchase details securely on the server.
  */
-app.post('/api/save-lead', (req, res) => {
+app.post('/api/save-lead', async (req, res) => {
     try {
         const lead = req.body;
         if (!lead.name || !lead.paymentId) {
@@ -192,6 +192,26 @@ app.post('/api/save-lead', (req, res) => {
         }
 
         let leads = [];
+        
+        const firebaseDbUrl = process.env.FIREBASE_DB_URL;
+        if (firebaseDbUrl) {
+            const url = firebaseDbUrl.replace(/\/$/, '') + '/leads.json';
+            const resp = await fetch(url);
+            if (resp.ok) {
+                const data = await resp.json();
+                if (Array.isArray(data)) leads = data;
+            }
+            leads.push(lead);
+            const putResp = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(leads)
+            });
+            if (putResp.ok) {
+                return res.status(200).json({ success: true, message: 'Lead saved successfully to Firebase' });
+            }
+        }
+
         if (fs.existsSync(LEADS_FILE)) {
             const fileData = fs.readFileSync(LEADS_FILE, 'utf8');
             try {
@@ -215,9 +235,22 @@ app.post('/api/save-lead', (req, res) => {
  * Method: GET
  * Description: Retrieves all stored customer purchase details.
  */
-app.get('/api/leads', (req, res) => {
+app.get('/api/leads', async (req, res) => {
     try {
         let leads = [];
+        const firebaseDbUrl = process.env.FIREBASE_DB_URL;
+        
+        if (firebaseDbUrl) {
+            const url = firebaseDbUrl.replace(/\/$/, '') + '/leads.json';
+            const resp = await fetch(url);
+            if (resp.ok) {
+                const data = await resp.json();
+                if (Array.isArray(data)) {
+                    return res.status(200).json({ success: true, leads: data });
+                }
+            }
+        }
+
         if (fs.existsSync(LEADS_FILE)) {
             const fileData = fs.readFileSync(LEADS_FILE, 'utf8');
             try {
@@ -239,12 +272,26 @@ app.get('/api/leads', (req, res) => {
  * Body: Array of leads
  * Description: Overwrites the leads JSON database (used for deletes/status updates).
  */
-app.post('/api/save-leads', (req, res) => {
+app.post('/api/save-leads', async (req, res) => {
     try {
         const leads = req.body;
         if (!Array.isArray(leads)) {
             return res.status(400).json({ success: false, message: 'Invalid leads array' });
         }
+
+        const firebaseDbUrl = process.env.FIREBASE_DB_URL;
+        if (firebaseDbUrl) {
+            const url = firebaseDbUrl.replace(/\/$/, '') + '/leads.json';
+            const resp = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(leads)
+            });
+            if (resp.ok) {
+                return res.status(200).json({ success: true, message: 'Leads database updated in Firebase' });
+            }
+        }
+
         fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
         res.status(200).json({ success: true, message: 'Leads database updated' });
     } catch (error) {
