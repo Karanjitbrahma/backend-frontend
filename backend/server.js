@@ -105,7 +105,6 @@ app.post('/api/verify-payment', (req, res) => {
 
 // File-based database for Customer Purchase Leads
 const fs = require('fs');
-const path = require('path');
 const LEADS_FILE = path.join(__dirname, 'leads.json');
 const CMS_DATA_FILE = path.join(__dirname, 'cms_data.json');
 
