@@ -1391,7 +1391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('navLinks');
     if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            navLinks.classList.toggle('open');
         });
     }
 });
