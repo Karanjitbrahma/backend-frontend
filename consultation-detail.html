@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Consultation - Bhartiya Sidhant</title>
+    <meta name="description" content="Order your consultation with expert Vedic astrologers and complete a guided checkout-style booking.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cd-hero{position:relative;min-height:380px;display:flex;align-items:center;padding:100px 20px 60px;background:linear-gradient(135deg,rgba(77,15,15,.92),rgba(30,5,5,.95)),url('assets/images/astrologer.png') center/cover no-repeat;color:#fff;overflow:hidden}
+        .cd-hero::before{content:'✶';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:260px;opacity:.05;pointer-events:none}
+        .cd-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+        .cd-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,135,62,.15);border:1px solid rgba(200,135,62,.35);color:var(--primary-light);padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px}
+        .cd-title{font-size:40px;color:#fff;margin-bottom:14px;line-height:1.15}
+        .cd-subtitle{color:rgba(255,255,255,.75);font-size:15px;line-height:1.7}
+        .cd-price-box{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(200,135,62,.2);border-radius:16px;padding:24px;margin-top:25px}
+        .cd-price{font-size:34px;font-weight:800;color:var(--primary-light)}
+        .cd-old{font-size:16px;color:rgba(255,255,255,.45);text-decoration:line-through;margin-left:10px}
+        .cd-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;color:rgba(255,255,255,.7);font-size:14px}
+        .cd-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+        .cd-actions>*{min-width:180px;justify-content:center}
+        .cd-side{background:rgba(255,255,255,.06);border:1px solid rgba(200,135,62,.2);border-radius:16px;padding:22px}
+        .cd-side h3{color:#fff;margin-bottom:12px;font-size:22px}
+        .cd-side p{color:rgba(255,255,255,.75);line-height:1.7;font-size:14px}
+        .cd-section{padding:70px 0}
+        .checkout-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:28px;align-items:start}
+        .checkout-panel{background:#fff;border:1px solid rgba(200,135,62,.12);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm)}
+        .checkout-panel h3{font-size:22px;color:var(--secondary);margin-bottom:12px}
+        .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+        .feature-tile{padding:16px;border-radius:12px;background:#fcfaf7;border:1px solid rgba(200,135,62,.12)}
+        .feature-tile strong{display:block;color:var(--secondary);margin-bottom:6px;font-size:14px}
+        .feature-tile span{color:var(--text-light);font-size:13px;line-height:1.6}
+        .checkout-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+        .checkout-form .full{grid-column:1 / -1}
+        .checkout-form label{display:block;font-size:13px;font-weight:600;color:var(--secondary);margin-bottom:6px}
+        .checkout-form input,.checkout-form select,.checkout-form textarea{width:100%;border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:12px 14px;font:inherit;background:#fff}
+        .checkout-form textarea{min-height:100px;resize:vertical}
+        .addons{margin-top:16px;padding:16px;border-radius:12px;background:#fcfaf7;border:1px solid rgba(200,135,62,.12)}
+        .addons h4,.summary-box h4{margin:0 0 10px;color:var(--secondary);font-size:16px}
+        .addon-row,.terms-row{display:flex;align-items:flex-start;gap:10px}
+        .summary-box{margin-top:16px;padding:18px;border-radius:12px;background:var(--maroon-gradient);color:#fff}
+        .summary-box p{margin:0;color:rgba(255,255,255,.76);font-size:14px;line-height:1.6}
+        .summary-price{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);font-size:18px;font-weight:700}
+        .cd-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px}
+        .cd-card{background:#fff;border:1px solid rgba(200,135,62,.12);border-radius:14px;padding:24px;box-shadow:var(--shadow-sm)}
+        .cd-card h3{font-size:22px;color:var(--secondary);margin-bottom:14px}
+        .cd-list{list-style:none;padding:0;margin:0}
+        .cd-list li{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--text-light)}
+        .cd-list li:last-child{border-bottom:none}
+        .cd-list i{color:var(--primary);margin-top:2px}
+        .cd-cta{background:var(--maroon-gradient);padding:56px 0;text-align:center;color:#fff}
+        .cd-cta h2{color:#fff;font-size:34px;margin-bottom:10px}
+        .cd-cta p{color:rgba(255,255,255,.72);margin-bottom:26px}
+        .trust-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+        .trust-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:13px}
+        @media (max-width:900px){.cd-inner,.checkout-grid,.checkout-form,.feature-grid,.cd-grid{grid-template-columns:1fr}.cd-title{font-size:30px}}
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 98765 43210</div><div><a href="#"><i class="fa-brands fa-facebook-f"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-instagram"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-youtube"></i></a></div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html">Reports</a><a href="store.html">Store</a><a href="courses.html">Courses</a><a href="consultation.html" class="active">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <section class="cd-hero">
+        <div class="cd-inner container">
+            <div>
+                <div class="cd-badge"><i class="fa-solid fa-star"></i> Order Your Consultation</div>
+                <h1 class="cd-title" id="cdTitle">Consultation with Expert Astrologers</h1>
+                <p class="cd-subtitle" id="cdSubtitle">Get real, practical, and honest guidance from senior astrologers. No fear, no fluff, just clarity that helps you move forward.</p>
+                <div class="cd-price-box">
+                    <span class="cd-price" id="cdPrice">₹1,499</span>
+                    <span class="cd-old" id="cdOld">₹2,499</span>
+                    <div class="cd-meta">
+                        <span><i class="fa-regular fa-clock"></i> <span id="cdDuration">30 Minutes</span></span>
+                        <span><i class="fa-solid fa-video"></i> Audio/Video Call</span>
+                        <span><i class="fa-solid fa-lock"></i> Secure Payment</span>
+                    </div>
+                    <div class="cd-actions">
+                        <button id="cdBookBtn" class="header-btn btn-gold" style="border:none;cursor:pointer;"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                        <a href="consultation.html" class="header-btn btn-outline" style="border-color:rgba(255,255,255,.35);color:#fff;"><i class="fa-solid fa-arrow-left"></i> All Consultations</a>
+                    </div>
+                    <div class="trust-row">
+                        <span class="trust-pill"><i class="fa-solid fa-star"></i> 4.8 rating</span>
+                        <span class="trust-pill"><i class="fa-solid fa-users"></i> 10,000+ reviews</span>
+                        <span class="trust-pill"><i class="fa-solid fa-shield-halved"></i> Trusted guidance</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cd-side">
+                <h3><i class="fa-solid fa-circle-info"></i> Consultation Flow</h3>
+                <p>After booking, our team confirms your slot on WhatsApp, collects birth details, and schedules your session with the selected astrologer. You receive remedies and follow-up notes after consultation.</p>
+                <ul style="list-style:none;padding:0;margin:14px 0 12px;color:rgba(255,255,255,.9);">
+                    <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><strong>Accurate insights:</strong> career, love, health, and more</li>
+                    <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><strong>Daily-life remedies:</strong> practical and easy to follow</li>
+                    <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><strong>Audio call:</strong> no wait time after booking</li>
+                    <li style="padding:8px 0"><strong>Trusted team:</strong> guidance under Bhartiya Sidhant</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-section">
+        <div class="container checkout-grid">
+            <div class="checkout-panel">
+                <h3>What You Get</h3>
+                <div class="feature-grid" id="cdFeatures"></div>
+                <div class="addons">
+                    <h4>Add-ons (Optional)</h4>
+                    <label class="addon-row"><input type="checkbox" id="coupleAddon" style="margin-top:3px"> <span>Couple Consultation (+₹3,100)</span></label>
+                </div>
+                <div class="summary-box">
+                    <h4>Price Summary</h4>
+                    <p id="summaryText">Consultation fee shown below includes secure booking and session confirmation.</p>
+                    <div class="summary-price"><span>Price (Incl GST)</span><span id="summaryPrice">₹1,499/-</span></div>
+                </div>
+            </div>
+            <div class="checkout-panel">
+                <h3>Complete Your Booking</h3>
+                <form class="checkout-form" onsubmit="return false;">
+                    <div>
+                        <label for="fullName">Full Name *</label>
+                        <input id="fullName" type="text" placeholder="Enter your full name">
+                    </div>
+                    <div>
+                        <label for="email">Email Address *</label>
+                        <input id="email" type="email" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label for="whatsapp">WhatsApp Number *</label>
+                        <input id="whatsapp" type="tel" placeholder="+91 98765 43210">
+                    </div>
+                    <div>
+                        <label for="dob">Date of Birth *</label>
+                        <input id="dob" type="date">
+                    </div>
+                    <div>
+                        <label for="tob">Time of Birth *</label>
+                        <input id="tob" type="time">
+                    </div>
+                    <div>
+                        <label for="gender">Gender *</label>
+                        <select id="gender">
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="full">
+                        <label for="birthPlace">Birth Place *</label>
+                        <input id="birthPlace" type="text" placeholder="City, State, Country">
+                    </div>
+                    <div>
+                        <label for="consultDate">Consultation Date *</label>
+                        <input id="consultDate" type="date">
+                    </div>
+                    <div>
+                        <label for="consultTime">Consultation Time *</label>
+                        <input id="consultTime" type="time">
+                    </div>
+                    <div class="full">
+                        <label for="notes">Your Questions / Notes</label>
+                        <textarea id="notes" placeholder="Write your main concerns or questions"></textarea>
+                    </div>
+                    <div class="full terms-row" style="margin-top:4px;">
+                        <input id="termsAgree" type="checkbox" style="margin-top:3px">
+                        <label for="termsAgree" style="margin:0;font-weight:500;color:var(--text-light);">I agree to the Terms and Conditions.</label>
+                    </div>
+                    <div class="full">
+                        <button id="cdBookBtn2" type="button" class="header-btn btn-gold" style="width:100%;padding:16px 22px;border:none;cursor:pointer;"><i class="fa-solid fa-lock"></i> Pay Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-section section-alt">
+        <div class="container cd-grid">
+            <div class="cd-card">
+                <h3>Best For</h3>
+                <ul class="cd-list" id="cdUseCases"></ul>
+            </div>
+            <div class="cd-card">
+                <h3>Consultation Flow</h3>
+                <ul class="cd-list">
+                    <li><i class="fa-solid fa-1"></i><span>Book & pay securely to confirm your slot.</span></li>
+                    <li><i class="fa-solid fa-2"></i><span>We confirm via WhatsApp and collect birth details.</span></li>
+                    <li><i class="fa-solid fa-3"></i><span>Attend the audio/video session with the astrologer.</span></li>
+                    <li><i class="fa-solid fa-4"></i><span>Receive remedies, summary, and follow-up support.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-cta">
+        <div class="container">
+            <h2>Ready for Clarity?</h2>
+            <p>Book your preferred consultation package and get expert guidance tailored to your chart.</p>
+            <button id="cdBookBtn3" class="header-btn btn-gold" style="padding:16px 40px;font-size:16px;border:none;cursor:pointer;"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div><p>Preserving and promoting the authentic science of Vedic Astrology.</p></div>
+                <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-conditions.html">Terms & Conditions</a></li><li><a href="faq.html">FAQ</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+                <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="services.html">All Services</a></li><li><a href="consultation.html">Consultation</a></li><li><a href="pooja.html">Book Pooja</a></li><li><a href="store.html">Gemstones</a></li></ul></div>
+                <div><h4 class="footer-title">Contact Us</h4><ul class="footer-links"><li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li><li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 98765 43210</li><li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> Kokrajhar, Bodoland, Assam</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script src="assets/js/razorpay-pay.js?v=20260608g"></script>
+    <script>
+    (function() {
+        const plans = [
+            {
+                title: 'Team Astrologer Consultation',
+                subtitle: 'Certified Vedic expert session for focused guidance on key life questions.',
+                duration: '30 Minutes',
+                priceLabel: '₹1,499',
+                oldPrice: '₹2,499',
+                pricePaise: 149900,
+                features: [
+                    'Birth chart analysis',
+                    'Career and finance guidance',
+                    'Marriage and relationship discussion',
+                    'Practical remedies',
+                    'Session summary via WhatsApp/email'
+                ],
+                useCases: [
+                    'Career confusion or role change',
+                    'Marriage timing and compatibility questions',
+                    'General life direction clarity',
+                    'First-time astrology consultation'
+                ]
+            },
+            {
+                title: 'Senior Astrologer Consultation',
+                subtitle: 'Deep-dive consultation with a senior astrologer for multi-topic complex analysis.',
+                duration: '30 Minutes',
+                priceLabel: '₹2,999',
+                oldPrice: '₹4,999',
+                pricePaise: 299900,
+                features: [
+                    'Deep Kundli analysis',
+                    'Dasha and transit prediction',
+                    'Career, marriage, and health review',
+                    'Advanced remedies and mantra guidance',
+                    'Priority scheduling and follow-up support'
+                ],
+                useCases: [
+                    'Recurring obstacles in multiple life areas',
+                    'Important life decisions in short time',
+                    'Second opinion after previous consultation',
+                    'Need structured long-term roadmap'
+                ]
+            },
+            {
+                title: 'Acharya Ji Premium Consultation',
+                subtitle: 'Direct one-on-one premium session for high-stakes and complex life situations.',
+                duration: '45 Minutes',
+                priceLabel: '₹5,999',
+                oldPrice: '₹8,999',
+                pricePaise: 599900,
+                features: [
+                    'Comprehensive chart reading',
+                    'Prashna Kundli (Horary) support',
+                    'Complex case resolution',
+                    'Personalized pooja and gemstone guidance',
+                    '7-day WhatsApp follow-up'
+                ],
+                useCases: [
+                    'Major life crossroads and high-impact decisions',
+                    'Persistent issue not solved by prior remedies',
+                    'Family, career, and finance together',
+                    'Need premium direct guidance'
+                ]
+            }
+        ];
+
+        function getId() {
+            const h = location.hash.replace('#', '');
+            const hp = new URLSearchParams(h);
+            if (hp.get('id') !== null) return parseInt(hp.get('id'), 10) || 0;
+            const qp = new URLSearchParams(location.search);
+            if (qp.get('id') !== null) return parseInt(qp.get('id'), 10) || 0;
+            return 0;
+        }
+
+        const id = getId();
+        let plan = null;
+        try {
+            const d = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (d && d.consultation && d.consultation[id]) {
+                const cp = d.consultation[id];
+                plan = {
+                    title: cp.title,
+                    subtitle: cp.desc || '',
+                    duration: cp.desc && cp.desc.match(/\d+\s*(?:Minutes?|Hours?)/i) ? cp.desc.match(/\d+\s*(?:Minutes?|Hours?)/i)[0] : '30 Minutes',
+                    priceLabel: '₹' + cp.newPrice,
+                    oldPrice: cp.oldPrice ? '₹' + cp.oldPrice : '',
+                    pricePaise: (parseInt(String(cp.newPrice || '0').replace(/[^0-9]/g, '')) || 0) * 100,
+                    features: cp.features ? cp.features.split('\n').filter(Boolean) : [],
+                    useCases: cp.includes ? cp.includes.split('\n').filter(Boolean) : [],
+                    reqShipping: cp.reqShipping,
+                    reqBirth: cp.reqBirth,
+                    reqNotes: cp.reqNotes,
+                    checkoutFields: cp.checkoutFields
+                };
+            }
+        } catch(e){}
+        if (!plan) plan = plans[id] || plans[0];
+        document.title = plan.title + ' - Bhartiya Sidhant';
+
+        document.getElementById('cdTitle').textContent = plan.title;
+        document.getElementById('cdSubtitle').textContent = plan.subtitle;
+        document.getElementById('cdDuration').textContent = plan.duration;
+        document.getElementById('cdPrice').textContent = plan.priceLabel;
+        document.getElementById('cdOld').textContent = plan.oldPrice;
+
+        const featuresWrap = document.getElementById('cdFeatures');
+        const useCasesWrap = document.getElementById('cdUseCases');
+        const summaryText = document.getElementById('summaryText');
+        const summaryPrice = document.getElementById('summaryPrice');
+        const coupleAddon = document.getElementById('coupleAddon');
+        const addonAmount = 310000;
+
+        featuresWrap.innerHTML = plan.features.map(function(f) {
+            return '<div class="feature-tile"><strong><i class="fa-solid fa-check"></i> ' + f + '</strong><span>Included in this consultation package.</span></div>';
+        }).join('');
+
+        useCasesWrap.innerHTML = plan.useCases.map(function(u) {
+            return '<li><i class="fa-solid fa-star"></i><span>' + u + '</span></li>';
+        }).join('');
+
+        function updateSummary() {
+            const hasAddon = coupleAddon && coupleAddon.checked;
+            const totalPaise = plan.pricePaise + (hasAddon ? addonAmount : 0);
+            summaryText.textContent = hasAddon
+                ? 'Consultation fee plus Couple Consultation add-on selected.'
+                : 'Consultation fee shown below includes secure booking and session confirmation.';
+            summaryPrice.textContent = '₹' + (totalPaise / 100).toLocaleString('en-IN') + '/-';
+            return totalPaise;
+        }
+
+        updateSummary();
+        if (coupleAddon) coupleAddon.addEventListener('change', updateSummary);
+
+        function bookPlan() {
+            const pricePaise = updateSummary();
+            openRazorpayModal({
+                name: plan.title,
+                price: pricePaise,
+                priceLabel: '₹' + (pricePaise / 100).toLocaleString('en-IN'),
+                description: plan.duration + ' · Audio/Video Call',
+                image: 'assets/images/astrologer.png',
+                type: 'consultation',
+                reqShipping: plan.reqShipping,
+                reqBirth: plan.reqBirth,
+                reqNotes: plan.reqNotes,
+                checkoutFields: plan.checkoutFields
+            });
+        }
+
+        document.getElementById('cdBookBtn').addEventListener('click', bookPlan);
+        document.getElementById('cdBookBtn2').addEventListener('click', bookPlan);
+        document.getElementById('cdBookBtn3').addEventListener('click', bookPlan);
+    })();
+    </script>
+</body>
+</html>

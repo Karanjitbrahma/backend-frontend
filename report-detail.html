@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Details - Bhartiya Sidhant</title>
+    <meta name="description" content="Premium Vedic Astrology reports by Bhartiya Sidhant. Get detailed predictions and insights.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .rd-hero{position:relative;min-height:380px;display:flex;align-items:center;padding:100px 20px 60px;background:linear-gradient(135deg,rgba(15,30,77,.92),rgba(5,10,30,.95)),url('') center/cover no-repeat;color:#fff;overflow:hidden}
+        .rd-hero::before{content:'☸';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:280px;opacity:.04;pointer-events:none}
+        .rd-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+        .rd-hero-text .rd-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,135,62,.15);border:1px solid rgba(200,135,62,.35);color:var(--primary-light);padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px}
+        .rd-hero-text h1{font-size:40px;color:#fff;margin-bottom:14px;line-height:1.15}
+        .rd-hero-text h1 span{color:var(--primary-light)}
+        .rd-hero-text>p{color:rgba(255,255,255,.75);font-size:15px;margin-bottom:25px;line-height:1.7}
+        .rd-hero-img{border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);border:3px solid rgba(200,135,62,.25)}
+        .rd-hero-img img{width:100%;height:340px;object-fit:cover;display:block}
+        .rd-price-box{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(200,135,62,.2);border-radius:16px;padding:24px;margin-top:25px}
+        .rd-price{font-size:34px;font-weight:800;color:var(--primary-light)}.rd-old-price{font-size:16px;color:rgba(255,255,255,.4);text-decoration:line-through;margin-left:10px}
+        .rd-cta-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+        .rd-cta-row a{flex:1;min-width:140px;justify-content:center}
+        .rd-section{padding:70px 0}.rd-section-alt{background:var(--bg-white)}
+        .rd-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+        .rd-about p{color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:15px}
+        .rd-features{list-style:none;padding:0;margin:20px 0 0}
+        .rd-features li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:15px;color:var(--text-dark)}
+        .rd-features li:last-child{border-bottom:none}
+        .rd-features li i{color:var(--primary);font-size:16px;flex-shrink:0}
+        .rd-sample{background:var(--bg-cream);border-radius:14px;padding:28px;border:1px solid rgba(200,135,62,.1)}
+        .rd-sample h4{color:var(--secondary);margin-bottom:14px;font-size:18px}
+        .rd-sample li{padding:8px 0;font-size:14px;color:var(--text-light);display:flex;align-items:center;gap:10px;list-style:none}
+        .rd-sample li i{color:var(--primary);font-size:13px;flex-shrink:0}
+        .rd-reveal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .rd-reveal-card{background:var(--bg-white);border:1px solid rgba(200,135,62,.12);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+        .rd-reveal-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(200,135,62,.14)}
+        .rd-reveal-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(200,135,62,.15),rgba(200,135,62,.05));color:var(--primary);font-size:22px;margin-bottom:14px}
+        .rd-reveal-card h4{font-size:18px;color:var(--secondary);margin-bottom:8px}
+        .rd-reveal-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+        .rd-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .rd-process-card{background:linear-gradient(180deg,#fff,#fff8f0);border:1px solid rgba(200,135,62,.14);border-radius:16px;padding:24px;position:relative;overflow:hidden}
+        .rd-process-card::before{content:'';position:absolute;inset:auto -16px -16px auto;width:110px;height:110px;border-radius:50%;background:rgba(200,135,62,.08);pointer-events:none}
+        .rd-process-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gold-gradient);color:#fff;font-weight:800;margin-bottom:14px}
+        .rd-process-card h4{font-size:18px;color:var(--secondary);margin-bottom:8px}
+        .rd-process-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+        .rd-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .rd-related-card{background:#fff;border:1px solid rgba(200,135,62,.12);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+        .rd-related-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(200,135,62,.14)}
+        .rd-related-card img{width:100%;height:170px;object-fit:cover;display:block}
+        .rd-related-body{padding:18px}
+        .rd-related-body h4{font-size:17px;color:var(--secondary);margin-bottom:6px}
+        .rd-related-body p{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:12px}
+        .rd-related-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+        .rd-related-price{font-weight:800;color:var(--primary);font-size:18px}
+        .rd-related-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--gold-gradient);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+        .rd-side-stack{display:grid;gap:22px}
+        .rd-quote{background:linear-gradient(135deg,rgba(77,15,15,.94),rgba(30,5,5,.96));color:#fff;border-radius:16px;padding:26px;box-shadow:var(--shadow-md)}
+        .rd-quote h4{color:#fff;font-size:18px;margin-bottom:8px}
+        .rd-quote p{color:rgba(255,255,255,.76);line-height:1.7;font-size:14px}
+        .rd-quote ul{margin-top:14px;padding-left:18px;color:rgba(255,255,255,.78)}
+        .rd-quote li{margin-bottom:8px}
+        .rd-highlight{background:var(--bg-cream);border-radius:16px;padding:22px;border:1px solid rgba(200,135,62,.12)}
+        .rd-highlight h4{font-size:18px;color:var(--secondary);margin-bottom:12px}
+        .rd-highlight .mini-list{display:grid;gap:10px}
+        .rd-highlight .mini-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-light)}
+        .rd-highlight .mini-item i{color:var(--primary);margin-top:3px}
+        .rd-cta-bottom{background:var(--maroon-gradient);padding:60px 0;text-align:center;color:#fff}
+        .rd-cta-bottom h2{color:#fff;font-size:34px;margin-bottom:12px}.rd-cta-bottom h2 span{color:var(--primary-light)}
+        .rd-cta-bottom p{color:rgba(255,255,255,.7);margin-bottom:30px;font-size:16px}
+        @media(max-width:1024px){.rd-hero-inner{grid-template-columns:1fr}.rd-hero-img{max-width:500px}.rd-reveal-grid,.rd-process-grid,.rd-related-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.rd-hero-text h1{font-size:28px}.rd-grid{grid-template-columns:1fr}.rd-cta-row{flex-direction:column}.rd-cta-row a{min-width:auto}.rd-reveal-grid,.rd-process-grid,.rd-related-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 98765 43210</div><div><a href="#"><i class="fa-brands fa-facebook-f"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-instagram"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-youtube"></i></a></div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html" class="active">Reports</a><a href="store.html">Store</a><a href="courses.html">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <!-- HERO -->
+    <section class="rd-hero">
+        <div class="rd-hero-inner container">
+            <div class="rd-hero-text">
+                <div class="rd-badge"><i class="fa-solid fa-scroll" id="rdBadgeIcon"></i> <span id="rdBadge">Premium Report</span></div>
+                <h1 id="rdTitle">Loading <span>Report...</span></h1>
+                <p id="rdSubtitle">Loading report details...</p>
+                <div class="rd-price-box">
+                    <span class="rd-price" id="rdPrice">—</span>
+                    <span class="rd-old-price" id="rdOldPrice"></span>
+                    <div class="rd-cta-row">
+                        <a href="#" id="rdWhatsappBtn" class="header-btn btn-gold" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                        <a href="tel:+919876543210" class="header-btn btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff;"><i class="fa-solid fa-phone"></i> Call Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="rd-hero-img">
+                <img id="rdImage" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Report">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="rd-section">
+        <div class="container">
+            <div class="rd-grid">
+                <div class="rd-about">
+                    <div class="section-header" style="text-align:left;margin-bottom:25px;">
+                        <div class="label">About This Report</div>
+                        <h2 id="rdAboutHeading">Report <span>Details</span></h2>
+                    </div>
+                    <div id="rdAboutContent"><p>Loading report details...</p></div>
+                </div>
+                <div class="rd-side-stack">
+                    <div class="rd-quote">
+                        <h4><i class="fa-solid fa-lightbulb"></i> What This Report Will Reveal</h4>
+                        <p>Built around your birth details and planetary timing, this report translates astrology into practical guidance for the year ahead.</p>
+                        <ul id="rdFeaturesList"></ul>
+                    </div>
+                    <div class="rd-highlight">
+                        <h4>Signs You Need This Report</h4>
+                        <div class="mini-list" id="rdSignsList"></div>
+                    </div>
+                    <div class="rd-sample" id="rdSampleBox" style="display:none;">
+                        <h4><i class="fa-solid fa-clipboard-list"></i> What's Included</h4>
+                        <ul id="rdIncludesList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rd-section rd-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Key Takeaways</div>
+                <h2>What Your <span>Report Will Reveal</span></h2>
+                <p>Inspired by the structure of the reference page, this section makes the report outcome easy to scan and act on.</p>
+            </div>
+            <div class="rd-reveal-grid" id="rdRevealGrid"></div>
+        </div>
+    </section>
+
+    <section class="rd-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">How It Works</div>
+                <h2>Simple <span>Order Process</span></h2>
+                <p>Choose the report, share your details, and receive your personalized analysis quickly.</p>
+            </div>
+            <div class="rd-process-grid">
+                <div class="rd-process-card">
+                    <div class="rd-process-num">1</div>
+                    <h4>Choose Your Report</h4>
+                    <p>Open the report page and review the detailed insights, pricing, and what is included before ordering.</p>
+                </div>
+                <div class="rd-process-card">
+                    <div class="rd-process-num">2</div>
+                    <h4>Place the Order</h4>
+                    <p>Click the WhatsApp or payment button, confirm your name and birth details, and complete checkout securely.</p>
+                </div>
+                <div class="rd-process-card">
+                    <div class="rd-process-num">3</div>
+                    <h4>Receive the Report</h4>
+                    <p>Your personalized PDF report is prepared and sent to you within the promised delivery window.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rd-section rd-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Suggested Reports</div>
+                <h2>You May Also <span>Like These</span></h2>
+                <p>Other report options that match the same style of guided insight and practical remedies.</p>
+            </div>
+            <div class="rd-related-grid" id="rdRelatedGrid"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="rd-cta-bottom">
+        <div class="container">
+            <h2>Get Your Personalized <span>Report Today</span></h2>
+            <p>Order now and receive your detailed astrological report within 24-48 hours.</p>
+            <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
+                <a href="#" id="rdCtaWhatsapp" target="_blank" class="header-btn btn-gold" style="padding:16px 40px;font-size:16px;"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</a>
+                <a href="reports.html" class="header-btn btn-outline" style="padding:16px 40px;font-size:16px;border-color:#fff;color:#fff;"><i class="fa-solid fa-arrow-left"></i> All Reports</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div><p>Preserving and promoting the authentic science of Vedic Astrology.</p><div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-telegram"></i></a></div></div>
+                <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-conditions.html">Terms & Conditions</a></li><li><a href="faq.html">FAQ</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+                <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="services.html">All Services</a></li><li><a href="consultation.html">Consultation</a></li><li><a href="pooja.html">Book Pooja</a></li><li><a href="store.html">Gemstones</a></li></ul></div>
+                <div><h4 class="footer-title">Contact Us</h4><ul class="footer-links"><li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li><li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 98765 43210</li><li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> Kokrajhar, Bodoland, Assam</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script src="assets/js/razorpay-pay.js?v=20260608g"></script>
+    <script>
+    (function(){
+        const fallbackReports = [
+            { title: 'Career Report', desc: 'Find your true career direction with Vedic analysis of profession and timing.', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80', newPrice: '999', oldPrice: '1899' },
+            { title: 'Personalized Horoscope', desc: 'A personal report for clarity on major life areas and upcoming trends.', image: 'https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f0?auto=format&fit=crop&w=800&q=80', newPrice: '299', oldPrice: '599' },
+            { title: 'Saturn In Your Birth Chart', desc: 'Understand Saturn lessons, opportunities, and practical remedies.', image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80', newPrice: '1070', oldPrice: '2140' },
+            { title: 'Lal Kitab Report', desc: 'Powerful Lal Kitab-based remedies for everyday challenges.', image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80', newPrice: '1699', oldPrice: '3500' },
+            { title: 'Premium Personalized Kundli', desc: 'A detailed premium Kundli report with house-wise interpretation.', image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80', newPrice: '499', oldPrice: '1100' },
+            { title: 'Couple Kundli Matching', desc: 'Compatibility report for relationships and marriage prospects.', image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80', newPrice: '511', oldPrice: '1022' },
+            { title: 'Fortune Report', desc: 'Insights into wealth potential and favorable financial windows.', image: 'https://images.unsplash.com/photo-1553729459-afe8f2f2d882?auto=format&fit=crop&w=800&q=80', newPrice: '499', oldPrice: '1800' },
+            { title: 'Baby Report', desc: 'A personalized cosmic blueprint and guidance for your child.', image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80', newPrice: '699', oldPrice: '1599' },
+            { title: 'Rahu Ketu Transit Impact', desc: 'How shadow planet transits affect your current life cycle.', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80', newPrice: '994', oldPrice: '1599' },
+            { title: 'Jupiter Transit', desc: 'Unlock growth, opportunities, and expansion through Jupiter phases.', image: 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?auto=format&fit=crop&w=800&q=80', newPrice: '993', oldPrice: '1599' },
+            { title: 'Love Report', desc: 'Relationship trends, timing, and compatibility insights.', image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80', newPrice: '499', oldPrice: '1499' },
+            { title: 'Sade Sati Basic', desc: 'Simple and clear interpretation of your Sade Sati phase.', image: 'https://images.unsplash.com/photo-1515942661900-94b3d1972b72?auto=format&fit=crop&w=800&q=80', newPrice: '395', oldPrice: '790' },
+            { title: 'Personalized Fortune Plus', desc: 'Extended financial and opportunity mapping report.', image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=80', newPrice: '1300', oldPrice: '2600' },
+            { title: 'Finance Report', desc: 'Actionable guidance for savings, earnings, and money flow.', image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80', newPrice: '460', oldPrice: '920' },
+            { title: 'Name Analysis', desc: 'Numerological and vibrational analysis of your name.', image: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=800&q=80', newPrice: '1100', oldPrice: '7500' },
+            { title: 'Varshphal Report', desc: 'Your yearly roadmap with key periods and predictions.', image: 'https://images.unsplash.com/photo-1435527173128-983b87201f4d?auto=format&fit=crop&w=800&q=80', newPrice: '349', oldPrice: '500' }
+        ];
+
+        function getId() {
+            const h = location.hash.replace('#','');
+            const hp = new URLSearchParams(h);
+            if (hp.get('id') !== null) return parseInt(hp.get('id')) || 0;
+            const qp = new URLSearchParams(location.search);
+            if (qp.get('id') !== null) return parseInt(qp.get('id')) || 0;
+            return 0;
+        }
+        const id = getId();
+        let report = null, waNum = '919876543210';
+        try {
+            const d = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (d && d.reports && d.reports[id]) report = d.reports[id];
+            if (d && d.site && d.site.whatsapp) waNum = d.site.whatsapp;
+        } catch(e){}
+        if (!report) report = fallbackReports[id] || fallbackReports[0];
+        if (!report) { document.getElementById('rdTitle').innerHTML = 'Report <span>Not Found</span>'; return; }
+
+        const wa = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent('I want to buy ' + report.title + ' report');
+        const $ = s => document.getElementById(s);
+
+        document.title = report.title + ' - Bhartiya Sidhant';
+        $('rdBadgeIcon').className = 'fa-solid ' + (report.icon || 'fa-scroll');
+        const words = report.title.split(' ');
+        const last = words.pop();
+        $('rdTitle').innerHTML = words.join(' ') + ' <span>' + last + '</span>';
+        $('rdSubtitle').textContent = report.desc || '';
+        $('rdImage').src = report.image || '';
+        $('rdImage').alt = report.title;
+        $('rdPrice').textContent = '₹' + (report.newPrice || '499');
+        $('rdPrice').textContent = '₹' + (report.newPrice || '499');
+        if (report.oldPrice) $('rdOldPrice').textContent = '₹' + report.oldPrice;
+        $('rdAboutHeading').innerHTML = 'About <span>' + report.title + '</span>';
+
+        // About content
+        const detailDesc = report.detailDesc || report.desc || '';
+        const paragraphs = detailDesc.split('\n').filter(p => p.trim());
+        $('rdAboutContent').innerHTML = paragraphs.length > 1 ? paragraphs.map(p => '<p>' + p.trim() + '</p>').join('') : '<p>' + detailDesc + '</p><p>This premium report is prepared by our senior astrologers using your exact birth details. You will receive a comprehensive PDF document within 24-48 hours of ordering.</p>';
+
+        // Features
+        const features = report.features ? report.features.split('\n').filter(f => f.trim()) : [report.desc, 'Personalized Analysis', 'Detailed PDF Report', 'Expert Astrologer Prepared', 'Remedies & Guidance Included'];
+        $('rdFeaturesList').innerHTML = features.map(f => '<li><i class="fa-solid fa-check-circle"></i><span>' + f.trim() + '</span></li>').join('');
+
+        // Checkout Features - removed since using modal
+
+        const revealCards = [
+            { icon: 'fa-sun', title: 'Complete Yearly Forecast', text: 'Understand the main themes, opportunities, and risks for the months ahead.' },
+            { icon: 'fa-chart-line', title: 'Career, Money & Growth', text: 'See where your strongest growth cycles appear and what to avoid.' },
+            { icon: 'fa-heart', title: 'Love, Family & Balance', text: 'Know when relationships, family decisions, and harmony need attention.' },
+            { icon: 'fa-heart-pulse', title: 'Health Guidance', text: 'Spot sensitive periods early and follow practical wellbeing remedies.' },
+            { icon: 'fa-gem', title: 'Lucky Dates, Colors & Remedies', text: 'Use personalized supportive actions to strengthen outcomes.' },
+            { icon: 'fa-bullseye', title: 'Actionable Planning', text: 'Make decisions with timing, clarity, and confidence instead of guesswork.' }
+        ];
+        $('rdRevealGrid').innerHTML = revealCards.map(card => `
+            <div class="rd-reveal-card">
+                <div class="rd-reveal-icon"><i class="fa-solid ${card.icon}"></i></div>
+                <h4>${card.title}</h4>
+                <p>${card.text}</p>
+            </div>
+        `).join('');
+
+        const signs = [
+            'You want clarity on career, love, money, or family decisions.',
+            'You need a practical roadmap for the months ahead.',
+            'You want remedies, not just predictions.',
+            'You are facing a big life move or timing-sensitive decision.',
+            'You prefer a personalized report instead of generic horoscopes.'
+        ];
+        $('rdSignsList').innerHTML = signs.map(text => `<div class="mini-item"><i class="fa-solid fa-circle-check"></i><span>${text}</span></div>`).join('');
+
+        // Includes
+        if (report.includes) {
+            const includes = report.includes.split('\n').filter(i => i.trim());
+            if (includes.length) {
+                $('rdSampleBox').style.display = '';
+                $('rdIncludesList').innerHTML = includes.map(inc => '<li><i class="fa-solid fa-file-alt"></i> ' + inc.trim() + '</li>').join('');
+            }
+        }
+
+        const relatedIndexes = fallbackReports
+            .map((item, index) => ({ item, index }))
+            .filter(entry => entry.index !== id)
+            .slice(id % 2 === 0 ? 0 : 1, (id % 2 === 0 ? 0 : 1) + 3);
+        $('rdRelatedGrid').innerHTML = relatedIndexes.map(entry => `
+            <article class="rd-related-card">
+                <img src="${entry.item.image}" alt="${entry.item.title}">
+                <div class="rd-related-body">
+                    <h4>${entry.item.title}</h4>
+                    <p>${entry.item.desc}</p>
+                    <div class="rd-related-meta">
+                        <div class="rd-related-price">₹${entry.item.newPrice}</div>
+                        <a class="rd-related-btn" href="report-detail.html#id=${entry.index}"><i class="fa-solid fa-arrow-right"></i> View</a>
+                    </div>
+                </div>
+            </article>
+        `).join('');
+
+        window.openBuyRazorpay = function() {
+            const priceNum = String(report.newPrice || '499').replace(/[^0-9.]/g, '') || '499';
+            const pricePaise = Math.round(parseFloat(priceNum) * 100);
+            openRazorpayModal({
+                name: report.title,
+                price: pricePaise,
+                priceLabel: '₹' + report.newPrice,
+                description: 'Premium Astrology Report',
+                image: report.image || 'assets/images/astrologer.png',
+                type: 'report',
+                reqShipping: report.reqShipping,
+                reqBirth: report.reqBirth,
+                reqNotes: report.reqNotes,
+                checkoutFields: report.checkoutFields
+            });
+        };
+
+        // Update hero and CTA buttons
+        if (report.newPrice) {
+            $('rdWhatsappBtn').innerHTML = '<i class="fa-solid fa-lock"></i> Buy & Book';
+            $('rdWhatsappBtn').href = 'javascript:void(0)';
+            $('rdWhatsappBtn').removeAttribute('target');
+            $('rdWhatsappBtn').onclick = window.openBuyRazorpay;
+            $('rdCtaWhatsapp').innerHTML = '<i class="fa-solid fa-lock"></i> Buy & Book';
+            $('rdCtaWhatsapp').href = 'javascript:void(0)';
+            $('rdCtaWhatsapp').removeAttribute('target');
+            $('rdCtaWhatsapp').onclick = window.openBuyRazorpay;
+        }
+
+        window.addEventListener('hashchange', () => location.reload());
+    })();
+    </script>
+</body>
+</html>

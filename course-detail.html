@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - Bhartiya Sidhant</title>
+    <meta name="description" content="Learn Vedic Astrology with structured online courses from Bhartiya Sidhant. Live classes, certification & mentorship.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="assets/css/courses-pooja.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .detail-hero{position:relative;min-height:420px;display:flex;align-items:center;padding:100px 20px 70px;background:linear-gradient(135deg,rgba(77,15,15,.9),rgba(30,5,5,.94)),url('https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;color:#fff;overflow:hidden}
+        .detail-hero::before{content:'☸';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:300px;opacity:.04;pointer-events:none}
+        .detail-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+        .detail-hero-text .detail-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,135,62,.15);border:1px solid rgba(200,135,62,.35);color:var(--primary-light);padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px}
+        .detail-hero-text h1{font-size:42px;color:#fff;margin-bottom:14px;line-height:1.15}
+        .detail-hero-text h1 span{color:var(--primary-light)}
+        .detail-hero-text>p{color:rgba(255,255,255,.75);font-size:16px;margin-bottom:25px;line-height:1.7}
+        .detail-hero-stats{display:flex;gap:30px;flex-wrap:wrap}
+        .detail-hero-stats .dhs{text-align:center}
+        .detail-hero-stats .dhs-num{font-size:28px;font-weight:800;color:var(--primary-light);font-family:var(--font-heading)}
+        .detail-hero-stats .dhs-label{font-size:12px;color:rgba(255,255,255,.6)}
+        .detail-hero-img{border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);border:3px solid rgba(200,135,62,.25)}
+        .detail-hero-img img{width:100%;height:350px;object-fit:cover;display:block}
+        .detail-price-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(200,135,62,.2);border-radius:16px;padding:28px;margin-top:30px}
+        .detail-price-card .dp-price{font-size:36px;font-weight:800;color:var(--primary-light);font-family:var(--font-body)}
+        .detail-price-card .dp-old{font-size:16px;color:rgba(255,255,255,.4);text-decoration:line-through;margin-left:10px}
+        .detail-price-card .dp-btns{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+        .detail-price-card .dp-btns a{flex:1;min-width:150px;justify-content:center}
+
+        .detail-section{padding:70px 0}
+        .detail-section-alt{background:var(--bg-white)}
+        .detail-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+
+        .detail-about p{color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:15px}
+        .detail-includes{list-style:none;padding:0;margin:20px 0 0}
+        .detail-includes li{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:15px;color:var(--text-dark)}
+        .detail-includes li:last-child{border-bottom:none}
+        .detail-includes li .di-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,rgba(200,135,62,.12),rgba(200,135,62,.05));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .detail-includes li .di-icon i{color:var(--primary);font-size:15px}
+        .detail-includes li div strong{display:block;color:var(--secondary);font-size:15px;margin-bottom:2px}
+        .detail-includes li div span{font-size:13px;color:var(--text-light)}
+
+        .detail-benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .detail-benefit{background:var(--bg-cream);border-radius:14px;padding:28px 22px;text-align:center;border:1px solid rgba(200,135,62,.08);transition:all .3s}
+        .detail-benefit:hover{transform:translateY(-5px);box-shadow:0 8px 30px rgba(200,135,62,.12)}
+        .detail-benefit .db-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(200,135,62,.12),rgba(200,135,62,.05));color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;transition:all .3s}
+        .detail-benefit:hover .db-icon{background:var(--gold-gradient);color:#fff}
+        .detail-benefit h4{font-size:16px;font-family:var(--font-body);font-weight:700;color:var(--secondary);margin-bottom:6px}
+        .detail-benefit p{font-size:13px;color:var(--text-light);line-height:1.6}
+
+        .detail-process-cta{background:var(--maroon-gradient);padding:60px 0;text-align:center;color:#fff}
+        .detail-process-cta h2{color:#fff;font-size:36px;margin-bottom:12px}
+        .detail-process-cta h2 span{color:var(--primary-light)}
+        .detail-process-cta p{color:rgba(255,255,255,.7);margin-bottom:30px;font-size:16px}
+
+        @media(max-width:1024px){.detail-hero-inner{grid-template-columns:1fr}.detail-hero-img{max-width:500px}.detail-benefits-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.detail-hero-text h1{font-size:30px}.detail-grid-2{grid-template-columns:1fr}.detail-benefits-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}.detail-price-card .dp-btns{flex-direction:column}.detail-price-card .dp-btns a{min-width:auto}}
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 98765 43210</div><div><a href="#"><i class="fa-brands fa-facebook-f"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-instagram"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-youtube"></i></a></div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html">Reports</a><a href="store.html">Store</a><a href="courses.html" class="active">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <!-- HERO -->
+    <section class="detail-hero">
+        <div class="detail-hero-inner container">
+            <div class="detail-hero-text">
+                <div class="detail-badge"><i class="fa-solid fa-graduation-cap"></i> <span id="dLevel">Course</span></div>
+                <h1 id="dTitle">Loading <span>Course...</span></h1>
+                <p id="dSubtitle">Loading course details...</p>
+                <div class="detail-hero-stats">
+                    <div class="dhs"><div class="dhs-num" id="dDuration">—</div><div class="dhs-label">Duration</div></div>
+                    <div class="dhs"><div class="dhs-num" id="dMode">—</div><div class="dhs-label">Mode</div></div>
+                    <div class="dhs"><div class="dhs-num" id="dLanguage">—</div><div class="dhs-label">Language</div></div>
+                </div>
+                <div class="detail-price-card">
+                    <span class="dp-price" id="dPrice">—</span>
+                    <span class="dp-old" id="dOldPrice"></span>
+                    <div class="dp-btns">
+                        <a href="#" id="dWhatsappBtn" class="header-btn btn-gold" target="_blank"><i class="fa-brands fa-whatsapp"></i> Enroll via WhatsApp</a>
+                        <a href="tel:+919876543210" class="header-btn btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff;"><i class="fa-solid fa-phone"></i> Call Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-hero-img">
+                <img id="dImage" src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80" alt="Course Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU'LL LEARN -->
+    <section class="detail-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Course Overview</div>
+                <h2>What You'll <span>Learn</span></h2>
+                <p>A comprehensive curriculum designed to take you from fundamentals to practical mastery.</p>
+            </div>
+            <div class="detail-grid-2">
+                <div class="detail-about">
+                    <p id="dDescription">This course provides a deep dive into the principles and practices of Vedic Astrology. You'll learn to read birth charts, understand planetary influences, and make accurate predictions using classical techniques passed down through generations of learned astrologers.</p>
+                    <p>Our experienced Acharyas guide you through every concept with real-life examples, case studies, and interactive sessions. Whether you're starting fresh or looking to deepen your existing knowledge, this course adapts to your learning pace.</p>
+                </div>
+                <div>
+                    <h3 style="font-size:22px;margin-bottom:20px;">What's <span style="color:var(--primary);">Included</span></h3>
+                    <ul class="detail-includes" id="dIncludesList">
+                        <li><div class="di-icon"><i class="fa-solid fa-video"></i></div><div><strong>Live Interactive Classes</strong><span>Real-time sessions with Q&A and doubt clearing</span></div></li>
+                        <li><div class="di-icon"><i class="fa-solid fa-film"></i></div><div><strong>Recorded Sessions</strong><span>Lifetime access to all class recordings</span></div></li>
+                        <li><div class="di-icon"><i class="fa-solid fa-book"></i></div><div><strong>Study Materials</strong><span>PDF notes, charts, and reference guides</span></div></li>
+                        <li><div class="di-icon"><i class="fa-solid fa-certificate"></i></div><div><strong>Professional Certificate</strong><span>Recognized certificate upon completion</span></div></li>
+                        <li><div class="di-icon"><i class="fa-solid fa-users"></i></div><div><strong>Community Access</strong><span>Join exclusive WhatsApp group for ongoing support</span></div></li>
+                        <li><div class="di-icon"><i class="fa-solid fa-headset"></i></div><div><strong>Mentorship</strong><span>Post-course guidance from senior astrologers</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="detail-section detail-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Why This Course</div>
+                <h2>Key <span>Benefits</span></h2>
+            </div>
+            <div class="detail-benefits-grid">
+                <div class="detail-benefit"><div class="db-icon"><i class="fa-solid fa-chalkboard-user"></i></div><h4>Expert Faculty</h4><p>Learn directly from Acharyas with 10+ years of teaching and practice experience.</p></div>
+                <div class="detail-benefit"><div class="db-icon"><i class="fa-solid fa-chart-line"></i></div><h4>Practical Approach</h4><p>Analyze real birth charts and case studies — not just theory from textbooks.</p></div>
+                <div class="detail-benefit"><div class="db-icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h4>Flexible Schedule</h4><p>Miss a class? No problem. All sessions are recorded for lifetime access.</p></div>
+                <div class="detail-benefit"><div class="db-icon"><i class="fa-solid fa-globe"></i></div><h4>Learn From Anywhere</h4><p>Join from any country. All you need is an internet connection and a device.</p></div>
+                <div class="detail-benefit"><div class="db-icon"><i class="fa-solid fa-certificate"></i></div><h4>Valued Certification</h4><p>Earn a professional certificate recognized by astrology institutions.</p></div>
+                <div class="detail-benefit"><div class="db-icon"><i class="fa-solid fa-hand-holding-heart"></i></div><h4>EMI Available</h4><p>Flexible payment plans and installment options available for all courses.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="detail-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Simple Process</div>
+                <h2>How to <span>Get Started</span></h2>
+                <p>Enrolling in our course is quick and easy. Follow these simple steps.</p>
+            </div>
+            <div class="cp-steps-grid">
+                <div class="cp-step-card"><div class="cp-step-badge">Step 1</div><div class="cp-step-icon"><i class="fa-solid fa-hand-pointer"></i></div><h3>Choose & Enroll</h3><p>Click "Enroll via WhatsApp" above. Our team will confirm your seat and share the payment details.</p></div>
+                <div class="cp-step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="cp-step-card"><div class="cp-step-badge">Step 2</div><div class="cp-step-icon"><i class="fa-solid fa-calendar-check"></i></div><h3>Get Your Schedule</h3><p>Receive your class timetable, Zoom link, study materials, and WhatsApp group invite within 24 hours.</p></div>
+                <div class="cp-step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="cp-step-card"><div class="cp-step-badge">Step 3</div><div class="cp-step-icon"><i class="fa-solid fa-rocket"></i></div><h3>Start Learning</h3><p>Join your first live class! Ask questions, practice chart reading, and begin your astrology journey.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDENT REVIEWS -->
+    <section class="detail-section detail-section-alt" id="courseReviewsSection">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Student Feedback</div>
+                <h2>What Our <span>Students Say</span></h2>
+                <p>Hear from our graduates who have transformed their careers with Vedic Astrology knowledge.</p>
+            </div>
+            <div class="reviews-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+                <!-- Dynamically rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="detail-section" id="courseFaqSection">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Got Questions?</div>
+                <h2>Frequently Asked <span>Questions</span></h2>
+            </div>
+            <div class="faq-list" style="max-width:800px;margin:0 auto;">
+                <!-- Dynamically rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="detail-process-cta">
+        <div class="container">
+            <h2>Ready to Begin Your <span>Astrology Journey?</span></h2>
+            <p>Talk to our team today. We'll help you choose the right course and answer all your questions.</p>
+            <div class="cp-cta-buttons">
+                <a href="#" id="dCtaWhatsapp" target="_blank" class="header-btn btn-gold" style="padding:16px 40px;font-size:16px;"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+                <a href="tel:+919876543210" class="header-btn btn-outline" style="padding:16px 40px;font-size:16px;border-color:#fff;color:#fff;"><i class="fa-solid fa-phone"></i> Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div><p>Preserving and promoting the authentic science of Vedic Astrology.</p><div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-telegram"></i></a></div></div>
+                <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-conditions.html">Terms & Conditions</a></li><li><a href="faq.html">FAQ</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+                <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="services.html">All Services</a></li><li><a href="consultation.html">Consultation</a></li><li><a href="pooja.html">Book Pooja</a></li><li><a href="store.html">Gemstones</a></li></ul></div>
+                <div><h4 class="footer-title">Contact Us</h4><ul class="footer-links"><li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li><li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 98765 43210</li><li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> Kokrajhar, Bodoland, Assam</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script src="assets/js/razorpay-pay.js?v=20260608g"></script>
+    <script>
+    // Course data — defaults (fallback if no CMS data)
+    const defaultCourses = [
+        { title:'Vedic Astrology Foundations', highlight:'Foundations', level:'Beginner', subtitle:'Start your journey into Jyotish Shastra with this comprehensive beginner course covering all the fundamentals of Vedic Astrology.', price:'₹14,999', duration:'12 Weeks', mode:'Live Online', lang:'Hindi + English', image:'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80', wa:'I%20want%20to%20enroll%20in%20Vedic%20Astrology%20Beginners%20course' },
+        { title:'Predictive Astrology Mastery', highlight:'Mastery', level:'Advanced', subtitle:'Become a professional Vedic astrologer with advanced Dasha, transit, and divisional chart analysis techniques.', price:'₹29,999', duration:'24 Weeks', mode:'Live Online', lang:'Hindi + English', image:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80', wa:'I%20want%20to%20enroll%20in%20Predictive%20Astrology%20Advanced%20course' },
+        { title:'Maha Vastu Shastra', highlight:'Vastu Shastra', level:'Specialized', subtitle:'Master the ancient science of spatial energy to harmonize homes, offices, and commercial spaces using Vedic principles.', price:'₹11,999', duration:'8 Weeks', mode:'Live Online', lang:'Hindi + English', image:'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80', wa:'I%20want%20to%20enroll%20in%20Maha%20Vastu%20Shastra%20course' }
+    ];
+
+    // Read from CMS localStorage (admin panel data)
+    let courses = defaultCourses;
+    try {
+        const raw = localStorage.getItem('bs_admin_data');
+        if (raw) {
+            const data = JSON.parse(raw);
+            if (data.courses && data.courses.length) {
+                // Map CMS data to course detail format
+                courses = data.courses.map((cmsC, idx) => {
+                    const def = defaultCourses[idx] || {};
+                    // Extract duration from desc (e.g. "12 Weeks")
+                    const durMatch = cmsC.desc && cmsC.desc.match(/\d+\s*Weeks?/i);
+                    const duration = durMatch ? durMatch[0] : (def.duration || 'Self-paced');
+                    // Extract mode from desc
+                    const modeMatch = cmsC.desc && cmsC.desc.match(/Live Online|Online|Offline|Self-paced/i);
+                    const mode = modeMatch ? modeMatch[0] : (def.mode || 'Live Online');
+                    // Extract language from desc
+                    const langMatch = cmsC.desc && cmsC.desc.match(/Hindi\s*\+?\s*English|English|Hindi/i);
+                    const lang = langMatch ? langMatch[0] : (def.lang || 'Hindi + English');
+                    // Extract level from desc
+                    const levelMatch = cmsC.desc && cmsC.desc.match(/Beginner|Advanced|Intermediate|Specialized/i);
+                    const level = levelMatch ? levelMatch[0] : (def.level || (idx === 0 ? 'Beginner' : idx === 1 ? 'Advanced' : 'Specialized'));
+                    // Build highlight from title (last word)
+                    const words = cmsC.title.split(' ');
+                    const highlight = words.length > 1 ? words.slice(-1).join(' ') : words[0];
+
+                    return {
+                        title: cmsC.title,
+                        highlight: highlight,
+                        level: level,
+                        subtitle: cmsC.desc ? cmsC.desc.split('.').slice(0, 2).join('. ') : (def.subtitle || ''),
+                        price: '₹' + cmsC.newPrice,
+                        oldPrice: cmsC.oldPrice ? '₹' + cmsC.oldPrice : '',
+                        duration: duration,
+                        mode: mode,
+                        lang: lang,
+                        image: cmsC.image || def.image || '',
+                        wa: encodeURIComponent('I want to enroll in ' + cmsC.title + ' course'),
+                        reqShipping: cmsC.reqShipping !== undefined ? cmsC.reqShipping : false,
+                        reqBirth: cmsC.reqBirth !== undefined ? cmsC.reqBirth : true,
+                        reqNotes: cmsC.reqNotes !== undefined ? cmsC.reqNotes : true,
+                        checkoutFields: cmsC.checkoutFields
+                    };
+                });
+            }
+        }
+    } catch(e) { courses = defaultCourses; }
+
+    // Read id from hash (#id=1) first, then query param as fallback
+    // Read id from hash (#id=1) first, then query param as fallback
+    function getCourseId() {
+        const h = location.hash.replace('#','');
+        const hp = new URLSearchParams(h);
+        if (hp.get('id') !== null) return parseInt(hp.get('id')) || 0;
+        const qp = new URLSearchParams(location.search);
+        if (qp.get('id') !== null) return parseInt(qp.get('id')) || 0;
+        return 0;
+    }
+    const id = getCourseId();
+    const c = courses[id] || courses[0];
+
+    // Get whatsapp number from CMS
+    let waNum = '919876543210';
+    try { const d = JSON.parse(localStorage.getItem('bs_admin_data')); if (d && d.site && d.site.whatsapp) waNum = d.site.whatsapp; } catch(e) {}
+
+    document.getElementById('dLevel').textContent = c.level;
+    document.getElementById('dTitle').innerHTML = c.title.replace(c.highlight, '<span>'+c.highlight+'</span>');
+    document.getElementById('dSubtitle').textContent = c.subtitle;
+    document.getElementById('dPrice').textContent = c.price;
+    if (c.oldPrice) document.getElementById('dOldPrice').textContent = c.oldPrice;
+    document.getElementById('dDuration').textContent = c.duration;
+    document.getElementById('dMode').textContent = c.mode.replace('Live ','');
+    document.getElementById('dLanguage').textContent = c.lang.replace(' + ','/');
+    document.getElementById('dImage').src = c.image;
+    document.getElementById('dImage').alt = c.title;
+    document.title = c.title + ' - Bhartiya Sidhant';
+
+    window.openCourseRazorpay = function() {
+        const priceNum = String(c.price || '0').replace(/[^0-9.]/g, '') || '0';
+        const pricePaise = Math.round(parseFloat(priceNum) * 100);
+        openRazorpayModal({
+            name: c.title,
+            price: pricePaise,
+            priceLabel: c.price,
+            description: c.duration + ' · ' + c.mode,
+            image: c.image || 'assets/images/course.png',
+            type: 'course',
+            reqShipping: c.reqShipping !== undefined ? c.reqShipping : false,
+            reqBirth: c.reqBirth !== undefined ? c.reqBirth : true,
+            reqNotes: c.reqNotes !== undefined ? c.reqNotes : true,
+            checkoutFields: c.checkoutFields
+        });
+    };
+
+    const wBtn = document.getElementById('dWhatsappBtn');
+    if (wBtn) {
+        wBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Buy & Enroll Now';
+        wBtn.href = 'javascript:void(0)';
+        wBtn.removeAttribute('target');
+        wBtn.onclick = window.openCourseRazorpay;
+    }
+
+    const ctaBtn = document.getElementById('dCtaWhatsapp');
+    if (ctaBtn) {
+        ctaBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Buy & Enroll Now';
+        ctaBtn.href = 'javascript:void(0)';
+        ctaBtn.removeAttribute('target');
+        ctaBtn.onclick = window.openCourseRazorpay;
+    }
+
+    // Re-render when hash changes (e.g. navigating between courses)
+    window.addEventListener('hashchange', () => location.reload());
+    </script>
+</body>
+</html>

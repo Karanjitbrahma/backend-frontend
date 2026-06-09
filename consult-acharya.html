@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult with Acharya Ji - Bhartiya Sidhant</title>
+    <meta name="description" content="Book a direct one-on-one consultation with Bhartiya Sidhant's head Acharya. Premium personalized Vedic astrology guidance.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .acharya-hero{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-bottom:50px}
+        .acharya-photo{text-align:center}
+        .acharya-photo img{width:280px;height:280px;object-fit:cover;border-radius:50%;border:5px solid var(--primary);box-shadow:0 15px 50px rgba(200,135,62,.3)}
+        .acharya-photo h3{margin-top:18px;font-size:26px;color:var(--secondary);font-family:var(--font-heading)}
+        .acharya-photo .title-tag{display:inline-block;background:var(--gold-gradient);color:#fff;padding:6px 18px;border-radius:20px;font-size:13px;font-weight:600;margin-top:8px;letter-spacing:.5px}
+        .acharya-info h2{font-size:38px;margin-bottom:18px}
+        .acharya-info p{color:var(--text-light);line-height:1.8;margin-bottom:15px}
+        .acharya-stats{display:flex;gap:30px;margin:25px 0;flex-wrap:wrap}
+        .acharya-stat{text-align:center;padding:18px 25px;background:#FDF5E6;border-radius:12px;border:1px solid rgba(200,135,62,.12)}
+        .acharya-stat .num{font-size:28px;font-weight:800;color:var(--primary);font-family:var(--font-heading)}
+        .acharya-stat .lbl{font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+        .pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:40px}
+        .pricing-card{background:#FDF5E6;border-radius:16px;padding:35px 25px;text-align:center;border:1px solid rgba(200,135,62,.12);transition:all .3s;position:relative}
+        .pricing-card.featured{border:2px solid var(--primary);transform:scale(1.05)}
+        .pricing-card.featured::before{content:"MOST POPULAR";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold-gradient);color:#fff;padding:5px 18px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px}
+        .pricing-card:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(200,135,62,.18)}
+        .pricing-card.featured:hover{transform:scale(1.05) translateY(-5px)}
+        .pricing-card h3{font-size:22px;color:var(--secondary);margin-bottom:8px;font-family:var(--font-heading)}
+        .pricing-card .duration{font-size:14px;color:var(--text-light);margin-bottom:20px}
+        .pricing-card .price{font-size:36px;font-weight:800;color:var(--primary);font-family:var(--font-heading)}
+        .pricing-card .price del{font-size:16px;color:#999;font-weight:400;display:block;margin-bottom:5px}
+        .pricing-card ul{text-align:left;margin:22px 0;padding:0;list-style:none}
+        .pricing-card li{padding:8px 0;font-size:14px;color:var(--text-light);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,0,0,.04)}
+        .pricing-card li i{color:var(--primary);font-size:14px}
+        .pricing-card .book-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#f9a825,#f57f17);color:#fff;font-weight:700;font-size:15px;border:none;border-radius:10px;cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:.5px;text-align:center}
+        .pricing-card .book-btn:hover{background:linear-gradient(135deg,#f57f17,#e65100);box-shadow:0 5px 20px rgba(249,168,37,.4)}
+        .why-acharya{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:30px}
+        .why-item{background:var(--bg-white);padding:30px;border-radius:14px;text-align:center;box-shadow:var(--shadow-md);transition:transform .3s}
+        .why-item:hover{transform:translateY(-5px)}
+        .why-item i{font-size:32px;color:var(--primary);margin-bottom:15px}
+        .why-item h4{font-size:17px;color:var(--secondary);margin-bottom:8px}
+        .why-item p{font-size:13px;color:var(--text-light);line-height:1.6}
+        @media(max-width:768px){.acharya-hero,.pricing-cards,.why-acharya{grid-template-columns:1fr}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-5px)}}
+        /* Booking Modal */
+        .booking-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+        .booking-overlay.open{display:flex}
+        .booking-modal{background:#fff;border-radius:18px;width:95%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:modalIn .35s ease}
+        @keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:none}}
+        .booking-modal-header{display:flex;justify-content:space-between;align-items:center;padding:22px 28px 14px;border-bottom:1px solid #eee}
+        .booking-modal-header h3{font-size:22px;color:var(--secondary);font-family:var(--font-heading)}
+        .booking-modal-header button{background:none;border:none;font-size:22px;color:#999;cursor:pointer}
+        .booking-modal-body{padding:24px 28px}
+        .booking-modal-body .plan-badge{display:inline-block;background:var(--gold-gradient);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:18px;letter-spacing:.5px}
+        .booking-modal-body .fm-group{margin-bottom:16px}
+        .booking-modal-body .fm-group label{display:block;font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:6px}
+        .booking-modal-body .fm-group input{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:14px;font-family:var(--font-body);transition:border .3s}
+        .booking-modal-body .fm-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(200,135,62,.12)}
+        .booking-pay-btn{width:100%;padding:16px;background:linear-gradient(135deg,#f9a825,#f57f17);color:#fff;font-weight:700;font-size:16px;border:none;border-radius:12px;cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px}
+        .booking-pay-btn:hover{box-shadow:0 6px 25px rgba(249,168,37,.45);transform:translateY(-2px)}
+        .booking-secure{text-align:center;margin-top:14px;font-size:12px;color:var(--text-light)}
+        .booking-secure i{color:#25D366;margin-right:4px}
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 98765 43210</div><div><a href="#"><i class="fa-brands fa-facebook-f"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-instagram"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-youtube"></i></a></div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html">Reports</a><a href="store.html">Store</a><a href="courses.html">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <div class="page-banner" id="acharyaBanner"><div class="container"><h1 id="acharyaBannerTitle">Consult Directly with Acharya Ji</h1><p id="acharyaBannerSubtitle">Premium One-on-One Session with Bhartiya Sidhant's Head Acharya</p><div class="breadcrumb"><a href="index.html">Home</a> / Acharya Consultation</div></div></div>
+
+    <section class="section">
+        <div class="container">
+            <div class="acharya-hero" id="acharyaHeroSection">
+                <div class="acharya-photo">
+                    <img id="acharyaProfileImg" src="assets/images/acharya.jpg?v=1" alt="Bhartiya Sidhant Acharya Ji">
+                    <h3 id="acharyaName">Acharya Ji</h3>
+                    <div class="title-tag" id="acharyaTitleTag"><i class="fa-solid fa-crown"></i> Founder & Head Astrologer</div>
+                </div>
+                <div class="acharya-info">
+                    <div class="label" id="acharyaLabel">Direct Consultation</div>
+                    <h2 id="acharyaHeading">Personal Guidance from the <span style="color:var(--primary)">Master</span></h2>
+                    <p id="acharyaDesc1">Unlike regular consultations, this is a premium, one-on-one session directly with <strong>Acharya Ji</strong>, the founder and head astrologer of Bhartiya Sidhant. With over 10+ years of deep study in classical Vedic astrology, Acharya Ji has guided 50,000+ lives.</p>
+                    <p id="acharyaDesc2">This session is ideal for complex life decisions, multiple-topic consultations, second opinions, and situations requiring the highest level of astrological expertise.</p>
+                    <div class="acharya-stats" id="acharyaStatsGrid">
+                        <div class="acharya-stat"><div class="num">10+</div><div class="lbl">Years Practice</div></div>
+                        <div class="acharya-stat"><div class="num">50K+</div><div class="lbl">Lives Guided</div></div>
+                        <div class="acharya-stat"><div class="num">4.9&#9733;</div><div class="lbl">Avg Rating</div></div>
+                        <div class="acharya-stat"><div class="num">100%</div><div class="lbl">Confidential</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" id="acharyaPricingHeader"><div class="label">Choose Your Plan</div><h2>Consultation <span>Packages</span></h2><p>Select the session duration that suits your needs</p></div>
+
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Quick Guidance</h3>
+                    <div class="duration">15 Minutes Session</div>
+                    <div class="price"><del>&#8377;1,500/-</del>&#8377;799/-</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Single Topic Discussion</li>
+                        <li><i class="fa-solid fa-check"></i> Quick Kundli Overview</li>
+                        <li><i class="fa-solid fa-check"></i> Immediate Remedies</li>
+                        <li><i class="fa-solid fa-check"></i> Audio / Video Call</li>
+                        <li><i class="fa-solid fa-check"></i> Chat Summary After Call</li>
+                    </ul>
+                    <button class="book-btn" onclick="openBooking('Quick Guidance','15 Minutes',79900,'₹799')"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Deep Analysis</h3>
+                    <div class="duration">30 Minutes Session</div>
+                    <div class="price"><del>&#8377;2,500/-</del>&#8377;1,499/-</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Up to 3 Topics Covered</li>
+                        <li><i class="fa-solid fa-check"></i> Detailed Chart Analysis</li>
+                        <li><i class="fa-solid fa-check"></i> Dasha & Transit Insights</li>
+                        <li><i class="fa-solid fa-check"></i> Personalized Remedies</li>
+                        <li><i class="fa-solid fa-check"></i> Audio / Video Call + Notes</li>
+                        <li><i class="fa-solid fa-check"></i> 7-Day Follow-up Support</li>
+                    </ul>
+                    <button class="book-btn" onclick="openBooking('Deep Analysis','30 Minutes',149900,'₹1,499')"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Complete Life Reading</h3>
+                    <div class="duration">60 Minutes Session</div>
+                    <div class="price"><del>&#8377;5,000/-</del>&#8377;2,999/-</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Unlimited Topics</li>
+                        <li><i class="fa-solid fa-check"></i> Full Life Analysis</li>
+                        <li><i class="fa-solid fa-check"></i> Career, Marriage, Health</li>
+                        <li><i class="fa-solid fa-check"></i> Comprehensive Remedies</li>
+                        <li><i class="fa-solid fa-check"></i> Video Call + PDF Report</li>
+                        <li><i class="fa-solid fa-check"></i> 30-Day Priority Support</li>
+                    </ul>
+                    <button class="book-btn" onclick="openBooking('Complete Life Reading','60 Minutes',299900,'₹2,999')"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="acharyaWhySection">
+        <div class="container">
+            <div class="section-header" id="acharyaWhyHeader"><div class="label">Why Acharya Ji?</div><h2>What Makes This <span>Different</span></h2></div>
+            <div class="why-acharya" id="acharyaWhyGrid">
+                <div class="why-item"><i class="fa-solid fa-user-graduate"></i><h4>Classical Training</h4><p>Trained in Parashari, Jaimini, and Nadi systems from authentic Guru-Shishya parampara.</p></div>
+                <div class="why-item"><i class="fa-solid fa-brain"></i><h4>Multi-System Approach</h4><p>Combines Vedic, KP, and Lal Kitab methods for maximum accuracy and practical remedies.</p></div>
+                <div class="why-item"><i class="fa-solid fa-handshake"></i><h4>No Generic Advice</h4><p>Every word is specific to YOUR chart. No templates, no copy-paste predictions.</p></div>
+                <div class="why-item"><i class="fa-solid fa-shield-halved"></i><h4>100% Confidential</h4><p>Your personal data and consultation details are never shared with anyone.</p></div>
+                <div class="why-item"><i class="fa-solid fa-headset"></i><h4>Post-Session Support</h4><p>Get follow-up support via WhatsApp for clarifications on remedies and predictions.</p></div>
+                <div class="why-item"><i class="fa-solid fa-clock"></i><h4>Flexible Scheduling</h4><p>Book at your convenient time. Morning, evening, or weekend slots available.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div>
+                    <p>Preserving and promoting the authentic science of Vedic Astrology. Our mission is to bring the divine wisdom of Jyotish Shastra to every household for peace, prosperity, and spiritual growth.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li>
+                        <li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 98765 43210</li>
+                        <li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> Kokrajhar, Bodoland, Assam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved. | <a href="privacy-policy.html" style="color:var(--primary-light);">Privacy Policy</a> | <a href="terms-conditions.html" style="color:var(--primary-light);">Terms & Conditions</a> | <a href="refund-policy.html" style="color:var(--primary-light);">Refund Policy</a></p>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script src="assets/js/razorpay-pay.js?v=20260608g"></script>
+    <script>
+    function openBooking(plan, duration, amountPaise, label) {
+        // Look up requirements from CMS
+        let reqShipping = false;
+        let reqBirth = true; // default for consultation
+        let reqNotes = true;
+        let checkoutFields;
+        
+        let index = -1;
+        
+        try {
+            const d = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (d && d.consultAcharya) {
+                // Try to find the exact match or startsWith match
+                index = d.consultAcharya.findIndex(i => (i.title || '').includes(plan));
+                // Fallback to old hardcoded indices if not found (just in case)
+                if (index === -1) {
+                    if (plan === 'Quick Guidance') index = 0;
+                    else if (plan === 'Deep Analysis') index = 1;
+                    else if (plan === 'Complete Life Reading') index = 2;
+                }
+                
+                if (index !== -1 && index < d.consultAcharya.length) {
+                    const item = d.consultAcharya[index];
+                    if (item) {
+                        if (item.reqShipping !== undefined) reqShipping = item.reqShipping;
+                        if (item.reqBirth !== undefined) reqBirth = item.reqBirth;
+                        if (item.reqNotes !== undefined) reqNotes = item.reqNotes;
+                        checkoutFields = item.checkoutFields;
+                    }
+                }
+            }
+        } catch(e){}
+
+        openRazorpayModal({
+            name: plan + ' Consultation',
+            price: amountPaise,
+            priceLabel: label,
+            description: duration + ' · Acharya Ji',
+            image: 'assets/images/acharya.jpg',
+            type: 'consultAcharya',
+            reqShipping: reqShipping,
+            reqBirth: reqBirth,
+            reqNotes: reqNotes,
+            checkoutFields: checkoutFields
+        });
+    }
+    </script>
+</body>
+</html>

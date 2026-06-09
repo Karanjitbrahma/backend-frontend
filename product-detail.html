@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Bhartiya Sidhant Store</title>
+    <meta name="description" content="Buy certified gemstones, Rudraksha, yantras from Bhartiya Sidhant.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="assets/css/courses-pooja.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pd-hero{position:relative;min-height:420px;display:flex;align-items:center;padding:100px 20px 70px;background:linear-gradient(135deg,rgba(77,15,15,.9),rgba(30,5,5,.94)),url('https://images.unsplash.com/photo-1599643478524-fb5244098795?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;color:#fff;overflow:hidden}
+        .pd-hero::before{content:'💎';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:280px;opacity:.04;pointer-events:none}
+        .pd-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+        .pd-text .pd-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,135,62,.15);border:1px solid rgba(200,135,62,.35);color:var(--primary-light);padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px}
+        .pd-text h1{font-size:40px;color:#fff;margin-bottom:10px;line-height:1.15}
+        .pd-text h1 span{color:var(--primary-light)}
+        .pd-text>p{color:rgba(255,255,255,.75);font-size:15px;margin-bottom:20px;line-height:1.7}
+        .pd-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:25px}
+        .pd-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.7)}
+        .pd-meta-item i{color:var(--primary-light);font-size:14px}
+        .pd-price-box{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(200,135,62,.2);border-radius:16px;padding:24px}
+        .pd-price-box .pd-price{font-size:36px;font-weight:800;color:var(--primary-light)}
+        .pd-price-box .pd-price small{font-size:14px;font-weight:400;color:rgba(255,255,255,.5)}
+        .pd-price-box .pd-btns{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+        .pd-price-box .pd-btns a{flex:1;min-width:140px;justify-content:center}
+        .pd-img{border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);border:3px solid rgba(200,135,62,.25)}
+        .pd-img img{width:100%;height:380px;object-fit:cover;display:block}
+        .pd-section{padding:70px 0}.pd-section-alt{background:var(--bg-white)}
+        .pd-grid2{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+        .pd-about p{color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:15px}
+        .pd-specs{list-style:none;padding:0;margin:0}
+        .pd-specs li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:15px}
+        .pd-specs li:last-child{border-bottom:none}
+        .pd-specs li .sp-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,rgba(200,135,62,.12),rgba(200,135,62,.05));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .pd-specs li .sp-icon i{color:var(--primary);font-size:14px}
+        .pd-specs li strong{color:var(--secondary);margin-right:6px}
+        .pd-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .pd-benefit{background:var(--bg-cream);border-radius:14px;padding:28px 22px;text-align:center;border:1px solid rgba(200,135,62,.08);transition:all .3s}
+        .pd-benefit:hover{transform:translateY(-5px);box-shadow:0 8px 30px rgba(200,135,62,.12)}
+        .pd-benefit .pb-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(200,135,62,.12),rgba(200,135,62,.05));color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;transition:all .3s}
+        .pd-benefit:hover .pb-icon{background:var(--gold-gradient);color:#fff}
+        .pd-benefit h4{font-size:16px;font-weight:700;color:var(--secondary);margin-bottom:6px}
+        .pd-benefit p{font-size:13px;color:var(--text-light);line-height:1.6}
+        .pd-side-stack{display:grid;gap:22px}
+        .pd-note-card{background:linear-gradient(135deg,rgba(77,15,15,.95),rgba(30,5,5,.97));color:#fff;border-radius:16px;padding:24px;box-shadow:var(--shadow-md)}
+        .pd-note-card h3{color:#fff;font-size:20px;margin-bottom:10px}
+        .pd-note-card p{color:rgba(255,255,255,.78);font-size:14px;line-height:1.7}
+        .pd-note-list{margin-top:14px;display:grid;gap:10px}
+        .pd-note-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.82)}
+        .pd-note-item i{color:var(--primary-light);margin-top:3px}
+        .pd-reveal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .pd-reveal-card{background:var(--bg-white);border:1px solid rgba(200,135,62,.12);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+        .pd-reveal-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(200,135,62,.14)}
+        .pd-reveal-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(200,135,62,.15),rgba(200,135,62,.05));color:var(--primary);font-size:22px;margin-bottom:14px}
+        .pd-reveal-card h4{font-size:18px;color:var(--secondary);margin-bottom:8px}
+        .pd-reveal-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+        .pd-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .pd-process-card{background:linear-gradient(180deg,#fff,#fff8f0);border:1px solid rgba(200,135,62,.14);border-radius:16px;padding:24px;position:relative;overflow:hidden}
+        .pd-process-card::before{content:'';position:absolute;inset:auto -16px -16px auto;width:110px;height:110px;border-radius:50%;background:rgba(200,135,62,.08);pointer-events:none}
+        .pd-process-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gold-gradient);color:#fff;font-weight:800;margin-bottom:14px}
+        .pd-process-card h4{font-size:18px;color:var(--secondary);margin-bottom:8px}
+        .pd-process-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+        .pd-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .pd-related-card{background:#fff;border:1px solid rgba(200,135,62,.12);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+        .pd-related-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(200,135,62,.14)}
+        .pd-related-card img{width:100%;height:170px;object-fit:cover;display:block}
+        .pd-related-body{padding:18px}
+        .pd-related-body h4{font-size:17px;color:var(--secondary);margin-bottom:6px}
+        .pd-related-body p{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:12px}
+        .pd-related-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+        .pd-related-price{font-weight:800;color:var(--primary);font-size:18px}
+        .pd-related-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--gold-gradient);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+        .pd-cta{background:var(--maroon-gradient);padding:60px 0;text-align:center;color:#fff}
+        .pd-cta h2{color:#fff;font-size:36px;margin-bottom:12px}
+        .pd-cta h2 span{color:var(--primary-light)}
+        .pd-cta>div>p{color:rgba(255,255,255,.7);margin-bottom:30px;font-size:16px}
+        /* Purchase Form */
+        .buy-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:9999;justify-content:center;align-items:center;padding:20px}
+        .buy-overlay.active{display:flex}
+        .buy-modal{background:#fff;border-radius:20px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:slideUp .3s ease}
+        @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .buy-modal-header{background:var(--maroon-gradient);color:#fff;padding:24px 30px;border-radius:20px 20px 0 0;display:flex;justify-content:space-between;align-items:center}
+        .buy-modal-header h2{color:#fff;font-size:24px;margin:0}
+        .buy-modal-header h2 span{color:var(--primary-light)}
+        .buy-modal-close{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
+        .buy-modal-close:hover{background:rgba(255,255,255,.15)}
+        .buy-modal-body{padding:30px}
+        .buy-product-summary{display:flex;gap:16px;align-items:center;padding:16px;background:var(--bg-cream);border-radius:12px;margin-bottom:24px;border:1px solid rgba(200,135,62,.15)}
+        .buy-product-summary img{width:70px;height:70px;object-fit:cover;border-radius:10px;border:2px solid rgba(200,135,62,.2)}
+        .buy-product-summary .bps-info h4{font-size:16px;color:var(--secondary);margin-bottom:4px}
+        .buy-product-summary .bps-info .bps-price{font-size:20px;font-weight:800;color:var(--primary)}
+        .buy-form-group{margin-bottom:18px}
+        .buy-form-group label{display:block;font-size:13px;font-weight:600;color:var(--secondary);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+        .buy-form-group label i{color:var(--primary);margin-right:6px}
+        .buy-form-group input,.buy-form-group textarea,.buy-form-group select{width:100%;padding:12px 16px;border:2px solid #e8e0d5;border-radius:10px;font-family:var(--font-body);font-size:14px;transition:all .3s;background:#fff;color:var(--text-dark)}
+        .buy-form-group input:focus,.buy-form-group textarea:focus,.buy-form-group select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(200,135,62,.1)}
+        .buy-form-group textarea{resize:vertical;min-height:80px}
+        .buy-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+        .buy-form-divider{border:none;border-top:1px solid rgba(200,135,62,.15);margin:24px 0}
+        .buy-form-divider-label{font-size:12px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .buy-form-divider-label i{font-size:14px}
+        .buy-submit-btn{width:100%;padding:16px;background:var(--gold-gradient);color:#fff;border:none;border-radius:12px;font-family:var(--font-body);font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s;text-transform:uppercase;letter-spacing:1px;margin-top:8px}
+        .buy-submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,135,62,.4)}
+        .buy-submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+        .buy-secure-note{text-align:center;margin-top:14px;font-size:12px;color:var(--text-light);display:flex;align-items:center;justify-content:center;gap:6px}
+        .buy-secure-note i{color:var(--primary)}
+        @media(max-width:1024px){.pd-inner{grid-template-columns:1fr}.pd-img{max-width:500px}.pd-benefits{grid-template-columns:repeat(2,1fr)}.pd-reveal-grid,.pd-process-grid,.pd-related-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.pd-text h1{font-size:30px}.pd-grid2{grid-template-columns:1fr}.pd-benefits{grid-template-columns:1fr;max-width:400px;margin:0 auto}.pd-price-box .pd-btns{flex-direction:column}.buy-form-row{grid-template-columns:1fr}.pd-reveal-grid,.pd-process-grid,.pd-related-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 98765 43210</div><div><a href="#"><i class="fa-brands fa-facebook-f"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-instagram"></i></a> &nbsp; <a href="#"><i class="fa-brands fa-youtube"></i></a></div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html">Reports</a><a href="store.html" class="active">Store</a><a href="courses.html">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <section class="pd-hero"><div class="pd-inner container">
+        <div class="pd-text">
+            <div class="pd-badge"><i class="fa-solid fa-gem"></i> <span id="pCat">Gemstone</span></div>
+            <h1 id="pTitle">Loading <span>Product...</span></h1>
+            <p id="pSubtitle">Loading product details...</p>
+            <div class="pd-meta">
+                <div class="pd-meta-item"><i class="fa-solid fa-certificate"></i> <span>Lab Certified</span></div>
+                <div class="pd-meta-item"><i class="fa-solid fa-om"></i> <span>Mantra Energized</span></div>
+                <div class="pd-meta-item"><i class="fa-solid fa-truck-fast"></i> <span>Free Shipping</span></div>
+            </div>
+            <div class="pd-price-box">
+                <span class="pd-price" id="pPrice">—</span>
+                <div class="pd-btns">
+                    <button onclick="openBuyRazorpay()" class="header-btn btn-gold" style="border:none;cursor:pointer;"><i class="fa-solid fa-bag-shopping"></i> Pay & Buy Now</button>
+                    <a href="#" id="pWaBtn" class="header-btn btn-outline" target="_blank" style="border-color:rgba(255,255,255,.3);color:#fff;"><i class="fa-brands fa-whatsapp"></i> Enquire</a>
+                </div>
+            </div>
+        </div>
+        <div class="pd-img"><img id="pImg" src="" alt="Product"></div>
+    </div></section>
+
+    <section class="pd-section"><div class="container"><div class="section-header"><div class="label">Product Details</div><h2>About This <span>Product</span></h2></div>
+        <div class="pd-grid2">
+            <div class="pd-about" id="pAbout"><p>Loading...</p></div>
+            <div class="pd-side-stack">
+                <div>
+                    <h3 style="font-size:22px;margin-bottom:20px;">Product <span style="color:var(--primary);">Specifications</span></h3>
+                    <ul class="pd-specs" id="pSpecs"></ul>
+                </div>
+                <div class="pd-note-card">
+                    <h3>Why This Product Matters</h3>
+                    <p id="pNoteText">Selected with chart-based guidance, this product is meant to support your specific planetary need, not just look beautiful.</p>
+                    <div class="pd-note-list" id="pNoteList"></div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+
+    <section class="pd-section pd-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">What You Get</div>
+                <h2>Product <span>Benefits</span></h2>
+                <p>A quick overview of the most important outcomes, trust markers, and support features.</p>
+            </div>
+            <div class="pd-reveal-grid" id="pRevealGrid"></div>
+        </div>
+    </section>
+
+    <section class="pd-section pd-section-alt"><div class="container"><div class="section-header"><div class="label">Our Guarantee</div><h2>Why Buy From <span>Us</span></h2></div>
+        <div class="pd-benefits">
+            <div class="pd-benefit"><div class="pb-icon"><i class="fa-solid fa-microscope"></i></div><h4>Lab Certified</h4><p>Government-recognized lab certificate with every gemstone.</p></div>
+            <div class="pd-benefit"><div class="pb-icon"><i class="fa-solid fa-om"></i></div><h4>Mantra Energized</h4><p>Energized with proper Vedic mantras by experienced Brahmins.</p></div>
+            <div class="pd-benefit"><div class="pb-icon"><i class="fa-solid fa-rotate-left"></i></div><h4>7-Day Returns</h4><p>Not satisfied? Return within 7 days for a full refund.</p></div>
+            <div class="pd-benefit"><div class="pb-icon"><i class="fa-solid fa-truck-fast"></i></div><h4>Free Shipping</h4><p>Free insured delivery across India. International available.</p></div>
+            <div class="pd-benefit"><div class="pb-icon"><i class="fa-solid fa-headset"></i></div><h4>Expert Advice</h4><p>Our astrologers recommend based on your birth chart.</p></div>
+            <div class="pd-benefit"><div class="pb-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>100% Natural</h4><p>Guaranteed untreated, natural, and exactly as described.</p></div>
+        </div>
+    </div></section>
+
+    <section class="pd-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">How It Works</div>
+                <h2>How to <span>Order & Wear</span></h2>
+                <p>Use these steps to place your order correctly and wear the product at the right time.</p>
+            </div>
+            <div class="pd-process-grid">
+                <div class="pd-process-card"><div class="pd-process-num">1</div><h4>Choose the Right Product</h4><p>Review the report, specifications, and support details, then place your order with confidence.</p></div>
+                <div class="pd-process-card"><div class="pd-process-num">2</div><h4>We Confirm Suitability</h4><p>Our team checks your birth details and confirms the best fit, wearing method, and activation guidance.</p></div>
+                <div class="pd-process-card"><div class="pd-process-num">3</div><h4>Wear & Follow Up</h4><p>Receive the product, wear it on the recommended day, and follow the simple guidance we provide.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-section pd-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Suggested Products</div>
+                <h2>You May Also <span>Like These</span></h2>
+                <p>Related products that match your current selection and can support other planetary needs.</p>
+            </div>
+            <div class="pd-related-grid" id="pRelatedGrid"></div>
+        </div>
+    </section>
+
+    <section class="pd-section"><div class="container"><div class="section-header"><div class="label">Simple Process</div><h2>How to <span>Order & Wear</span></h2></div>
+        <div class="cp-steps-grid">
+            <div class="cp-step-card"><div class="cp-step-badge">Step 1</div><div class="cp-step-icon"><i class="fa-solid fa-hand-pointer"></i></div><h3>Choose & Order</h3><p>Click "Order via WhatsApp". Share your birth details so we can verify suitability.</p></div>
+            <div class="cp-step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="cp-step-card"><div class="cp-step-badge">Step 2</div><div class="cp-step-icon"><i class="fa-solid fa-om"></i></div><h3>Energization & Shipping</h3><p>We energize with Vedic mantras, include lab certificate, and ship with insurance.</p></div>
+            <div class="cp-step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="cp-step-card"><div class="cp-step-badge">Step 3</div><div class="cp-step-icon"><i class="fa-solid fa-hand-sparkles"></i></div><h3>Wear on Auspicious Day</h3><p>We guide you on the right day, time, finger, and mantra to wear for maximum benefit.</p></div>
+        </div>
+    </div></section>
+
+    <section class="pd-section pd-section-alt"><div class="container"><div class="section-header"><div class="label">Questions?</div><h2>Frequently Asked <span>Questions</span></h2></div>
+        <div class="faq-list" style="max-width:800px;margin:0 auto;">
+            <div class="faq-item"><div class="faq-question"><span>Are the gemstones natural and untreated?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Yes, all our gemstones are 100% natural, untreated, and come with a lab certificate of authenticity.</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>How do I know which gemstone is right for me?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Share your birth details on WhatsApp and our astrologers will recommend the right gemstone based on your Kundli.</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>Do you provide a certificate?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Yes, every gemstone comes with a government-recognized lab certificate. Rudraksha and Yantras come with authenticity cards.</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>Can I return or exchange?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Yes, we offer 7-day hassle-free returns. Contact us on WhatsApp to initiate a return.</p></div></div>
+            <div class="faq-item"><div class="faq-question"><span>How should I wear the gemstone?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>We provide complete guidance — auspicious day, finger, metal, and mantra — personalized for your birth chart.</p></div></div>
+        </div>
+    </div></section>
+
+    <section class="pd-cta"><div class="container">
+        <h2>Need Expert <span>Guidance?</span></h2>
+        <p>Our astrologers can recommend the perfect product based on your birth chart.</p>
+        <div class="cp-cta-buttons">
+            <a href="#" id="pCtaWa" target="_blank" class="header-btn btn-gold" style="padding:16px 40px;font-size:16px;"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="tel:+919876543210" class="header-btn btn-outline" style="padding:16px 40px;font-size:16px;border-color:#fff;color:#fff;"><i class="fa-solid fa-phone"></i> Call Now</a>
+        </div>
+    </div></section>
+
+    <!-- PURCHASE FORM OVERLAY -->
+    <div class="buy-overlay" id="buyOverlay">
+        <div class="buy-modal">
+            <div class="buy-modal-header">
+                <h2><i class="fa-solid fa-bag-shopping" style="margin-right:10px;"></i> Complete Your <span>Purchase</span></h2>
+                <button class="buy-modal-close" onclick="closeBuyForm()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="buy-modal-body">
+                <div class="buy-product-summary">
+                    <img id="buyProdImg" src="" alt="Product">
+                    <div class="bps-info">
+                        <h4 id="buyProdName">Product</h4>
+                        <div class="bps-price" id="buyProdPrice">₹0</div>
+                    </div>
+                </div>
+                <form id="buyForm" onsubmit="handlePurchase(event)">
+                    <div class="buy-form-divider-label"><i class="fa-solid fa-user"></i> Personal Details</div>
+                    <div class="buy-form-row">
+                        <div class="buy-form-group"><label><i class="fa-solid fa-user"></i> Full Name *</label><input type="text" id="buyName" required placeholder="Enter your full name"></div>
+                        <div class="buy-form-group"><label><i class="fa-solid fa-phone"></i> Phone Number *</label><input type="tel" id="buyPhone" required placeholder="+91 98765 43210" pattern="[0-9+\s-]{10,15}"></div>
+                    </div>
+                    <div class="buy-form-group"><label><i class="fa-solid fa-envelope"></i> Email Address *</label><input type="email" id="buyEmail" required placeholder="your@email.com"></div>
+
+                    <hr class="buy-form-divider">
+                    <div class="buy-form-divider-label"><i class="fa-solid fa-truck-fast"></i> Shipping Address</div>
+                    <div class="buy-form-group"><label><i class="fa-solid fa-location-dot"></i> Full Address *</label><textarea id="buyAddress" required placeholder="House No, Street, Locality"></textarea></div>
+                    <div class="buy-form-row">
+                        <div class="buy-form-group"><label><i class="fa-solid fa-city"></i> City *</label><input type="text" id="buyCity" required placeholder="City"></div>
+                        <div class="buy-form-group"><label><i class="fa-solid fa-map"></i> State *</label><input type="text" id="buyState" required placeholder="State"></div>
+                    </div>
+                    <div class="buy-form-row">
+                        <div class="buy-form-group"><label><i class="fa-solid fa-hashtag"></i> PIN Code *</label><input type="text" id="buyPin" required placeholder="6-digit PIN" pattern="[0-9]{6}"></div>
+                        <div class="buy-form-group"><label><i class="fa-solid fa-gem"></i> Quantity</label><select id="buyQty"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option></select></div>
+                    </div>
+
+                    <hr class="buy-form-divider">
+                    <div class="buy-form-divider-label"><i class="fa-solid fa-star"></i> Birth Details (For Energization)</div>
+                    <div class="buy-form-row">
+                        <div class="buy-form-group"><label><i class="fa-solid fa-calendar"></i> Date of Birth</label><input type="date" id="buyDob"></div>
+                        <div class="buy-form-group"><label><i class="fa-solid fa-clock"></i> Time of Birth</label><input type="time" id="buyTob"></div>
+                    </div>
+                    <div class="buy-form-group"><label><i class="fa-solid fa-map-pin"></i> Place of Birth</label><input type="text" id="buyPob" placeholder="City of birth"></div>
+                    <div class="buy-form-group"><label><i class="fa-solid fa-comment"></i> Special Instructions</label><textarea id="buyNotes" placeholder="Ring size, specific requirements, etc." style="min-height:60px"></textarea></div>
+
+                    <button type="submit" class="buy-submit-btn" id="buySubmitBtn"><i class="fa-solid fa-lock"></i> Proceed to Payment</button>
+                    <div class="buy-secure-note"><i class="fa-solid fa-shield-halved"></i> 100% Secure | SSL Encrypted | Safe Payment</div>
+                </form>
+            </div>
+        </div>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script src="assets/js/razorpay-pay.js?v=20260608g"></script>
+        <div class="footer-brand"><div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div><p>Preserving and promoting the authentic science of Vedic Astrology.</p><div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-telegram"></i></a></div></div>
+        <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-conditions.html">Terms & Conditions</a></li><li><a href="faq.html">FAQ</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+        <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="services.html">All Services</a></li><li><a href="consultation.html">Consultation</a></li><li><a href="pooja.html">Book Pooja</a></li><li><a href="store.html">Gemstones</a></li></ul></div>
+        <div><h4 class="footer-title">Contact Us</h4><ul class="footer-links"><li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li><li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 98765 43210</li><li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> Kokrajhar, Bodoland, Assam</li></ul></div>
+    </div><div class="footer-bottom"><p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved.</p></div></div></footer>
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script>
+    const products=[
+        {name:'Yellow Sapphire (Pukhraj)',cat:'Gemstone',planet:'Jupiter',subtitle:'Premium Ceylon Yellow Sapphire for prosperity, wisdom, marital bliss, and Jupiter\'s blessings. Ideal for Sagittarius & Pisces ascendants.',price:'₹15,000/Ratti',img:'https://images.unsplash.com/photo-1599643478524-fb5244098795?auto=format&fit=crop&w=800&q=80',about:'<p>Yellow Sapphire (Pukhraj) is one of the most auspicious gemstones in Vedic Astrology. It represents planet Jupiter (Guru) — the planet of wisdom, prosperity, and divine blessings.</p><p>Wearing a natural, lab-certified Pukhraj can enhance financial growth, bring marital happiness, improve education, and strengthen spiritual inclination. It is especially recommended for those running Jupiter Mahadasha or Antardasha.</p>',specs:[['Planet','Jupiter (Guru)'],['Origin','Ceylon (Sri Lanka)'],['Weight','3-7 Ratti'],['Metal','Gold Ring'],['Finger','Index Finger'],['Day to Wear','Thursday Morning']]},
+        {name:'Blue Sapphire (Neelam)',cat:'Gemstone',planet:'Saturn',subtitle:'Natural Blue Sapphire for Saturn — discipline, fortune & rapid career growth. Must be tested before wearing.',price:'₹20,000/Ratti',img:'https://images.unsplash.com/photo-1588661608906-880026e79d1a?auto=format&fit=crop&w=800&q=80',about:'<p>Blue Sapphire (Neelam) is the gemstone of Lord Saturn (Shani Dev). It is considered the fastest-acting gemstone and can bring miraculous results when suited to the wearer.</p><p>A properly recommended Neelam can bring sudden wealth, career breakthroughs, and remove obstacles. However, it must be tested for 3 days before permanent wearing.</p>',specs:[['Planet','Saturn (Shani)'],['Origin','Kashmir / Ceylon'],['Weight','4-7 Ratti'],['Metal','Silver/Platinum'],['Finger','Middle Finger'],['Day to Wear','Saturday Morning']]},
+        {name:'Ruby (Manik)',cat:'Gemstone',planet:'Sun',subtitle:'Natural Ruby for Sun — authority, confidence, government favor & leadership qualities.',price:'₹12,000/Ratti',img:'https://images.unsplash.com/photo-1583937443566-6b18fba3e5a4?auto=format&fit=crop&w=800&q=80',about:'<p>Ruby (Manik) represents the Sun — the king of all planets. Wearing a natural Ruby strengthens leadership qualities, boosts confidence, and attracts government favor.</p><p>It is ideal for those in politics, administration, or leadership roles. Ruby also improves father-child relationships and overall vitality.</p>',specs:[['Planet','Sun (Surya)'],['Origin','Burma / Mozambique'],['Weight','3-6 Ratti'],['Metal','Gold Ring'],['Finger','Ring Finger'],['Day to Wear','Sunday Morning']]},
+        {name:'Emerald (Panna)',cat:'Gemstone',planet:'Mercury',subtitle:'Natural Emerald for Mercury — intelligence, business success & communication skills.',price:'₹10,000/Ratti',img:'https://images.unsplash.com/photo-1551122089-4e3e72477432?auto=format&fit=crop&w=800&q=80',about:'<p>Emerald (Panna) is the gemstone of Mercury (Budh). It sharpens intellect, improves communication, and is highly beneficial for business and academic success.</p><p>Recommended for writers, traders, students, and professionals in finance or communication fields.</p>',specs:[['Planet','Mercury (Budh)'],['Origin','Zambia / Colombia'],['Weight','3-6 Ratti'],['Metal','Gold Ring'],['Finger','Little Finger'],['Day to Wear','Wednesday Morning']]},
+        {name:'5 Mukhi Rudraksha',cat:'Rudraksha',planet:'Jupiter',subtitle:'Authentic Nepali 5 Mukhi Rudraksha for health, peace of mind & spiritual growth.',price:'₹1,500',img:'https://images.unsplash.com/photo-1601821765780-754fa98637c1?auto=format&fit=crop&w=800&q=80',about:'<p>The 5 Mukhi Rudraksha is the most common and powerful Rudraksha bead. It represents Lord Kalagni Rudra and is associated with planet Jupiter.</p><p>It brings peace of mind, lowers blood pressure, improves concentration, and is suitable for everyone regardless of age or zodiac sign.</p>',specs:[['Faces','5 Mukhi'],['Origin','Nepal'],['Size','18-22mm'],['Deity','Lord Kalagni Rudra'],['Suitable For','Everyone'],['Wearing','Thread or Silver Cap']]},
+        {name:'1 Mukhi Rudraksha',cat:'Rudraksha',planet:'Sun',subtitle:'Extremely rare 1 Mukhi Rudraksha — supreme consciousness, moksha & divine connection.',price:'₹51,000',img:'https://images.unsplash.com/photo-1515943681423-731804f5b721?auto=format&fit=crop&w=800&q=80',about:'<p>The 1 Mukhi Rudraksha is the rarest and most sacred bead. It represents Lord Shiva himself and bestows supreme consciousness and spiritual awakening.</p><p>It destroys all sins, removes material attachments, and leads the wearer towards moksha (liberation). Extremely rare and highly valuable.</p>',specs:[['Faces','1 Mukhi (Ek Mukhi)'],['Origin','Nepal'],['Size','25-35mm'],['Deity','Lord Shiva'],['Rarity','Extremely Rare'],['Wearing','Gold/Silver Pendant']]},
+        {name:'Copper Sri Yantra',cat:'Yantra',planet:'Venus',subtitle:'Energized Copper Sri Yantra for wealth, Lakshmi blessings & abundance in life.',price:'₹2,100',img:'https://images.unsplash.com/photo-1516088235288-0d195ba2476d?auto=format&fit=crop&w=800&q=80',about:'<p>The Sri Yantra is the most powerful and auspicious yantra in Vedic tradition. It represents Goddess Lakshmi and the cosmic creation.</p><p>Placing an energized Sri Yantra in your home or office attracts wealth, removes financial obstacles, and brings overall prosperity and abundance.</p>',specs:[['Material','Pure Copper'],['Size','4x4 inches'],['Weight','120 grams'],['Deity','Goddess Lakshmi'],['Placement','Pooja Room / Office'],['Energized','Yes, with Vedic Mantras']]},
+        {name:'108 Bead Rudraksha Mala',cat:'Mala',planet:'All',subtitle:'Authentic 108+1 bead Rudraksha Mala for meditation, mantra jaap & spiritual practice.',price:'₹3,500',img:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80',about:'<p>The 108 bead Rudraksha Mala is essential for mantra jaap and meditation. Each bead is a genuine 5 Mukhi Rudraksha from Nepal.</p><p>Using this mala for daily chanting amplifies the mantra\'s power, calms the mind, and deepens spiritual practice. Includes the sacred Sumeru (109th) bead.</p>',specs:[['Beads','108 + 1 Sumeru'],['Bead Type','5 Mukhi Rudraksha'],['Origin','Nepal'],['Size','8-9mm beads'],['Thread','Silk Thread'],['Use','Meditation & Jaap']]}
+    ];
+    // Read id from hash (#id=3) first, then query param (?id=3) as fallback
+    function getProductId() {
+        const h = location.hash.replace('#','');
+        const hp = new URLSearchParams(h);
+        if (hp.get('id') !== null) return parseInt(hp.get('id')) || 0;
+        const qp = new URLSearchParams(location.search);
+        if (qp.get('id') !== null) return parseInt(qp.get('id')) || 0;
+        return 0;
+    }
+    const id = getProductId();
+    let p=products[id]||products[0];
+    // CMS override: sync basic fields from admin panel
+    try {
+        const cmsData = JSON.parse(localStorage.getItem('bs_admin_data'));
+        if (cmsData && cmsData.storeProducts && cmsData.storeProducts[id]) {
+            const cp = cmsData.storeProducts[id];
+            if (cp.name) p.name = cp.name;
+            if (cp.cat) p.cat = cp.cat;
+            if (cp.subtitle) p.subtitle = cp.subtitle;
+            if (cp.price) p.price = cp.price;
+            if (cp.planet) p.planet = cp.planet;
+            if (cp.icon) p.icon = cp.icon;
+            if (cp.detailDesc) p.about = cp.detailDesc.split('\n').filter(Boolean).map(x => '<p>' + x.trim() + '</p>').join('');
+            if (cp.features) p.specs = cp.features.split('\n').filter(Boolean).map(x => {
+                const parts = x.split(':');
+                return parts.length > 1 ? [parts.shift().trim(), parts.join(':').trim()] : ['Feature', x.trim()];
+            });
+            if (cp.includes) p.includes = cp.includes.split('\n').filter(Boolean);
+            p.imgFit = cp.imgFit || p.imgFit || 'cover';
+            p.imgScale = cp.imgScale || p.imgScale || 1;
+            p.imgPosX = cp.imgPosX || p.imgPosX || 50;
+            p.imgPosY = cp.imgPosY || p.imgPosY || 50;
+            // Image: use storeProducts image first, then data.store image, then keep hardcoded default
+            if (cp.image) {
+                p.img = cp.image;
+            } else if (cmsData.store && cmsData.store[id] && cmsData.store[id].image) {
+                p.img = cmsData.store[id].image;
+            }
+            if (cp.reqShipping !== undefined) p.reqShipping = cp.reqShipping;
+            if (cp.reqBirth !== undefined) p.reqBirth = cp.reqBirth;
+            if (cp.reqNotes !== undefined) p.reqNotes = cp.reqNotes;
+            if (cp.checkoutFields) p.checkoutFields = cp.checkoutFields;
+        }
+        
+        // Fallback: also sync basic details from data.store if available
+        if (cmsData && cmsData.store && cmsData.store[id]) {
+            const cs = cmsData.store[id];
+            if (!p.checkoutFields && cs.checkoutFields) p.checkoutFields = cs.checkoutFields;
+            // Also override the price if updated in store content
+            if (cs.newPrice && (!cmsData.storeProducts || !cmsData.storeProducts[id] || !cmsData.storeProducts[id].price)) {
+                p.price = cs.newPrice;
+            }
+        }
+    } catch(e) {}
+    const catKey = String(p.cat || '').toLowerCase();
+    const catLabel = catKey ? catKey.charAt(0).toUpperCase() + catKey.slice(1) : 'Product';
+    document.getElementById('pCat').textContent=catLabel;
+    document.querySelector('.pd-badge i').className='fa-solid '+(p.icon||'fa-gem');
+    document.getElementById('pTitle').innerHTML=p.name;
+    document.getElementById('pSubtitle').textContent=p.subtitle;
+    document.getElementById('pPrice').innerHTML=p.price;
+    document.getElementById('pImg').src=p.img;
+    document.getElementById('pImg').alt=p.name;
+    document.getElementById('pImg').style.objectFit=p.imgFit||'cover';
+    document.getElementById('pImg').style.objectPosition=(p.imgPosX||50)+'% '+(p.imgPosY||50)+'%';
+    document.getElementById('pImg').style.transform='scale('+(p.imgScale||1)+')';
+    document.title=p.name+' - Bhartiya Sidhant Store';
+    document.getElementById('pAbout').innerHTML=p.about;
+    document.getElementById('pSpecs').innerHTML=p.specs.map(s=>`<li><div class="sp-icon"><i class="fa-solid fa-circle-check"></i></div><strong>${s[0]}:</strong> ${s[1]}</li>`).join('');
+    document.getElementById('pNoteText').textContent = catKey === 'gemstone'
+        ? 'This gemstone is meant to strengthen the planet associated with your chart and bring the most balanced energetic support.'
+        : 'This product is selected to support your specific spiritual practice, life need, and planetary timing.';
+    const noteItems = catKey === 'gemstone'
+        ? ['Lab-certified sourcing and authenticity support', 'Wearing guidance for the right finger and day', 'Planet-focused energetic strengthening']
+        : ['Authentic and energized item', 'Mantra and usage instructions', 'Practical support after purchase'];
+    document.getElementById('pNoteList').innerHTML = (p.includes || noteItems).map(item => `<div class="pd-note-item"><i class="fa-solid fa-check-circle"></i><span>${item}</span></div>`).join('');
+    const productReveal = catKey === 'gemstone'
+        ? [
+            ['fa-gem','Planetary Strengthening','Supports the specific planet associated with your chart.'],
+            ['fa-shield-halved','Trust & Certification','Lab-based authenticity and proper energy alignment.'],
+            ['fa-hand-sparkles','Wear Correctly','Guidance on day, finger, metal, and mantra.']
+        ]
+        : [
+            ['fa-om','Spiritual Support','Designed for meditation, protection, or daily practice.'],
+            ['fa-certificate','Authentic & Energized','Prepared with proper rituals and trusted sourcing.'],
+            ['fa-headset','Usage Guidance','We share the simplest way to use it effectively.']
+        ];
+    document.getElementById('pRevealGrid').innerHTML = productReveal.map(r => `<div class="pd-reveal-card"><div class="pd-reveal-icon"><i class="fa-solid ${r[0]}"></i></div><h4>${r[1]}</h4><p>${r[2]}</p></div>`).join('');
+    const wa='https://wa.me/919876543210?text=I%20want%20to%20buy%20'+encodeURIComponent(p.name);
+    document.getElementById('pWaBtn').href=wa;
+    document.getElementById('pCtaWa').href=wa;
+    document.querySelectorAll('.faq-question').forEach(q=>{q.addEventListener('click',()=>{const it=q.parentElement;const o=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(fi=>fi.classList.remove('open'));if(!o)it.classList.add('open');});});
+
+    // Razorpay Buy
+    function openBuyRazorpay() {
+        const priceStr = String(p.price || '0').replace(/[^0-9.]/g, '') || '0';
+        const pricePaise = Math.round(parseFloat(priceStr) * 100);
+        openRazorpayModal({
+            name: p.name,
+            price: pricePaise,
+            priceLabel: p.price,
+            description: p.subtitle,
+            image: p.img,
+            type: 'product',
+            reqShipping: p.reqShipping,
+            reqBirth: p.reqBirth,
+            reqNotes: p.reqNotes,
+            checkoutFields: p.checkoutFields
+        });
+    }
+
+    const related = products.map((item, index) => ({ item, index })).filter(entry => entry.index !== id).slice(0, 3);
+    document.getElementById('pRelatedGrid').innerHTML = related.map(entry => `
+        <article class="pd-related-card">
+            <img src="${entry.item.img}" alt="${entry.item.name}">
+            <div class="pd-related-body">
+                <h4>${entry.item.name}</h4>
+                <p>${entry.item.subtitle}</p>
+                <div class="pd-related-meta">
+                    <div class="pd-related-price">${entry.item.price}</div>
+                    <a class="pd-related-btn" href="product-detail.html#id=${entry.index}"><i class="fa-solid fa-arrow-right"></i> View</a>
+                </div>
+            </div>
+        </article>
+    `).join('');
+    </script>
+</body>
+</html>
