@@ -1825,6 +1825,7 @@ const AdminApp = {
         document.getElementById('spPlanet').value = p?.planet || '';
         document.getElementById('spIcon').value = p?.icon || 'fa-gem';
         document.getElementById('spSubtitle').value = p?.subtitle || '';
+        if (document.getElementById('spAbout')) document.getElementById('spAbout').value = p?.about || '';
         document.getElementById('spPrice').value = p?.price || '';
         document.getElementById('spBadge').value = p?.badge || '';
         const spStyle = document.getElementById('spStyle');
@@ -1902,6 +1903,7 @@ const AdminApp = {
             planet: document.getElementById('spPlanet').value,
             icon: document.getElementById('spIcon').value,
             subtitle: document.getElementById('spSubtitle').value,
+            about: document.getElementById('spAbout') ? document.getElementById('spAbout').value : '',
             price: document.getElementById('spPrice').value,
             badge: document.getElementById('spBadge').value,
             style: document.getElementById('spStyle') ? document.getElementById('spStyle').value : 'standard',
