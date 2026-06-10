@@ -1857,6 +1857,10 @@ const AdminApp = {
         const spPosYVal = document.getElementById('spPosYVal');
         if (spPosYVal) spPosYVal.textContent = (p?.imgPosY || 50) + '%';
         
+        if (document.getElementById('spAboutHeading')) document.getElementById('spAboutHeading').value = p?.aboutHeading || '';
+        if (document.getElementById('spSpecsHeading')) document.getElementById('spSpecsHeading').value = p?.specsHeading || '';
+        if (document.getElementById('spNoteHeading')) document.getElementById('spNoteHeading').value = p?.noteHeading || '';
+
         const spDetailDesc = document.getElementById('spDetailDesc');
         if (spDetailDesc) spDetailDesc.value = p?.detailDesc || '';
         
@@ -1916,6 +1920,9 @@ const AdminApp = {
             imgScale: parseFloat(document.getElementById('spImgScale') ? document.getElementById('spImgScale').value : 1) || 1,
             imgPosX: parseInt(document.getElementById('spPosX') ? document.getElementById('spPosX').value : 50, 10),
             imgPosY: parseInt(document.getElementById('spPosY') ? document.getElementById('spPosY').value : 50, 10),
+            aboutHeading: document.getElementById('spAboutHeading') ? document.getElementById('spAboutHeading').value : '',
+            specsHeading: document.getElementById('spSpecsHeading') ? document.getElementById('spSpecsHeading').value : '',
+            noteHeading: document.getElementById('spNoteHeading') ? document.getElementById('spNoteHeading').value : '',
             detailDesc: document.getElementById('spDetailDesc') ? document.getElementById('spDetailDesc').value : '',
             features: document.getElementById('spFeatures') ? document.getElementById('spFeatures').value : '',
             includes: document.getElementById('spIncludes') ? document.getElementById('spIncludes').value : '',

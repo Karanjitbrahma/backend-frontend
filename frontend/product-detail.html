@@ -134,16 +134,16 @@
         <div class="pd-img"><img id="pImg" src="" alt="Product"></div>
     </div></section>
 
-    <section class="pd-section"><div class="container"><div class="section-header"><div class="label">Product Details</div><h2>About This <span>Product</span></h2></div>
+    <section class="pd-section"><div class="container"><div class="section-header"><div class="label">Product Details</div><h2 id="pAboutHeading">About This <span>Product</span></h2></div>
         <div class="pd-grid2">
             <div class="pd-about" id="pAbout"><p>Loading...</p></div>
             <div class="pd-side-stack">
                 <div>
-                    <h3 style="font-size:22px;margin-bottom:20px;">Product <span style="color:var(--primary);">Specifications</span></h3>
+                    <h3 id="pSpecsHeading" style="font-size:22px;margin-bottom:20px;">Product <span style="color:var(--primary);">Specifications</span></h3>
                     <ul class="pd-specs" id="pSpecs"></ul>
                 </div>
                 <div class="pd-note-card">
-                    <h3>Why This Product Matters</h3>
+                    <h3 id="pNoteHeading">Why This Product Matters</h3>
                     <p id="pNoteText">Selected with chart-based guidance, this product is meant to support your specific planetary need, not just look beautiful.</p>
                     <div class="pd-note-list" id="pNoteList"></div>
                 </div>
@@ -333,6 +333,9 @@
             if (cp.price) p.price = cp.price;
             if (cp.planet) p.planet = cp.planet;
             if (cp.icon) p.icon = cp.icon;
+            if (cp.aboutHeading !== undefined) p.aboutHeading = cp.aboutHeading;
+            if (cp.specsHeading !== undefined) p.specsHeading = cp.specsHeading;
+            if (cp.noteHeading !== undefined) p.noteHeading = cp.noteHeading;
             if (cp.detailDesc !== undefined) p.about = cp.detailDesc ? cp.detailDesc.split('\n').filter(Boolean).map(x => '<p>' + x.trim() + '</p>').join('') : '';
             if (cp.features !== undefined) p.specs = cp.features ? cp.features.split('\n').filter(Boolean).map(x => {
                 const parts = x.split(':');
@@ -380,6 +383,19 @@
     document.title=p.name+' - Bhartiya Sidhant Store';
     document.getElementById('pAbout').innerHTML=p.about;
     document.getElementById('pSpecs').innerHTML=p.specs.map(s=>`<li><div class="sp-icon"><i class="fa-solid fa-circle-check"></i></div><strong>${s[0]}:</strong> ${s[1]}</li>`).join('');
+    
+    if (p.aboutHeading) {
+        const words = p.aboutHeading.split(' ');
+        const last = words.pop();
+        document.getElementById('pAboutHeading').innerHTML = words.join(' ') + (words.length ? ' ' : '') + '<span>' + last + '</span>';
+    }
+    if (p.specsHeading) {
+        const words = p.specsHeading.split(' ');
+        const last = words.pop();
+        document.getElementById('pSpecsHeading').innerHTML = words.join(' ') + (words.length ? ' ' : '') + '<span style="color:var(--primary);">' + last + '</span>';
+    }
+    if (p.noteHeading) document.getElementById('pNoteHeading').textContent = p.noteHeading;
+
     document.getElementById('pNoteText').textContent = catKey === 'gemstone'
         ? 'This gemstone is meant to strengthen the planet associated with your chart and bring the most balanced energetic support.'
         : 'This product is selected to support your specific spiritual practice, life need, and planetary timing.';
