@@ -285,7 +285,9 @@
             </div>
         `).join('');
 
-        const signs = [
+        const signs = report.signs !== undefined && report.signs
+            ? report.signs.split('\n').filter(s => s.trim())
+            : [
             'You want clarity on career, love, money, or family decisions.',
             'You need a practical roadmap for the months ahead.',
             'You want remedies, not just predictions.',

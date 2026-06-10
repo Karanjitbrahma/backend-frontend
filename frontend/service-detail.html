@@ -382,7 +382,9 @@
             : cat === 'remedies'
                 ? 'This service focuses on the right remedy or energized support so you are not guessing what to choose.'
                 : 'This service is built to give you a practical astrology-based roadmap, not just a generic reading.';
-        const noteItems = cat === 'vastu'
+        const noteItems = service.signs !== undefined && service.signs
+            ? service.signs.split('\n').filter(s => s.trim())
+            : cat === 'vastu'
             ? ['Direction-wise corrections and practical fixes', 'Support for home, office, or plot planning', 'Non-demolition guidance wherever possible']
             : cat === 'remedies'
                 ? ['Authentic recommendation and activation support', 'Simple wearing or placement instructions', 'Planet-focused energetic assistance']

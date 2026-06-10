@@ -588,9 +588,11 @@ const AdminApp = {
         const ddEl = document.getElementById('fmDetailDesc');
         const ffEl = document.getElementById('fmFeatures');
         const iiEl = document.getElementById('fmIncludes');
+        const ssEl = document.getElementById('fmSigns');
         if (ddEl) ddEl.value = '';
         if (ffEl) ffEl.value = '';
         if (iiEl) iiEl.value = '';
+        if (ssEl) ssEl.value = '';
         this.editingFields = JSON.parse(JSON.stringify(this.getItemCheckoutFields(null, this.currentCmsKey)));
         this.renderCheckoutFieldsBuilder('cms');
         this.openModal('cmsModal');
@@ -634,9 +636,11 @@ const AdminApp = {
         const ddEl = document.getElementById('fmDetailDesc');
         const ffEl = document.getElementById('fmFeatures');
         const iiEl = document.getElementById('fmIncludes');
+        const ssEl = document.getElementById('fmSigns');
         if (ddEl) ddEl.value = item.detailDesc || '';
         if (ffEl) ffEl.value = item.features || '';
         if (iiEl) iiEl.value = item.includes || '';
+        if (ssEl) ssEl.value = item.signs || '';
         this.editingFields = JSON.parse(JSON.stringify(this.getItemCheckoutFields(item, this.currentCmsKey)));
         this.renderCheckoutFieldsBuilder('cms');
         if (item.image) {
@@ -702,9 +706,11 @@ const AdminApp = {
         const ddEl = document.getElementById('fmDetailDesc');
         const ffEl = document.getElementById('fmFeatures');
         const iiEl = document.getElementById('fmIncludes');
+        const ssEl = document.getElementById('fmSigns');
         if (ddEl) item.detailDesc = ddEl.value;
         if (ffEl) item.features = ffEl.value;
         if (iiEl) item.includes = iiEl.value;
+        if (ssEl) item.signs = ssEl.value;
         if (!item.title) { alert('Title is required'); return; }
         if (!this.data[this.currentCmsKey]) this.data[this.currentCmsKey] = [];
         if (idx !== '' && idx !== undefined && idx !== null && !isNaN(parseInt(idx))) {
