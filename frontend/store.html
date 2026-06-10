@@ -268,7 +268,20 @@
     <script src="assets/js/main.js?v=20260608g"></script>
     <script>
     // CMS Sync — render products from admin data
-    (function() {
+    (async function() {
+        try {
+            const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                ? 'http://127.0.0.1:3001'
+                : 'https://bhartiya-backend.onrender.com';
+            const resp = await fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' });
+            if (resp.ok) {
+                const fetchedData = await resp.json();
+                if (fetchedData && Object.keys(fetchedData).length > 0) {
+                    localStorage.setItem('bs_admin_data', JSON.stringify(fetchedData));
+                }
+            }
+        } catch(e) {}
+
         try {
             const data = JSON.parse(localStorage.getItem('bs_admin_data'));
             if (data && data.storeProducts && data.storeProducts.length) {

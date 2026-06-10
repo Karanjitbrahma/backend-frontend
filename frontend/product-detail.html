@@ -309,9 +309,23 @@
     const id = getProductId();
     let p=products[id]||products[0];
     // CMS override: sync basic fields from admin panel
-    try {
-        const cmsData = JSON.parse(localStorage.getItem('bs_admin_data'));
-        if (cmsData && cmsData.storeProducts && cmsData.storeProducts[id]) {
+    (async function renderProductDetails() {
+        try {
+            const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                ? 'http://127.0.0.1:3001'
+                : 'https://bhartiya-backend.onrender.com';
+            const resp = await fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' });
+            if (resp.ok) {
+                const fetchedData = await resp.json();
+                if (fetchedData && Object.keys(fetchedData).length > 0) {
+                    localStorage.setItem('bs_admin_data', JSON.stringify(fetchedData));
+                }
+            }
+        } catch(e) {}
+
+        try {
+            const cmsData = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (cmsData && cmsData.storeProducts && cmsData.storeProducts[id]) {
             const cp = cmsData.storeProducts[id];
             if (cp.name) p.name = cp.name;
             if (cp.cat) p.cat = cp.cat;
@@ -319,12 +333,12 @@
             if (cp.price) p.price = cp.price;
             if (cp.planet) p.planet = cp.planet;
             if (cp.icon) p.icon = cp.icon;
-            if (cp.detailDesc) p.about = cp.detailDesc.split('\n').filter(Boolean).map(x => '<p>' + x.trim() + '</p>').join('');
-            if (cp.features) p.specs = cp.features.split('\n').filter(Boolean).map(x => {
+            if (cp.detailDesc !== undefined) p.about = cp.detailDesc ? cp.detailDesc.split('\n').filter(Boolean).map(x => '<p>' + x.trim() + '</p>').join('') : '';
+            if (cp.features !== undefined) p.specs = cp.features ? cp.features.split('\n').filter(Boolean).map(x => {
                 const parts = x.split(':');
                 return parts.length > 1 ? [parts.shift().trim(), parts.join(':').trim()] : ['Feature', x.trim()];
-            });
-            if (cp.includes) p.includes = cp.includes.split('\n').filter(Boolean);
+            }) : [];
+            if (cp.includes !== undefined) p.includes = cp.includes ? cp.includes.split('\n').filter(Boolean) : [];
             p.imgFit = cp.imgFit || p.imgFit || 'cover';
             p.imgScale = cp.imgScale || p.imgScale || 1;
             p.imgPosX = cp.imgPosX || p.imgPosX || 50;
@@ -389,6 +403,8 @@
     document.getElementById('pWaBtn').href=wa;
     document.getElementById('pCtaWa').href=wa;
     document.querySelectorAll('.faq-question').forEach(q=>{q.addEventListener('click',()=>{const it=q.parentElement;const o=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(fi=>fi.classList.remove('open'));if(!o)it.classList.add('open');});});
+
+    })();
 
     // Razorpay Buy
     function openBuyRazorpay() {

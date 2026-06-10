@@ -11,7 +11,7 @@
         const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
             ? 'http://127.0.0.1:3001'
             : 'https://bhartiya-backend.onrender.com';
-        const resp = await fetch(`${BACKEND_URL}/api/cms-data`);
+        const resp = await fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' });
         if (resp.ok) {
             const parsed = await resp.json();
             if (parsed && Object.keys(parsed).length > 0) {
