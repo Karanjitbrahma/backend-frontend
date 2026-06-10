@@ -585,6 +585,9 @@ const AdminApp = {
         if (urgentGroup) urgentGroup.style.display = this.currentCmsKey === 'consultation' ? '' : 'none';
         if (urgentInput) urgentInput.value = '';
         // Clear detail page content fields
+        if (document.getElementById('fmAboutHeading')) document.getElementById('fmAboutHeading').value = '';
+        if (document.getElementById('fmSpecsHeading')) document.getElementById('fmSpecsHeading').value = '';
+        if (document.getElementById('fmNoteHeading')) document.getElementById('fmNoteHeading').value = '';
         const ddEl = document.getElementById('fmDetailDesc');
         const ffEl = document.getElementById('fmFeatures');
         const iiEl = document.getElementById('fmIncludes');
@@ -633,6 +636,9 @@ const AdminApp = {
         if (urgentGroup) urgentGroup.style.display = this.currentCmsKey === 'consultation' ? '' : 'none';
         if (urgentInput) urgentInput.value = item.urgentPrice || '';
         // Populate detail page content fields
+        if (document.getElementById('fmAboutHeading')) document.getElementById('fmAboutHeading').value = item.aboutHeading || '';
+        if (document.getElementById('fmSpecsHeading')) document.getElementById('fmSpecsHeading').value = item.specsHeading || '';
+        if (document.getElementById('fmNoteHeading')) document.getElementById('fmNoteHeading').value = item.noteHeading || '';
         const ddEl = document.getElementById('fmDetailDesc');
         const ffEl = document.getElementById('fmFeatures');
         const iiEl = document.getElementById('fmIncludes');
@@ -703,6 +709,9 @@ const AdminApp = {
         const urgentEl = document.getElementById('fmUrgentPrice');
         if (urgentEl) item.urgentPrice = urgentEl.value;
         // Include detail page content fields
+        if (document.getElementById('fmAboutHeading')) item.aboutHeading = document.getElementById('fmAboutHeading').value;
+        if (document.getElementById('fmSpecsHeading')) item.specsHeading = document.getElementById('fmSpecsHeading').value;
+        if (document.getElementById('fmNoteHeading')) item.noteHeading = document.getElementById('fmNoteHeading').value;
         const ddEl = document.getElementById('fmDetailDesc');
         const ffEl = document.getElementById('fmFeatures');
         const iiEl = document.getElementById('fmIncludes');

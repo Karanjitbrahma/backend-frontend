@@ -366,6 +366,15 @@
             if (cs.newPrice && (!cmsData.storeProducts || !cmsData.storeProducts[id] || !cmsData.storeProducts[id].price)) {
                 p.price = cs.newPrice;
             }
+            if (cs.aboutHeading !== undefined) p.aboutHeading = cs.aboutHeading;
+            if (cs.specsHeading !== undefined) p.specsHeading = cs.specsHeading;
+            if (cs.noteHeading !== undefined) p.noteHeading = cs.noteHeading;
+            if (cs.detailDesc !== undefined) p.about = cs.detailDesc ? cs.detailDesc.split('\n').filter(Boolean).map(x => '<p>' + x.trim() + '</p>').join('') : '';
+            if (cs.features !== undefined) p.specs = cs.features ? cs.features.split('\n').filter(Boolean).map(x => {
+                const parts = x.split(':');
+                return parts.length > 1 ? [parts[0].trim(), parts.slice(1).join(':').trim()] : ['Feature', parts[0].trim()];
+            }) : [];
+            if (cs.signs !== undefined) p.noteHeadingList = cs.signs ? cs.signs.split('\n').filter(Boolean) : [];
         }
     } catch(e) {}
     const catKey = String(p.cat || '').toLowerCase();
@@ -402,7 +411,8 @@
     const noteItems = catKey === 'gemstone'
         ? ['Lab-certified sourcing and authenticity support', 'Wearing guidance for the right finger and day', 'Planet-focused energetic strengthening']
         : ['Authentic and energized item', 'Mantra and usage instructions', 'Practical support after purchase'];
-    document.getElementById('pNoteList').innerHTML = (p.includes || noteItems).map(item => `<div class="pd-note-item"><i class="fa-solid fa-check-circle"></i><span>${item}</span></div>`).join('');
+    const finalNoteItems = p.noteHeadingList && p.noteHeadingList.length ? p.noteHeadingList : (p.includes && p.includes.length ? p.includes : noteItems);
+    document.getElementById('pNoteList').innerHTML = finalNoteItems.map(item => `<div class="pd-note-item"><i class="fa-solid fa-check-circle"></i><span>${item}</span></div>`).join('');
     const productReveal = catKey === 'gemstone'
         ? [
             ['fa-gem','Planetary Strengthening','Supports the specific planet associated with your chart.'],
