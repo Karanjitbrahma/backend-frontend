@@ -10,7 +10,7 @@
     try {
         const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
             ? 'http://127.0.0.1:3001'
-            : 'https://backend-frontend-1-bnjy.onrender.com';
+            : 'https://bhartiya-backend.onrender.com';
         const resp = await fetch(`${BACKEND_URL}/api/cms-data`);
         if (resp.ok) {
             const parsed = await resp.json();
