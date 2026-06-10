@@ -193,7 +193,7 @@ app.post('/api/save-lead', async (req, res) => {
         }
 
         let leads = [];
-        
+
         const firebaseDbUrl = process.env.FIREBASE_DB_URL;
         if (firebaseDbUrl) {
             const url = firebaseDbUrl.replace(/\/$/, '') + '/leads.json';
@@ -240,7 +240,7 @@ app.get('/api/leads', async (req, res) => {
     try {
         let leads = [];
         const firebaseDbUrl = process.env.FIREBASE_DB_URL;
-        
+
         if (firebaseDbUrl) {
             const url = firebaseDbUrl.replace(/\/$/, '') + '/leads.json';
             const resp = await fetch(url);
