@@ -10,7 +10,7 @@ const AdminApp = {
             ? 'http://127.0.0.1:3001'
             : (currentOrigin === 'null' || currentOrigin.startsWith('file:'))
                 ? 'http://127.0.0.1:3001'
-                : currentOrigin;
+                : 'https://backend-frontend-1-bnjy.onrender.com';
     },
 
     SECTIONS: {

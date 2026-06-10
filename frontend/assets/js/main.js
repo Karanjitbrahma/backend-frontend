@@ -8,7 +8,10 @@
 (async function CMS_Sync() {
     let data = null;
     try {
-        const resp = await fetch('/api/cms-data');
+        const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://127.0.0.1:3001'
+            : 'https://backend-frontend-1-bnjy.onrender.com';
+        const resp = await fetch(`${BACKEND_URL}/api/cms-data`);
         if (resp.ok) {
             const parsed = await resp.json();
             if (parsed && Object.keys(parsed).length > 0) {
