@@ -87,11 +87,11 @@ header {
 .hero-bg-rotating {
     position: absolute;
     top: 50%; left: 50%;
-    width: 250vmax; height: 250vmax;
-    margin-top: -125vmax; margin-left: -125vmax;
-    background: url('../images/hero-bg.jpg') center/cover no-repeat;
+    width: 150vmax; height: 150vmax;
+    margin-top: -75vmax; margin-left: -75vmax;
+    background: url('../images/zodiac-wheel.png') center/contain no-repeat;
     z-index: 0;
-    opacity: 0.18;
+    opacity: 0.12;
     animation: rotateBg 120s linear infinite;
     will-change: transform;
     pointer-events: none;
