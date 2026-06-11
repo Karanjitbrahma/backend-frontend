@@ -653,25 +653,28 @@ footer { background: #1A0505; color: #fff; padding: 70px 0 20px; }
         transform: translateY(-50%);
         background: linear-gradient(135deg, var(--primary) 0%, #D4AF37 100%);
         color: var(--bg-dark);
-        padding: 10px 14px;
-        font-weight: 700;
-        font-size: 13px;
+        padding: 16px 8px;
+        font-weight: 800;
+        font-size: 12px;
         text-transform: uppercase;
         border-radius: 8px 0 0 8px;
         z-index: 1000;
         box-shadow: -2px 2px 12px rgba(0,0,0,0.4);
         text-decoration: none;
         text-align: center;
-        line-height: 1;
-        gap: 8px;
+        line-height: 1.1;
+        gap: 12px;
         border-left: 2px solid rgba(255,255,255,0.4);
         border-top: 2px solid rgba(255,255,255,0.4);
         border-bottom: 2px solid rgba(255,255,255,0.4);
-        letter-spacing: 0.5px;
+        letter-spacing: 2px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
     }
     .floating-book-btn i {
-        font-size: 14px;
+        font-size: 15px;
         margin-bottom: 0;
+        transform: rotate(15deg);
     }
 
     /* Floating Social Sidebar */
