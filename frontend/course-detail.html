@@ -261,7 +261,9 @@
                         reqShipping: cmsC.reqShipping !== undefined ? cmsC.reqShipping : false,
                         reqBirth: cmsC.reqBirth !== undefined ? cmsC.reqBirth : true,
                         reqNotes: cmsC.reqNotes !== undefined ? cmsC.reqNotes : true,
-                        checkoutFields: cmsC.checkoutFields
+                        checkoutFields: cmsC.checkoutFields,
+                        detailDesc: cmsC.detailDesc,
+                        includes: cmsC.includes
                     };
                 });
             }
@@ -296,6 +298,31 @@
     document.getElementById('dImage').src = c.image;
     document.getElementById('dImage').alt = c.title;
     document.title = c.title + ' - Bhartiya Sidhant';
+
+    // Populate detail-about if edited in CMS
+    const dDescEl = document.querySelector('.detail-about');
+    if (dDescEl && c.detailDesc) {
+        dDescEl.innerHTML = c.detailDesc.split('\n').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
+    }
+
+    // Populate includes if edited in CMS
+    const dIncludesEl = document.getElementById('dIncludesList');
+    if (dIncludesEl && c.includes) {
+        dIncludesEl.innerHTML = c.includes.split('\n').filter(l => l.trim() !== '').map(l => {
+            const parts = l.split(':');
+            const strong = parts[0] ? parts[0].trim() : '';
+            const span = parts.slice(1).join(':').trim();
+            // Default icon, could be dynamic based on text
+            let icon = 'fa-check';
+            const lw = strong.toLowerCase();
+            if (lw.includes('live') || lw.includes('video') || lw.includes('recording')) icon = 'fa-video';
+            if (lw.includes('material') || lw.includes('book') || lw.includes('pdf')) icon = 'fa-book';
+            if (lw.includes('certificate')) icon = 'fa-certificate';
+            if (lw.includes('group') || lw.includes('community')) icon = 'fa-users';
+            
+            return `<li><div class="di-icon"><i class="fa-solid ${icon}"></i></div><div><strong>${strong}</strong>${span ? `<span>${span}</span>` : ''}</div></li>`;
+        }).join('');
+    }
 
     window.openCourseRazorpay = function() {
         const priceNum = String(c.price || '0').replace(/[^0-9.]/g, '') || '0';
