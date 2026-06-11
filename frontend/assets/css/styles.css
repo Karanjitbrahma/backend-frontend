@@ -518,8 +518,9 @@ footer { background: #1A0505; color: #fff; padding: 70px 0 20px; }
 /* --- Mobile --- */
 @media(max-width:768px) {
     /* Top Bar */
-    .top-bar .container { flex-direction: column; justify-content: center; text-align: center; gap: 6px; }
-    .top-bar { font-size: 12px; padding: 6px 0; }
+    .top-bar .container { flex-direction: column; justify-content: center; text-align: center; gap: 0; }
+    .top-bar { font-size: 11.5px; padding: 8px 0; }
+    .top-bar .container > div:last-child { display: none; }
 
     /* Navigation */
     .nav-links { display: none; position: absolute; top: 75px; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 20px; box-shadow: var(--shadow-md); gap: 15px; z-index: 999; }
