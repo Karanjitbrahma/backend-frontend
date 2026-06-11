@@ -558,6 +558,7 @@ const AdminApp = {
         document.getElementById('fmDesc').value = '';
         document.getElementById('fmOldPrice').value = '';
         document.getElementById('fmNewPrice').value = '';
+        if (document.getElementById('fmContent')) document.getElementById('fmContent').value = '';
         document.getElementById('fmIcon').value = 'fa-cube';
         document.getElementById('fmLink').value = '';
         document.getElementById('fmCategory').value = '';
@@ -611,6 +612,7 @@ const AdminApp = {
         document.getElementById('fmDesc').value = item.desc || '';
         document.getElementById('fmOldPrice').value = item.oldPrice || '';
         document.getElementById('fmNewPrice').value = item.newPrice || '';
+        if (document.getElementById('fmContent')) document.getElementById('fmContent').value = item.content || '';
         document.getElementById('fmIcon').value = item.icon || 'fa-cube';
         document.getElementById('fmLink').value = item.link || '';
         document.getElementById('fmCategory').value = item.category || '';
@@ -720,6 +722,7 @@ const AdminApp = {
         if (ffEl) item.features = ffEl.value;
         if (iiEl) item.includes = iiEl.value;
         if (ssEl) item.signs = ssEl.value;
+        if (document.getElementById('fmContent')) item.content = document.getElementById('fmContent').value;
         if (!item.title) { alert('Title is required'); return; }
         if (!this.data[this.currentCmsKey]) this.data[this.currentCmsKey] = [];
         if (idx !== '' && idx !== undefined && idx !== null && !isNaN(parseInt(idx))) {

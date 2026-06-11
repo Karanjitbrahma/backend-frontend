@@ -1268,11 +1268,17 @@
                         </div>
                         <!-- Description -->
                         <div class="form-group full-width">
-                            <label>Description</label>
+                            <label>Short Description (Snippet)</label>
                             <div style="display:flex;gap:8px;align-items:flex-start;">
-                                <textarea class="form-textarea" id="fmDesc" placeholder="Item description..." rows="4" required></textarea>
+                                <textarea class="form-textarea" id="fmDesc" placeholder="Brief summary or snippet..." rows="3" required></textarea>
                                 <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.addListBullet()" title="Add bullet" style="flex-shrink:0;padding:8px;">▸</button>
                             </div>
+                        </div>
+                        <!-- Full Content -->
+                        <div class="form-group full-width" id="fmContentGroup">
+                            <label>Full Text Content (For Blogs & Articles)</label>
+                            <textarea class="form-textarea" id="fmContent" placeholder="Write your full article content here. Newlines are preserved." rows="8"></textarea>
+                            <span class="form-hint">Used primarily for Blog posts.</span>
                         </div>
                         <!-- Icon -->
                         <div class="form-group">
