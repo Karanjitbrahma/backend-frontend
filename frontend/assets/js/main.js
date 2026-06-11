@@ -15,8 +15,19 @@
         if (resp.ok) {
             const parsed = await resp.json();
             if (parsed && Object.keys(parsed).length > 0) {
-                data = parsed;
-                localStorage.setItem('bs_admin_data', JSON.stringify(data));
+                const rawLocal = localStorage.getItem('bs_admin_data');
+                let localData = null;
+                try { if (rawLocal) localData = JSON.parse(rawLocal); } catch(e) {}
+                
+                const serverTime = Number(parsed._lastModified || 0);
+                const localTime = Number(localData ? (localData._lastModified || 0) : 0);
+                
+                if (!localData || serverTime >= localTime) {
+                    data = parsed;
+                    localStorage.setItem('bs_admin_data', JSON.stringify(data));
+                } else {
+                    data = localData;
+                }
             }
         }
     } catch (e) {
