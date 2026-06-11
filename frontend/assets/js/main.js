@@ -6,38 +6,44 @@
 // CMS Sync & Page Render
 // ─────────────────────────────────────────────────────────────────---------
 (async function CMS_Sync() {
+    const rawLocal = localStorage.getItem('bs_admin_data');
+    let localData = null;
+    try { if (rawLocal) localData = JSON.parse(rawLocal); } catch(e) {}
+    
     let data = null;
-    try {
-        const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-            ? 'http://127.0.0.1:3001'
-            : 'https://bhartiya-backend.onrender.com';
-        const resp = await fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' });
-        if (resp.ok) {
-            const parsed = await resp.json();
-            if (parsed && Object.keys(parsed).length > 0) {
-                const rawLocal = localStorage.getItem('bs_admin_data');
-                let localData = null;
-                try { if (rawLocal) localData = JSON.parse(rawLocal); } catch(e) {}
-                
-                const serverTime = Number(parsed._lastModified || 0);
-                const localTime = Number(localData ? (localData._lastModified || 0) : 0);
-                
-                if (!localData || serverTime >= localTime) {
+    const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? 'http://127.0.0.1:3001'
+        : 'https://bhartiya-backend.onrender.com';
+
+    if (localData) {
+        data = localData;
+        // Fetch in background so the UI renders instantly
+        fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' })
+            .then(res => res.json())
+            .then(parsed => {
+                if (parsed && Object.keys(parsed).length > 0) {
+                    const serverTime = Number(parsed._lastModified || 0);
+                    const localTime = Number(localData._lastModified || 0);
+                    if (serverTime > localTime) {
+                        localStorage.setItem('bs_admin_data', JSON.stringify(parsed));
+                        location.reload();
+                    }
+                }
+            }).catch(e => console.warn('Background sync failed:', e));
+    } else {
+        try {
+            const resp = await fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' });
+            if (resp.ok) {
+                const parsed = await resp.json();
+                if (parsed && Object.keys(parsed).length > 0) {
                     data = parsed;
                     localStorage.setItem('bs_admin_data', JSON.stringify(data));
-                } else {
-                    data = localData;
                 }
             }
+        } catch (e) {
+            console.warn('Failed to fetch live CMS data from server:', e);
         }
-    } catch (e) {
-        console.warn('Failed to fetch live CMS data from server:', e);
-    }
-
-    if (!data) {
-        const raw = localStorage.getItem('bs_admin_data');
-        if (!raw) return; // No admin data yet — use original HTML
-        try { data = JSON.parse(raw); } catch(e) { return; }
+        if (!data) return; // No admin data yet — use original HTML
     }
 
     let page = location.pathname.split('/').pop() || 'index.html';
