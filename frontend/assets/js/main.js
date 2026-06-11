@@ -869,7 +869,7 @@ function bindFaqAccordions(root = document) {
                             <ul class="pricing-features">
                                 ${features.map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim().split('.')[0] + '</li>').join('')}
                             </ul>
-                            <button onclick="if(window.bookConsult)bookConsult('${c.title}', '${duration}', this);else window.location.href='https://wa.me/${(data.site && data.site.whatsapp) || '919876543210'}?text=I%20want%20to%20book%20${encodeURIComponent(c.title)}%20consultation'" class="header-btn ${i === 1 ? 'btn-gold' : i === 2 ? 'btn-maroon' : 'btn-outline'} pricing-btn" style="border:none;cursor:pointer;width:100%;margin-top:15px;"><i class="fa-solid fa-lock"></i> Pay & Book <i class="fa-solid fa-arrow-right"></i></button>
+                            <button onclick="if(window.bookConsult)bookConsult('${c.title}', '${duration}', this);else window.location.href='https://wa.me/${(data.site && data.site.whatsapp) || '911253354445'}?text=I%20want%20to%20book%20${encodeURIComponent(c.title)}%20consultation'" class="header-btn ${i === 1 ? 'btn-gold' : i === 2 ? 'btn-maroon' : 'btn-outline'} pricing-btn" style="border:none;cursor:pointer;width:100%;margin-top:15px;"><i class="fa-solid fa-lock"></i> Pay & Book <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
                 `;}).join('');
@@ -1270,7 +1270,7 @@ function bindFaqAccordions(root = document) {
 
         const raw = localStorage.getItem('bs_admin_data');
         let store = null;
-        let waNum = '919876543210';
+        let waNum = '911253354445';
         if (raw) {
             try {
                 const data = JSON.parse(raw);

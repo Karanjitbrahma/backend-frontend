@@ -40,8 +40,8 @@ footer_template = """    <footer>
                     <h4 class="footer-title">Contact Us</h4>
                     <ul class="footer-links">
                         <li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li>
-                        <li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 98765 43210</li>
-                        <li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> Kokrajhar, Bodoland, Assam</li>
+                        <li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 12533 54445</li>
+                        <li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> DDA Market, Pocket 1, Sector D, Vasant Kunj, New Delhi, 110070, Delhi</li>
                     </ul>
                 </div>
             </div>

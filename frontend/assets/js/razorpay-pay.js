@@ -139,7 +139,7 @@
       return ad.paymentConfig || {
         key: 'rzp_test_SyfMicXoixkyOJ',
         businessName: 'Bhartiya Sidhant',
-        whatsapp: '919876543210',
+        whatsapp: '911253354445',
         currency: 'INR',
         successMsg: '✅ Payment Successful! Redirecting to WhatsApp to confirm...',
         waPrefix: '🙏 *New Order*\n\n'
@@ -148,7 +148,7 @@
       return {
         key: 'rzp_test_SyfMicXoixkyOJ',
         businessName: 'Bhartiya Sidhant',
-        whatsapp: '919876543210',
+        whatsapp: '911253354445',
         currency: 'INR',
         successMsg: '✅ Payment Successful! Redirecting to WhatsApp to confirm...',
         waPrefix: '🙏 *New Order*\n\n'
@@ -564,7 +564,7 @@
           } catch (err) { }
 
           alert((config.successMsg || '✅ Payment Successful!') + '\nPayment ID: ' + response.razorpay_payment_id);
-          window.open('https://wa.me/' + (config.whatsapp || '919876543210') + '?text=' + encodeURIComponent(msg), '_blank');
+          window.open('https://wa.me/' + (config.whatsapp || '911253354445') + '?text=' + encodeURIComponent(msg), '_blank');
 
           // Reset form
           document.getElementById('rzpForm').reset();

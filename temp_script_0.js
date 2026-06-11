@@ -132,7 +132,7 @@
             return 0;
         }
         const id = getId();
-        let service = null, waNum = '919876543210';
+        let service = null, waNum = '911253354445';
         try {
             const d = JSON.parse(localStorage.getItem('bs_admin_data'));
             if (d && d.services && d.services[id]) service = d.services[id];

@@ -77,7 +77,7 @@ const id = getPoojaId();
 const p = poojas[id] || poojas[0];
 
 // Read whatsapp number and pooja data from CMS
-let waNum = '919876543210';
+let waNum = '911253354445';
 const raw = localStorage.getItem('bs_admin_data');
 let adminPooja = null;
 if (raw) {
