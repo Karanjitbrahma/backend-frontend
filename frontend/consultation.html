@@ -127,7 +127,7 @@
                 <button class="toggle-btn" data-mode="urgent">Urgent (Priority)</button>
             </div>
 
-            <div class="pricing-grid">
+            <div class="pricing-grid" id="grid-normal">
                 <!-- Card 1 -->
                 <div class="pricing-card">
                     <div class="pricing-header">
@@ -136,8 +136,7 @@
                     </div>
                     <div class="pricing-body">
                         <div class="pricing-amount">
-                            <span class="price normal-price">₹1,499</span>
-                            <span class="price urgent-price" style="display:none;">₹2,499</span>
+                            <span class="price">₹1,499</span>
                             <span class="price-period">/ session</span>
                         </div>
                         <div class="pricing-meta">
@@ -165,8 +164,7 @@
                     </div>
                     <div class="pricing-body">
                         <div class="pricing-amount">
-                            <span class="price normal-price">₹2,999</span>
-                            <span class="price urgent-price" style="display:none;">₹4,999</span>
+                            <span class="price">₹2,999</span>
                             <span class="price-period">/ session</span>
                         </div>
                         <div class="pricing-meta">
@@ -195,8 +193,7 @@
                     </div>
                     <div class="pricing-body">
                         <div class="pricing-amount">
-                            <span class="price normal-price">₹5,999</span>
-                            <span class="price urgent-price" style="display:none;">₹8,999</span>
+                            <span class="price">₹5,999</span>
                             <span class="price-period">/ session</span>
                         </div>
                         <div class="pricing-meta">
@@ -216,6 +213,8 @@
                     </div>
                 </div>
             </div>
+
+            <div class="pricing-grid" id="grid-urgent" style="display:none;"></div>
         </div>
     </section>
 
@@ -378,7 +377,7 @@
     </script>
     <script src="assets/js/razorpay-pay.js?v=20260609a"></script>
     <script>
-    function bookConsult(name, duration, btn) {
+    function bookConsult(name, duration, btn, isUrgent) {
         const card = btn.closest('.pricing-card');
         const priceEl = card.querySelector('.price:not([style*="display:none"]):not([style*="display: none"])') ||
                         card.querySelector('.normal-price');
@@ -386,14 +385,16 @@
         const priceNum = String(priceText || '').replace(/[^0-9.]/g, '') || '1499';
         const pricePaise = Math.round(parseFloat(priceNum) * 100);
 
-        const cards = Array.from(document.querySelectorAll('.pricing-card'));
+        const grid = card.closest('.pricing-grid');
+        const cards = Array.from(grid.querySelectorAll('.pricing-card'));
         const index = cards.indexOf(card);
 
         let reqShipping, reqBirth, reqNotes, checkoutFields;
         try {
             const d = JSON.parse(localStorage.getItem('bs_admin_data'));
-            if (d && d.consultation && index !== -1 && d.consultation[index]) {
-                const item = d.consultation[index];
+            const dataArray = isUrgent ? d.consultationUrgent : d.consultation;
+            if (d && dataArray && index !== -1 && dataArray[index]) {
+                const item = dataArray[index];
                 reqShipping = item.reqShipping;
                 reqBirth = item.reqBirth;
                 reqNotes = item.reqNotes;

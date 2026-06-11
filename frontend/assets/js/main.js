@@ -858,10 +858,13 @@ function bindFaqAccordions(root = document) {
         }
 
         // ─── CONSULTATION PAGE ───
-        if (page === 'consultation.html' && data.consultation) {
-            const grid = document.querySelector('.pricing-grid');
-            if (grid) {
-                grid.innerHTML = data.consultation.map((c, i) => {
+        if (page === 'consultation.html') {
+            const gridNormal = document.getElementById('grid-normal');
+            const gridUrgent = document.getElementById('grid-urgent');
+            
+            const renderCards = (list, isUrgent) => {
+                if (!list) return '';
+                return list.map((c, i) => {
                     const features = c.desc ? c.desc.split(',').filter(s => s.trim()).slice(0, 6) : [];
                     const duration = c.desc && c.desc.match(/\d+\s*Minutes?/i) ? c.desc.match(/\d+\s*Minutes?/i)[0] : '30 Minutes';
                     const callType = c.desc && c.desc.match(/Video Call|Audio.*Video|Zoom|Meet/i) ? c.desc.match(/Video Call|Audio.*Video|Zoom|Meet/i)[0] : 'Audio / Video Call';
@@ -875,8 +878,7 @@ function bindFaqAccordions(root = document) {
                         </div>
                         <div class="pricing-body">
                             <div class="pricing-amount">
-                                <span class="price normal-price">₹${c.newPrice}</span>
-                                ${c.urgentPrice ? `<span class="price urgent-price" style="display:none;">₹${c.urgentPrice}</span>` : ''}
+                                <span class="price">₹${c.newPrice}</span>
                                 <span class="price-period">/ session</span>
                             </div>
                             <div class="pricing-meta">
@@ -886,22 +888,35 @@ function bindFaqAccordions(root = document) {
                             <ul class="pricing-features">
                                 ${features.map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim().split('.')[0] + '</li>').join('')}
                             </ul>
-                            <button onclick="if(window.bookConsult)bookConsult('${c.title}', '${duration}', this);else window.location.href='https://wa.me/${(data.site && data.site.whatsapp) || '911253354445'}?text=I%20want%20to%20book%20${encodeURIComponent(c.title)}%20consultation'" class="header-btn ${i === 1 ? 'btn-gold' : i === 2 ? 'btn-maroon' : 'btn-outline'} pricing-btn" style="border:none;cursor:pointer;width:100%;margin-top:15px;"><i class="fa-solid fa-lock"></i> Pay & Book <i class="fa-solid fa-arrow-right"></i></button>
+                            <button onclick="if(window.bookConsult)bookConsult('${c.title}', '${duration}', this, ${isUrgent ? 'true' : 'false'});else window.location.href='https://wa.me/${(data.site && data.site.whatsapp) || '911253354445'}?text=I%20want%20to%20book%20${encodeURIComponent(c.title)}%20consultation'" class="header-btn ${i === 1 ? 'btn-gold' : i === 2 ? 'btn-maroon' : 'btn-outline'} pricing-btn" style="border:none;cursor:pointer;width:100%;margin-top:15px;"><i class="fa-solid fa-lock"></i> Pay & Book <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
                 `;}).join('');
+            };
 
-                // Re-bind urgency toggle after CMS render
-                document.querySelectorAll('.toggle-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        const mode = btn.dataset.mode;
+            if (data.consultation && gridNormal) {
+                gridNormal.innerHTML = renderCards(data.consultation, false);
+            }
+            if (data.consultationUrgent && gridUrgent) {
+                gridUrgent.innerHTML = renderCards(data.consultationUrgent, true);
+            }
+
+            // Re-bind urgency toggle after CMS render
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const mode = btn.dataset.mode;
+                    if (gridNormal && gridUrgent) {
+                        gridNormal.style.display = mode === 'normal' ? '' : 'none';
+                        gridUrgent.style.display = mode === 'urgent' ? '' : 'none';
+                    } else {
+                        // Fallback logic
                         document.querySelectorAll('.normal-price').forEach(p => p.style.display = mode === 'normal' ? '' : 'none');
                         document.querySelectorAll('.urgent-price').forEach(p => p.style.display = mode === 'urgent' ? '' : 'none');
-                    });
+                    }
                 });
-            }
+            });
         }
 
         // ─── CONSULT ACHARYA PAGE ───

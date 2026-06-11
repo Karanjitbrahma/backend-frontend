@@ -21,7 +21,8 @@ const AdminApp = {
         courses: { label: 'Courses', icon: 'fa-graduation-cap' },
         blog: { label: 'Blog', icon: 'fa-blog' },
         consultation: { label: 'Consultation', icon: 'fa-headset' },
-        consultAcharya: { label: 'Consult Acharya', icon: 'fa-crown' }
+        consultationUrgent: { label: 'Urgent Consultations', icon: 'fa-bolt' },
+        consultAcharya: { label: 'Consult Acharya Ji', icon: 'fa-crown' }
     },
 
     getDefaultData() {
@@ -96,6 +97,11 @@ const AdminApp = {
                 { title: 'Team Astrologer', desc: 'Certified Vedic Expert. 30 Minutes Audio/Video Call. Birth Chart Analysis, Career & Finance, Marriage & Relationship, Practical Remedies.', image: 'assets/images/astrologer.png', icon: 'fa-headset', oldPrice: '', newPrice: '1,499', urgentPrice: '2,499', link: 'consultation.html', imgFit: 'cover', imgScale: 1 },
                 { title: 'Senior Astrologer', desc: '10+ Years Experience. 30 Minutes Audio/Video Call. Deep Kundli Analysis, Dasha & Transit Predictions, Advanced Remedies & Mantras.', image: 'assets/images/astrologer.png', icon: 'fa-user-tie', oldPrice: '', newPrice: '2,999', urgentPrice: '4,999', link: 'consultation.html', imgFit: 'cover', imgScale: 1 },
                 { title: 'Acharya Ji (Premium)', desc: 'Head Astrologer — Direct Session. 45 Minutes Video Call. Comprehensive Chart Reading, Prashna Kundli, Complex Case Resolution, 7-Day Follow-Up.', image: 'assets/images/acharya.jpg', icon: 'fa-crown', oldPrice: '', newPrice: '5,999', urgentPrice: '8,999', link: 'consultation.html', imgFit: 'cover', imgScale: 1 }
+            ],
+            consultationUrgent: [
+                { title: 'Team Astrologer (Urgent)', desc: 'Certified Vedic Expert. 30 Minutes Audio/Video Call. 24-Hour Priority Scheduling. Birth Chart Analysis, Career & Finance, Marriage & Relationship, Practical Remedies.', image: 'assets/images/astrologer.png', icon: 'fa-headset', oldPrice: '', newPrice: '2,499', urgentPrice: '', link: 'consultation.html', imgFit: 'cover', imgScale: 1 },
+                { title: 'Senior Astrologer (Urgent)', desc: '10+ Years Experience. 30 Minutes Audio/Video Call. 24-Hour Priority Scheduling. Deep Kundli Analysis, Dasha & Transit Predictions, Advanced Remedies & Mantras.', image: 'assets/images/astrologer.png', icon: 'fa-user-tie', oldPrice: '', newPrice: '4,999', urgentPrice: '', link: 'consultation.html', imgFit: 'cover', imgScale: 1 },
+                { title: 'Acharya Ji (Urgent)', desc: 'Head Astrologer — Direct Session. 45 Minutes Video Call. 24-Hour Priority Scheduling. Comprehensive Chart Reading, Prashna Kundli, Complex Case Resolution, 7-Day Follow-Up.', image: 'assets/images/acharya.jpg', icon: 'fa-crown', oldPrice: '', newPrice: '8,999', urgentPrice: '', link: 'consultation.html', imgFit: 'cover', imgScale: 1 }
             ],
             consultAcharya: [
                 { title: 'Quick Guidance (15 Min)', desc: 'Single Topic Discussion, Quick Kundli Overview, Immediate Remedies, Audio/Video Call, Chat Summary After Call.', image: 'assets/images/acharya.jpg', icon: 'fa-bolt', oldPrice: '1,500', newPrice: '799', link: 'https://wa.me/911253354445?text=Hi,%20I%20want%20to%20book%20a%2015-min%20Quick%20Guidance%20session%20with%20Acharya%20Ji', imgFit: 'cover', imgScale: 1 },
