@@ -106,13 +106,38 @@ if ($('pdImage')) $('pdImage').src = adminPooja ? adminPooja.image : p.image;
 if ($('pdImage')) $('pdImage').alt = adminPooja ? adminPooja.title : p.title;
 if ($('pdBookBtn')) $('pdBookBtn').href = wa;
 if ($('pdCtaWhatsapp')) $('pdCtaWhatsapp').href = wa;
-if ($('pdAboutHeading')) $('pdAboutHeading').innerHTML = 'What is <span>' + (adminPooja ? adminPooja.title : p.title) + '?</span>';
-if ($('pdAboutContent')) $('pdAboutContent').innerHTML = p.about;
+if ($('pdAboutHeading')) $('pdAboutHeading').innerHTML = adminPooja && adminPooja.aboutHeading ? adminPooja.aboutHeading : 'What is <span>' + (adminPooja ? adminPooja.title : p.title) + '?</span>';
+if ($('pdAboutContent')) {
+    if (adminPooja && adminPooja.detailDesc) {
+        $('pdAboutContent').innerHTML = adminPooja.detailDesc.split('\n').filter(p => p.trim() !== '').map(p => `<p>${p}</p>`).join('');
+    } else {
+        $('pdAboutContent').innerHTML = p.about;
+    }
+}
 if ($('pdProcessTitle')) $('pdProcessTitle').textContent = adminPooja ? adminPooja.title : p.title;
 
 // Info card
 const il = $('pdInfoList');
-if (il) il.innerHTML = p.info.map(i => `<li><i class="fa-solid ${i.icon}"></i><div><strong>${i.label}</strong><span>${i.val}</span></div></li>`).join('');
+if (il) {
+    if (adminPooja && adminPooja.poojaInfo) {
+        const lines = adminPooja.poojaInfo.split('\n').filter(l => l.trim() !== '');
+        il.innerHTML = lines.map(l => {
+            const parts = l.split(':');
+            const label = parts[0] ? parts[0].trim() : '';
+            const val = parts.slice(1).join(':').trim() || '';
+            let icon = 'fa-circle-info';
+            if (label.toLowerCase().includes('deity')) icon = 'fa-om';
+            else if (label.toLowerCase().includes('duration')) icon = 'fa-clock';
+            else if (label.toLowerCase().includes('mode')) icon = 'fa-video';
+            else if (label.toLowerCase().includes('pandit') || label.toLowerCase().includes('brahmin')) icon = 'fa-users';
+            else if (label.toLowerCase().includes('prasad')) icon = 'fa-truck-fast';
+            else if (label.toLowerCase().includes('location') || label.toLowerCase().includes('place')) icon = 'fa-location-dot';
+            return `<li><i class="fa-solid ${icon}"></i><div><strong>${label}</strong><span>${val}</span></div></li>`;
+        }).join('');
+    } else {
+        il.innerHTML = p.info.map(i => `<li><i class="fa-solid ${i.icon}"></i><div><strong>${i.label}</strong><span>${i.val}</span></div></li>`).join('');
+    }
+}
 
 // Benefits
 const bg = $('pdBenefitsGrid');
