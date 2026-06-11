@@ -246,6 +246,87 @@
             checkoutFields: checkoutFields
         });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            const d = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (!d) return;
+            
+            if (d.caPage) {
+                const p = d.caPage;
+                if (p.bannerTitle) document.getElementById('acharyaBannerTitle').innerHTML = p.bannerTitle;
+                if (p.bannerSubtitle) document.getElementById('acharyaBannerSubtitle').innerHTML = p.bannerSubtitle;
+                
+                if (p.profileImage) document.getElementById('acharyaProfileImg').src = p.profileImage;
+                if (p.name) document.getElementById('acharyaName').innerHTML = p.name;
+                if (p.titleTag) document.getElementById('acharyaTitleTag').innerHTML = '<i class="fa-solid fa-crown"></i> ' + p.titleTag;
+                
+                if (p.label) document.getElementById('acharyaLabel').innerHTML = p.label;
+                if (p.heading) {
+                    let h = p.heading;
+                    if (p.headingHighlight) h += ' <span style="color:var(--primary)">' + p.headingHighlight + '</span>';
+                    document.getElementById('acharyaHeading').innerHTML = h;
+                }
+                if (p.desc1) document.getElementById('acharyaDesc1').innerHTML = p.desc1;
+                if (p.desc2) document.getElementById('acharyaDesc2').innerHTML = p.desc2;
+                
+                if (p.pricingSectionLabel) document.querySelector('#acharyaPricingHeader .label').innerHTML = p.pricingSectionLabel;
+                if (p.pricingSectionHeading) {
+                    let h = p.pricingSectionHeading;
+                    if (p.pricingSectionHighlight) h += ' <span>' + p.pricingSectionHighlight + '</span>';
+                    document.querySelector('#acharyaPricingHeader h2').innerHTML = h;
+                }
+                if (p.pricingSectionSubtitle) document.querySelector('#acharyaPricingHeader p').innerHTML = p.pricingSectionSubtitle;
+                
+                if (p.whySectionLabel) document.querySelector('#acharyaWhyHeader .label').innerHTML = p.whySectionLabel;
+                if (p.whySectionHeading) {
+                    let h = p.whySectionHeading;
+                    if (p.whySectionHighlight) h += ' <span>' + p.whySectionHighlight + '</span>';
+                    document.querySelector('#acharyaWhyHeader h2').innerHTML = h;
+                }
+                
+                if (p.whyItems && p.whyItems.length > 0) {
+                    const whyGrid = document.getElementById('acharyaWhyGrid');
+                    if (whyGrid) {
+                        whyGrid.innerHTML = p.whyItems.map(item => `<div class="why-item"><i class="fa-solid ${item.icon || 'fa-star'}"></i><h4>${item.title}</h4><p>${item.desc}</p></div>`).join('');
+                    }
+                }
+                
+                if (p.stats && p.stats.length > 0) {
+                    const statsGrid = document.getElementById('acharyaStatsGrid');
+                    if (statsGrid) {
+                        statsGrid.innerHTML = p.stats.map(s => `<div class="acharya-stat"><div class="num">${s.value}</div><div class="lbl">${s.label}</div></div>`).join('');
+                    }
+                }
+            }
+
+            if (d.consultAcharya && d.consultAcharya.length > 0) {
+                const container = document.querySelector('.pricing-cards');
+                if (container) {
+                    let html = '';
+                    d.consultAcharya.forEach((item, index) => {
+                        const isFeatured = index === 1 ? 'featured' : '';
+                        const oldPriceHtml = item.oldPrice ? `<del>${item.oldPrice}</del>` : '';
+                        const featuresHtml = (item.features || '')
+                            .split('\\n').filter(Boolean)
+                            .map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('');
+                        
+                        html += `
+                        <div class="pricing-card ${isFeatured}">
+                            <h3>${item.title}</h3>
+                            <div class="duration">${item.duration || 'Session'}</div>
+                            <div class="price">${oldPriceHtml}${item.newPrice}</div>
+                            <ul>${featuresHtml}</ul>
+                            <button class="book-btn" onclick="openBooking('${item.title.replace(/'/g, "\\\\'")}', '${item.duration || ''}', ${item.priceAmount}, '${item.newPrice}')"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                        </div>`;
+                    });
+                    container.innerHTML = html;
+                }
+            }
+        } catch(e) {
+            console.error('Error loading Acharya page data:', e);
+        }
+    });
     </script>
 </body>
 </html>
