@@ -184,14 +184,14 @@ const AdminApp = {
                 { question: 'What information do I need to provide for a Kundli report?', answer: 'To prepare an accurate Kundli report, we need your exact date of birth, time of birth, and place of birth. The more precise the birth time, the more accurate your chart analysis will be.' }
             ],
             storeProducts: [
-                { name:'Yellow Sapphire (Pukhraj)', cat:'gemstone', planet:'Jupiter', subtitle:'For Jupiter — Prosperity, wisdom & marital bliss', price:'₹15,000/Ratti', image:'https://images.pexels.com/photos/5370706/pexels-photo-5370706.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'Bestseller' },
-                { name:'Blue Sapphire (Neelam)', cat:'gemstone', planet:'Saturn', subtitle:'For Saturn — Discipline, fortune & career growth', price:'₹20,000/Ratti', image:'https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'' },
-                { name:'Ruby (Manik)', cat:'gemstone', planet:'Sun', subtitle:'For Sun — Authority, confidence & leadership', price:'₹12,000/Ratti', image:'https://images.pexels.com/photos/3641056/pexels-photo-3641056.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'' },
-                { name:'Emerald (Panna)', cat:'gemstone', planet:'Mercury', subtitle:'For Mercury — Intelligence, business & communication', price:'₹10,000/Ratti', image:'https://images.pexels.com/photos/1616793/pexels-photo-1616793.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'' },
-                { name:'5 Mukhi Rudraksha', cat:'rudraksha', planet:'Jupiter', subtitle:'For health, peace of mind & spiritual growth', price:'₹1,500', image:'https://images.pexels.com/photos/6431096/pexels-photo-6431096.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'Popular' },
-                { name:'1 Mukhi Rudraksha', cat:'rudraksha', planet:'Sun', subtitle:'Rarest bead — Supreme consciousness & moksha', price:'₹51,000', image:'https://images.pexels.com/photos/6431082/pexels-photo-6431082.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'' },
-                { name:'Copper Sri Yantra', cat:'yantra', planet:'Venus', subtitle:'For wealth, Lakshmi blessings & abundance', price:'₹2,100', image:'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'' },
-                { name:'108 Bead Rudraksha Mala', cat:'mala', planet:'All', subtitle:'For meditation, mantra jaap & spiritual practice', price:'₹3,500', image:'https://images.pexels.com/photos/6431063/pexels-photo-6431063.jpeg?auto=compress&cs=tinysrgb&w=500', badge:'' }
+                { name: 'Yellow Sapphire (Pukhraj)', cat: 'gemstone', planet: 'Jupiter', subtitle: 'For Jupiter — Prosperity, wisdom & marital bliss', price: '₹15,000/Ratti', image: 'https://images.pexels.com/photos/5370706/pexels-photo-5370706.jpeg?auto=compress&cs=tinysrgb&w=500', badge: 'Bestseller' },
+                { name: 'Blue Sapphire (Neelam)', cat: 'gemstone', planet: 'Saturn', subtitle: 'For Saturn — Discipline, fortune & career growth', price: '₹20,000/Ratti', image: 'https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=500', badge: '' },
+                { name: 'Ruby (Manik)', cat: 'gemstone', planet: 'Sun', subtitle: 'For Sun — Authority, confidence & leadership', price: '₹12,000/Ratti', image: 'https://images.pexels.com/photos/3641056/pexels-photo-3641056.jpeg?auto=compress&cs=tinysrgb&w=500', badge: '' },
+                { name: 'Emerald (Panna)', cat: 'gemstone', planet: 'Mercury', subtitle: 'For Mercury — Intelligence, business & communication', price: '₹10,000/Ratti', image: 'https://images.pexels.com/photos/1616793/pexels-photo-1616793.jpeg?auto=compress&cs=tinysrgb&w=500', badge: '' },
+                { name: '5 Mukhi Rudraksha', cat: 'rudraksha', planet: 'Jupiter', subtitle: 'For health, peace of mind & spiritual growth', price: '₹1,500', image: 'https://images.pexels.com/photos/6431096/pexels-photo-6431096.jpeg?auto=compress&cs=tinysrgb&w=500', badge: 'Popular' },
+                { name: '1 Mukhi Rudraksha', cat: 'rudraksha', planet: 'Sun', subtitle: 'Rarest bead — Supreme consciousness & moksha', price: '₹51,000', image: 'https://images.pexels.com/photos/6431082/pexels-photo-6431082.jpeg?auto=compress&cs=tinysrgb&w=500', badge: '' },
+                { name: 'Copper Sri Yantra', cat: 'yantra', planet: 'Venus', subtitle: 'For wealth, Lakshmi blessings & abundance', price: '₹2,100', image: 'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=500', badge: '' },
+                { name: '108 Bead Rudraksha Mala', cat: 'mala', planet: 'All', subtitle: 'For meditation, mantra jaap & spiritual practice', price: '₹3,500', image: 'https://images.pexels.com/photos/6431063/pexels-photo-6431063.jpeg?auto=compress&cs=tinysrgb&w=500', badge: '' }
             ],
             courseReviews: [
                 { name: 'Rahul Verma', course: 'Vedic Astrology Foundations', rating: 5, location: 'Delhi, India', text: 'This course completely changed my understanding of astrology. The teachers are very knowledgeable and patient. Highly recommend!' },
@@ -302,7 +302,7 @@ const AdminApp = {
         if (candidates.length > 0) {
             candidates.sort((a, b) => Number(b._lastModified || 0) - Number(a._lastModified || 0));
             this.data = candidates[0];
-            try { localStorage.setItem('bs_admin_data', JSON.stringify(this.data)); } catch(e) {}
+            try { localStorage.setItem('bs_admin_data', JSON.stringify(this.data)); } catch (e) { }
         } else {
             this.data = this.getDefaultData();
         }
@@ -313,9 +313,9 @@ const AdminApp = {
     },
 
     async saveData() {
-        try { this.data._lastModified = Date.now(); } catch (e) {}
-        try { localStorage.setItem('bs_admin_data', JSON.stringify(this.data)); } catch (e) {}
-        
+        try { this.data._lastModified = Date.now(); } catch (e) { }
+        try { localStorage.setItem('bs_admin_data', JSON.stringify(this.data)); } catch (e) { }
+
         // Overwrite leads list to local server db
         try {
             await fetch(`${this.getBackendUrl()}/api/save-leads`, {
@@ -423,7 +423,7 @@ const AdminApp = {
             if (xhr.status >= 200 && xhr.status < 300 && xhr.responseText) {
                 return JSON.parse(xhr.responseText);
             }
-        } catch (e) {}
+        } catch (e) { }
         return null;
     },
 
@@ -433,7 +433,7 @@ const AdminApp = {
         try {
             // Ensure auth if possible
             await this.ensureFirebaseAuth();
-        } catch (e) {}
+        } catch (e) { }
         try {
             const auth = this.getFirebaseAuth();
             const token = auth?.idToken || '';
@@ -899,7 +899,7 @@ const AdminApp = {
         }
 
         const headers = ['Name', 'Phone', 'Email', 'Product/Service', 'Amount', 'Payment ID', 'Date', 'Status', 'Custom Field Details'];
-        
+
         const rows = leads.map(l => [
             l.name || '',
             l.phone || '',
@@ -912,7 +912,7 @@ const AdminApp = {
             l.details || ''
         ]);
 
-        const csvContent = "data:text/csv;charset=utf-8,\uFEFF" 
+        const csvContent = "data:text/csv;charset=utf-8,\uFEFF"
             + [headers.join(','), ...rows.map(r => r.map(val => `"${String(val).replace(/"/g, '""')}"`).join(','))].join('\n');
 
         const encodedUri = encodeURI(csvContent);
@@ -1816,8 +1816,8 @@ const AdminApp = {
             <div class="editable-item" style="margin-bottom:10px;">
                 ${p.image ? `<img src="${this.esc(p.image)}" style="width:50px;height:50px;border-radius:10px;object-fit:${this.esc(p.imgFit || 'cover')};object-position:${parseInt(p.imgPosX || 50, 10)}% ${parseInt(p.imgPosY || 50, 10)}%;transform:scale(${parseFloat(p.imgScale || 1)});flex-shrink:0;border:1px solid var(--admin-border);" onerror="this.style.display='none'">` : `<div style="width:50px;height:50px;border-radius:10px;background:rgba(200,135,62,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid ${this.esc(p.icon || 'fa-gem')}" style="color:var(--admin-accent);"></i></div>`}
                 <div class="editable-item-info" style="flex:1;">
-                    <h4>${this.esc(p.name)} <span style="color:var(--admin-text-dim);font-size:11px;font-weight:400;">${this.esc(p.cat||'')} · ${this.esc(p.price||'')}</span></h4>
-                    <p>${this.esc(p.subtitle||'').substring(0,70)}${(p.subtitle||'').length>70?'...':''}</p>
+                    <h4>${this.esc(p.name)} <span style="color:var(--admin-text-dim);font-size:11px;font-weight:400;">${this.esc(p.cat || '')} · ${this.esc(p.price || '')}</span></h4>
+                    <p>${this.esc(p.subtitle || '').substring(0, 70)}${(p.subtitle || '').length > 70 ? '...' : ''}</p>
                 </div>
                 <div class="editable-item-actions">
                     <button class="icon-btn" onclick="AdminApp.editStoreProduct(${i})" title="Edit"><i class="fa-solid fa-pen"></i></button>
@@ -1850,35 +1850,35 @@ const AdminApp = {
         document.getElementById('spImage').value = p?.image || '';
         const spImgFit = document.getElementById('spImgFit');
         if (spImgFit) spImgFit.value = p?.imgFit || 'cover';
-        
+
         const spImgScale = document.getElementById('spImgScale');
         if (spImgScale) spImgScale.value = p?.imgScale || 1;
-        
+
         const spScaleVal = document.getElementById('spScaleVal');
         if (spScaleVal) spScaleVal.textContent = parseFloat(p?.imgScale || 1).toFixed(1);
-        
+
         const spPosX = document.getElementById('spPosX');
         if (spPosX) spPosX.value = p?.imgPosX || 50;
-        
+
         const spPosY = document.getElementById('spPosY');
         if (spPosY) spPosY.value = p?.imgPosY || 50;
-        
+
         const spPosXVal = document.getElementById('spPosXVal');
         if (spPosXVal) spPosXVal.textContent = (p?.imgPosX || 50) + '%';
-        
+
         const spPosYVal = document.getElementById('spPosYVal');
         if (spPosYVal) spPosYVal.textContent = (p?.imgPosY || 50) + '%';
-        
+
         if (document.getElementById('spAboutHeading')) document.getElementById('spAboutHeading').value = p?.aboutHeading || '';
         if (document.getElementById('spSpecsHeading')) document.getElementById('spSpecsHeading').value = p?.specsHeading || '';
         if (document.getElementById('spNoteHeading')) document.getElementById('spNoteHeading').value = p?.noteHeading || '';
 
         const spDetailDesc = document.getElementById('spDetailDesc');
         if (spDetailDesc) spDetailDesc.value = p?.detailDesc || '';
-        
+
         const spFeatures = document.getElementById('spFeatures');
         if (spFeatures) spFeatures.value = p?.features || '';
-        
+
         const spIncludes = document.getElementById('spIncludes');
         if (spIncludes) spIncludes.value = p?.includes || '';
         this.editingFields = JSON.parse(JSON.stringify(this.getItemCheckoutFields(p, 'storeProducts')));

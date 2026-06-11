@@ -435,7 +435,7 @@ function bindFaqAccordions(root = document) {
                         const badge = i === 0 ? 'Beginner' : i === 1 ? 'Most Popular' : 'Specialized';
                         const badgeStyle = i === 1 ? ' style="background:var(--maroon-gradient);"' : '';
                         return `
-                        <div class="home-course-card">
+                        <div class="home-course-card" style="cursor:pointer;" onclick="window.location.href='course-detail.html#id=${i}'">
                             <div class="course-badge"${badgeStyle}>${badge}</div>
                             <img src="${c.image}" alt="${c.title}" class="card-img" style="object-fit:${c.imgFit||'cover'};transform:scale(${c.imgScale||1})">
                             <div class="card-body">
@@ -460,7 +460,7 @@ function bindFaqAccordions(root = document) {
                 const blogGrid = document.querySelector('#homeBlogSection .grid-3');
                 if (blogGrid) {
                     blogGrid.innerHTML = data.blog.slice(0, 3).map((b, i) => `
-                        <article class="card">
+                        <article class="card" style="cursor:pointer;" onclick="window.location.href='blog-detail.html#id=${i}'">
                             <img src="${b.image}" alt="${b.title}" class="card-img" style="height:220px;object-fit:${b.imgFit||'cover'};transform:scale(${b.imgScale||1})">
                             <div class="card-body">
                                 <div style="font-size:12px;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:8px;">${b.category || 'Article'}</div>
@@ -647,7 +647,7 @@ function bindFaqAccordions(root = document) {
             const grid = document.getElementById('blogGrid');
             if (grid) {
                 grid.innerHTML = blogs.map((b, i) => `
-                    <div class="blog-card blog-card-${b.style || 'standard'}" data-category="${b.category || 'Article'}">
+                    <div class="blog-card blog-card-${b.style || 'standard'}" data-category="${b.category || 'Article'}" style="cursor:pointer;" onclick="window.location.href='blog-detail.html#id=${i}'">
                         <a href="blog-detail.html#id=${i}" style="position:relative;display:block;">
                             ${b.badge ? `<div class="store-card-badge" style="position:absolute;top:14px;left:14px;background:var(--maroon-gradient);color:#fff;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:2;">${b.badge}</div>` : ''}
                             <div class="blog-card-img">
@@ -800,7 +800,7 @@ function bindFaqAccordions(root = document) {
                 // Remove extra grids
                 for (let i = 1; i < grids.length; i++) grids[i].remove();
                 mainGrid.innerHTML = data.pooja.map((p, i) => `
-                    <div class="cp-pricing-card ${p.style === 'popular' || p.style === 'premium' ? p.style : ''}" data-type="online offline">
+                    <div class="cp-pricing-card ${p.style === 'popular' || p.style === 'premium' ? p.style : ''}" data-type="online offline" style="cursor:pointer;" onclick="window.location.href='pooja-detail.html#id=${i}'">
                         ${p.badge ? `<div class="cp-popular-badge">${p.badge}</div>` : ''}
                         <div class="cp-card-img-wrap"><img src="${p.image || 'https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=600&q=80'}" alt="${p.title}"${p.imgFit ? ` style="object-fit:${p.imgFit}"` : ''}></div>
                         <div class="cp-pricing-header">
@@ -829,7 +829,7 @@ function bindFaqAccordions(root = document) {
             const grid = document.querySelector('.cp-pricing-grid');
             if (grid) {
                 grid.innerHTML = data.courses.map((c, i) => `
-                    <div class="cp-pricing-card ${c.style === 'popular' || c.style === 'premium' ? c.style : ''}">
+                    <div class="cp-pricing-card ${c.style === 'popular' || c.style === 'premium' ? c.style : ''}" style="cursor:pointer;" onclick="window.location.href='course-detail.html#id=${i}'">
                         ${c.badge ? `<div class="cp-popular-badge">${c.badge}</div>` : ''}
                         <div class="cp-card-img-wrap"><img src="${c.image || 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80'}" alt="${c.title}"${c.imgFit ? ` style="object-fit:${c.imgFit}"` : ''}></div>
                         <div class="cp-pricing-header">
@@ -1439,4 +1439,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Make all cards entirely clickable
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('a, button, input, textarea, select')) return;
+        const card = e.target.closest('.home-course-card, .cp-pricing-card, .gemstone-card, .report-card, .blog-card, .card');
+        if (!card) return;
+        if (card.getAttribute('onclick')) return;
+        
+        const detailLink = card.querySelector('a[href*="-detail.html"], a[href*="product-detail.html"]');
+        if (detailLink) window.location.href = detailLink.href;
+    });
+
+    // Add cursor pointer to all cards
+    const style = document.createElement('style');
+    style.innerHTML = '.home-course-card, .cp-pricing-card, .gemstone-card, .report-card, .blog-card, .card { cursor: pointer !important; }';
+    document.head.appendChild(style);
 });
