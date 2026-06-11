@@ -232,13 +232,13 @@
                     const def = defaultCourses[idx] || {};
                     // Extract duration from desc (e.g. "12 Weeks")
                     const durMatch = cmsC.desc && cmsC.desc.match(/\d+\s*Weeks?/i);
-                    const duration = durMatch ? durMatch[0] : (def.duration || 'Self-paced');
+                    const duration = cmsC.duration || (durMatch ? durMatch[0] : (def.duration || 'Self-paced'));
                     // Extract mode from desc
                     const modeMatch = cmsC.desc && cmsC.desc.match(/Live Online|Online|Offline|Self-paced/i);
-                    const mode = modeMatch ? modeMatch[0] : (def.mode || 'Live Online');
+                    const mode = cmsC.mode || (modeMatch ? modeMatch[0] : (def.mode || 'Live Online'));
                     // Extract language from desc
                     const langMatch = cmsC.desc && cmsC.desc.match(/Hindi\s*\+?\s*English|English|Hindi/i);
-                    const lang = langMatch ? langMatch[0] : (def.lang || 'Hindi + English');
+                    const lang = cmsC.lang || (langMatch ? langMatch[0] : (def.lang || 'Hindi + English'));
                     // Extract level from desc
                     const levelMatch = cmsC.desc && cmsC.desc.match(/Beginner|Advanced|Intermediate|Specialized/i);
                     const level = levelMatch ? levelMatch[0] : (def.level || (idx === 0 ? 'Beginner' : idx === 1 ? 'Advanced' : 'Specialized'));

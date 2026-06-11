@@ -843,9 +843,9 @@ function bindFaqAccordions(root = document) {
                                 <span class="cp-price-period">/ full course</span>
                             </div>
                             <div class="cp-pricing-meta">
-                                <span><i class="fa-regular fa-clock"></i> ${c.desc && c.desc.match(/\d+\s*Weeks?/i) ? c.desc.match(/\d+\s*Weeks?/i)[0] : 'Self-paced'}</span>
-                                <span><i class="fa-solid fa-video"></i> Live Online</span>
-                                <span><i class="fa-solid fa-language"></i> Hindi + English</span>
+                                <span><i class="fa-regular fa-clock"></i> ${c.duration || (c.desc && c.desc.match(/\d+\s*Weeks?/i) ? c.desc.match(/\d+\s*Weeks?/i)[0] : 'Self-paced')}</span>
+                                <span><i class="fa-solid fa-video"></i> ${c.mode || 'Live Online'}</span>
+                                <span><i class="fa-solid fa-language"></i> ${c.lang || 'Hindi + English'}</span>
                             </div>
                             <ul class="cp-pricing-features">
                                 ${c.desc ? c.desc.split(',').filter(s => s.trim()).slice(0, 6).map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim().split('.')[0] + '</li>').join('') : ''}

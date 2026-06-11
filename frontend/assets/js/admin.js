@@ -605,6 +605,9 @@ const AdminApp = {
         if (ffEl) ffEl.value = '';
         if (iiEl) iiEl.value = '';
         if (ssEl) ssEl.value = '';
+        if (document.getElementById('fmCourseDuration')) document.getElementById('fmCourseDuration').value = '';
+        if (document.getElementById('fmCourseMode')) document.getElementById('fmCourseMode').value = '';
+        if (document.getElementById('fmCourseLang')) document.getElementById('fmCourseLang').value = '';
         this.editingFields = JSON.parse(JSON.stringify(this.getItemCheckoutFields(null, this.currentCmsKey)));
         this.renderCheckoutFieldsBuilder('cms');
         this.openModal('cmsModal');
@@ -616,6 +619,15 @@ const AdminApp = {
         if (!item) return;
         document.getElementById('modalTitle').textContent = 'Edit ' + item.title;
         document.getElementById('editIndex').value = idx;
+        
+        // Show urgent price field only for consultation
+        const urgentGroup = document.getElementById('urgentPriceGroup');
+        if (urgentGroup) urgentGroup.style.display = this.currentCmsKey === 'consultation' ? '' : 'none';
+
+        // Show course specific fields only for courses
+        const courseGroup = document.getElementById('courseSpecificGroup');
+        if (courseGroup) courseGroup.style.display = this.currentCmsKey === 'courses' ? 'block' : 'none';
+
         document.getElementById('fmTitle').value = item.title || '';
         document.getElementById('fmDesc').value = item.desc || '';
         document.getElementById('fmOldPrice').value = item.oldPrice || '';
@@ -638,12 +650,16 @@ const AdminApp = {
         const editPosYVal = document.getElementById('fmPosYVal');
         if (editPosXVal) editPosXVal.textContent = (item.imgPosX || 50) + '%';
         if (editPosYVal) editPosYVal.textContent = (item.imgPosY || 50) + '%';
+        
+        // Course Specific
+        if (document.getElementById('fmCourseDuration')) document.getElementById('fmCourseDuration').value = item.duration || '';
+        if (document.getElementById('fmCourseMode')) document.getElementById('fmCourseMode').value = item.mode || '';
+        if (document.getElementById('fmCourseLang')) document.getElementById('fmCourseLang').value = item.lang || '';
+        if (document.getElementById('fmReqShipping')) document.getElementById('fmReqShipping').checked = item.reqShipping || false;
+
         this.updateIconPreview();
         const prev = document.getElementById('previewImg');
-        // Show urgent price field only for consultation
-        const urgentGroup = document.getElementById('urgentPriceGroup');
         const urgentInput = document.getElementById('fmUrgentPrice');
-        if (urgentGroup) urgentGroup.style.display = this.currentCmsKey === 'consultation' ? '' : 'none';
         if (urgentInput) urgentInput.value = item.urgentPrice || '';
         // Populate detail page content fields
         if (document.getElementById('fmAboutHeading')) document.getElementById('fmAboutHeading').value = item.aboutHeading || '';
@@ -712,11 +728,19 @@ const AdminApp = {
             imgScale: parseFloat(document.getElementById('fmImgScale').value) || 1,
             imgPosX: parseInt(document.getElementById('fmPosX')?.value || 50, 10),
             imgPosY: parseInt(document.getElementById('fmPosY')?.value || 50, 10),
-            reqShipping: hasShipping,
+            reqShipping: document.getElementById('fmReqShipping')?.checked || hasShipping,
             reqBirth: hasBirth,
             reqNotes: hasNotes,
             checkoutFields: this.editingFields
         };
+        // Course Specific
+        const cdEl = document.getElementById('fmCourseDuration');
+        const cmEl = document.getElementById('fmCourseMode');
+        const clEl = document.getElementById('fmCourseLang');
+        if (cdEl && this.currentCmsKey === 'courses') item.duration = cdEl.value;
+        if (cmEl && this.currentCmsKey === 'courses') item.mode = cmEl.value;
+        if (clEl && this.currentCmsKey === 'courses') item.lang = clEl.value;
+
         // Include urgentPrice if the field exists (consultation items)
         const urgentEl = document.getElementById('fmUrgentPrice');
         if (urgentEl) item.urgentPrice = urgentEl.value;
