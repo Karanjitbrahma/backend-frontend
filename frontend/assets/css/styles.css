@@ -644,7 +644,7 @@ footer { background: #1A0505; color: #fff; padding: 70px 0 20px; }
     /* Floating Book Button */
     .floating-book-btn {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         position: fixed;
@@ -653,25 +653,25 @@ footer { background: #1A0505; color: #fff; padding: 70px 0 20px; }
         transform: translateY(-50%);
         background: linear-gradient(135deg, var(--primary) 0%, #D4AF37 100%);
         color: var(--bg-dark);
-        padding: 12px 10px;
-        font-weight: 800;
-        font-size: 12px;
+        padding: 10px 14px;
+        font-weight: 700;
+        font-size: 13px;
         text-transform: uppercase;
         border-radius: 8px 0 0 8px;
         z-index: 1000;
         box-shadow: -2px 2px 12px rgba(0,0,0,0.4);
         text-decoration: none;
         text-align: center;
-        line-height: 1.2;
-        gap: 4px;
+        line-height: 1;
+        gap: 8px;
         border-left: 2px solid rgba(255,255,255,0.4);
         border-top: 2px solid rgba(255,255,255,0.4);
         border-bottom: 2px solid rgba(255,255,255,0.4);
         letter-spacing: 0.5px;
     }
     .floating-book-btn i {
-        font-size: 18px;
-        margin-bottom: 2px;
+        font-size: 14px;
+        margin-bottom: 0;
     }
 
     /* Floating Social Sidebar */
