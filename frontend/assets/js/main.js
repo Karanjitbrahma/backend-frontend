@@ -1458,7 +1458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Make all cards entirely clickable
     document.addEventListener('click', (e) => {
         if (e.target.closest('a, button, input, textarea, select')) return;
-        const card = e.target.closest('.home-course-card, .cp-pricing-card, .gemstone-card, .report-card, .blog-card, .card');
+        const card = e.target.closest('.home-course-card, .cp-pricing-card, .gemstone-card, .report-card, .blog-card, .card, .store-card');
         if (!card) return;
         if (card.getAttribute('onclick')) return;
         
@@ -1468,6 +1468,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add cursor pointer to all cards
     const style = document.createElement('style');
-    style.innerHTML = '.home-course-card, .cp-pricing-card, .gemstone-card, .report-card, .blog-card, .card { cursor: pointer !important; }';
+    style.innerHTML = '.home-course-card, .cp-pricing-card, .gemstone-card, .report-card, .blog-card, .card, .store-card { cursor: pointer !important; }';
     document.head.appendChild(style);
 });
