@@ -605,6 +605,9 @@ const AdminApp = {
         if (ffEl) ffEl.value = '';
         if (iiEl) iiEl.value = '';
         if (ssEl) ssEl.value = '';
+        if (document.getElementById('fmCourseDurationLabel')) document.getElementById('fmCourseDurationLabel').value = '';
+        if (document.getElementById('fmCourseModeLabel')) document.getElementById('fmCourseModeLabel').value = '';
+        if (document.getElementById('fmCourseLangLabel')) document.getElementById('fmCourseLangLabel').value = '';
         if (document.getElementById('fmCourseDuration')) document.getElementById('fmCourseDuration').value = '';
         if (document.getElementById('fmCourseMode')) document.getElementById('fmCourseMode').value = '';
         if (document.getElementById('fmCourseLang')) document.getElementById('fmCourseLang').value = '';
@@ -652,6 +655,9 @@ const AdminApp = {
         if (editPosYVal) editPosYVal.textContent = (item.imgPosY || 50) + '%';
         
         // Course Specific
+        if (document.getElementById('fmCourseDurationLabel')) document.getElementById('fmCourseDurationLabel').value = item.durationLabel || '';
+        if (document.getElementById('fmCourseModeLabel')) document.getElementById('fmCourseModeLabel').value = item.modeLabel || '';
+        if (document.getElementById('fmCourseLangLabel')) document.getElementById('fmCourseLangLabel').value = item.langLabel || '';
         if (document.getElementById('fmCourseDuration')) document.getElementById('fmCourseDuration').value = item.duration || '';
         if (document.getElementById('fmCourseMode')) document.getElementById('fmCourseMode').value = item.mode || '';
         if (document.getElementById('fmCourseLang')) document.getElementById('fmCourseLang').value = item.lang || '';
@@ -734,9 +740,15 @@ const AdminApp = {
             checkoutFields: this.editingFields
         };
         // Course Specific
+        const cdLabelEl = document.getElementById('fmCourseDurationLabel');
+        const cmLabelEl = document.getElementById('fmCourseModeLabel');
+        const clLabelEl = document.getElementById('fmCourseLangLabel');
         const cdEl = document.getElementById('fmCourseDuration');
         const cmEl = document.getElementById('fmCourseMode');
         const clEl = document.getElementById('fmCourseLang');
+        if (cdLabelEl && this.currentCmsKey === 'courses') item.durationLabel = cdLabelEl.value;
+        if (cmLabelEl && this.currentCmsKey === 'courses') item.modeLabel = cmLabelEl.value;
+        if (clLabelEl && this.currentCmsKey === 'courses') item.langLabel = clLabelEl.value;
         if (cdEl && this.currentCmsKey === 'courses') item.duration = cdEl.value;
         if (cmEl && this.currentCmsKey === 'courses') item.mode = cmEl.value;
         if (clEl && this.currentCmsKey === 'courses') item.lang = clEl.value;

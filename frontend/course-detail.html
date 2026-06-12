@@ -253,8 +253,11 @@
                         subtitle: cmsC.desc ? cmsC.desc.split('.').slice(0, 2).join('. ') : (def.subtitle || ''),
                         price: '₹' + cmsC.newPrice,
                         oldPrice: cmsC.oldPrice ? '₹' + cmsC.oldPrice : '',
+                        durationLabel: cmsC.durationLabel || 'Duration',
                         duration: duration,
+                        modeLabel: cmsC.modeLabel || 'Mode',
                         mode: mode,
+                        langLabel: cmsC.langLabel || 'Language',
                         lang: lang,
                         image: cmsC.image || def.image || '',
                         wa: encodeURIComponent('I want to enroll in ' + cmsC.title + ' course'),
@@ -292,9 +295,19 @@
     document.getElementById('dSubtitle').textContent = c.subtitle;
     document.getElementById('dPrice').textContent = c.price;
     if (c.oldPrice) document.getElementById('dOldPrice').textContent = c.oldPrice;
+    
+    // Duration
     document.getElementById('dDuration').textContent = c.duration;
+    document.getElementById('dDuration').nextElementSibling.textContent = c.durationLabel;
+    
+    // Mode
     document.getElementById('dMode').textContent = c.mode.replace('Live ','');
+    document.getElementById('dMode').nextElementSibling.textContent = c.modeLabel;
+    
+    // Language
     document.getElementById('dLanguage').textContent = c.lang.replace(' + ','/');
+    document.getElementById('dLanguage').nextElementSibling.textContent = c.langLabel;
+    
     document.getElementById('dImage').src = c.image;
     document.getElementById('dImage').alt = c.title;
     document.title = c.title + ' - Bhartiya Sidhant';
