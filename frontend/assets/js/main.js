@@ -815,7 +815,7 @@ function bindFaqAccordions(root = document) {
                                 <span><i class="fa-solid fa-video"></i> Live Streaming</span>
                             </div>
                             <ul class="cp-pricing-features">
-                                ${p.desc ? p.desc.split('.').filter(s => s.trim()).slice(0, 4).map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim() + '</li>').join('') : ''}
+                                ${(p.features ? p.features.split('\n') : (p.desc ? p.desc.split(/[\n.]/) : [])).filter(s => s.trim()).slice(0, 4).map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim() + '</li>').join('')}
                             </ul>
                             <a href="pooja-detail.html#id=${i}" class="header-btn ${i === 1 ? 'btn-gold' : 'btn-outline'} cp-pricing-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
@@ -848,7 +848,7 @@ function bindFaqAccordions(root = document) {
                                 <span><i class="fa-solid fa-language"></i> ${c.lang || 'Hindi + English'}</span>
                             </div>
                             <ul class="cp-pricing-features">
-                                ${c.desc ? c.desc.split(',').filter(s => s.trim()).slice(0, 6).map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim().split('.')[0] + '</li>').join('') : ''}
+                                ${(c.features ? c.features.split('\n') : (c.desc ? c.desc.split(/[\n,]/) : [])).filter(s => s.trim()).slice(0, 6).map(f => '<li><i class="fa-solid fa-check"></i> ' + f.trim().split('.')[0] + '</li>').join('')}
                             </ul>
                             <a href="course-detail.html#id=${i}" class="header-btn ${i === 1 ? 'btn-gold' : 'btn-outline'} cp-pricing-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
@@ -865,7 +865,7 @@ function bindFaqAccordions(root = document) {
             const renderCards = (list, isUrgent) => {
                 if (!list) return '';
                 return list.map((c, i) => {
-                    const features = c.desc ? c.desc.split(',').filter(s => s.trim()).slice(0, 6) : [];
+                    const features = (c.features ? c.features.split('\n') : (c.desc ? c.desc.split(/[\n,]/) : [])).filter(s => s.trim()).slice(0, 6);
                     const duration = c.desc && c.desc.match(/\d+\s*Minutes?/i) ? c.desc.match(/\d+\s*Minutes?/i)[0] : '30 Minutes';
                     const callType = c.desc && c.desc.match(/Video Call|Audio.*Video|Zoom|Meet/i) ? c.desc.match(/Video Call|Audio.*Video|Zoom|Meet/i)[0] : 'Audio / Video Call';
                     return `
@@ -932,7 +932,7 @@ function bindFaqAccordions(root = document) {
                             <div class="duration">${c.desc.split(/[\n.]/)[0]}</div>
                             <div class="price">${c.oldPrice ? `<del>₹${c.oldPrice}/-</del>` : ''}₹${c.newPrice}/-</div>
                             <ul>
-                                ${c.desc.split(/[\n,]/).filter(f => f.trim()).map(f => `<li><i class="fa-solid fa-check"></i> ${f.trim()}</li>`).join('')}
+                                ${(c.features ? c.features.split('\n') : (c.desc ? c.desc.split(/[\n,]/) : [])).filter(f => f.trim()).map(f => `<li><i class="fa-solid fa-check"></i> ${f.trim()}</li>`).join('')}
                             </ul>
                             <button class="book-btn" onclick="if(window.openBooking)openBooking('${c.title}','${c.desc.split(/[\n.]/)[0]}',${parseInt(String(c.newPrice||'0').replace(/[^0-9]/g,''))*100},'₹${c.newPrice||'0'}');else window.location.href='${c.link || '#'}'"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
                         </div>
