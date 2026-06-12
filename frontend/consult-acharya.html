@@ -21,10 +21,11 @@
         .acharya-stat .lbl{font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
         .pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:40px}
         .pricing-card{background:#FDF5E6;border-radius:16px;padding:35px 25px;text-align:center;border:1px solid rgba(200,135,62,.12);transition:all .3s;position:relative}
-        .pricing-card.featured{border:2px solid var(--primary);transform:scale(1.05)}
-        .pricing-card.featured::before{content:"MOST POPULAR";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold-gradient);color:#fff;padding:5px 18px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px}
+        .pricing-card.popular, .pricing-card.premium{border:2px solid var(--primary);transform:scale(1.05)}
+        .popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold-gradient);color:#fff;padding:5px 18px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;white-space:nowrap;}
+        .premium-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--maroon-gradient);color:#fff;padding:5px 18px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;white-space:nowrap;}
         .pricing-card:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(200,135,62,.18)}
-        .pricing-card.featured:hover{transform:scale(1.05) translateY(-5px)}
+        .pricing-card.popular:hover, .pricing-card.premium:hover{transform:scale(1.05) translateY(-5px)}
         .pricing-card h3{font-size:22px;color:var(--secondary);margin-bottom:8px;font-family:var(--font-heading)}
         .pricing-card .duration{font-size:14px;color:var(--text-light);margin-bottom:20px}
         .pricing-card .price{font-size:36px;font-weight:800;color:var(--primary);font-family:var(--font-heading)}
@@ -40,7 +41,7 @@
         .why-item i{font-size:32px;color:var(--primary);margin-bottom:15px}
         .why-item h4{font-size:17px;color:var(--secondary);margin-bottom:8px}
         .why-item p{font-size:13px;color:var(--text-light);line-height:1.6}
-        @media(max-width:768px){.acharya-hero,.pricing-cards,.why-acharya{grid-template-columns:1fr}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-5px)}}
+        @media(max-width:768px){.acharya-hero,.pricing-cards,.why-acharya{grid-template-columns:1fr}.pricing-card.popular, .pricing-card.premium{transform:none}.pricing-card.popular:hover, .pricing-card.premium:hover{transform:translateY(-5px)}}
         /* Booking Modal */
         .booking-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
         .booking-overlay.open{display:flex}
@@ -106,7 +107,8 @@
                     <button class="book-btn" onclick="openBooking('Quick Guidance','15 Minutes',79900,'₹799')"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
                 </div>
 
-                <div class="pricing-card featured">
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
                     <h3>Deep Analysis</h3>
                     <div class="duration">30 Minutes Session</div>
                     <div class="price"><del>&#8377;2,500/-</del>&#8377;1,499/-</div>
@@ -300,29 +302,7 @@
                 }
             }
 
-            if (d.consultAcharya && d.consultAcharya.length > 0) {
-                const container = document.querySelector('.pricing-cards');
-                if (container) {
-                    let html = '';
-                    d.consultAcharya.forEach((item, index) => {
-                        const isFeatured = index === 1 ? 'featured' : '';
-                        const oldPriceHtml = item.oldPrice ? `<del>${item.oldPrice}</del>` : '';
-                        const featuresHtml = (item.features || '')
-                            .split('\\n').filter(Boolean)
-                            .map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('');
-                        
-                        html += `
-                        <div class="pricing-card ${isFeatured}">
-                            <h3>${item.title}</h3>
-                            <div class="duration">${item.duration || 'Session'}</div>
-                            <div class="price">${oldPriceHtml}${item.newPrice}</div>
-                            <ul>${featuresHtml}</ul>
-                            <button class="book-btn" onclick="openBooking('${item.title.replace(/'/g, "\\\\'")}', '${item.duration || ''}', ${item.priceAmount}, '${item.newPrice}')"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
-                        </div>`;
-                    });
-                    container.innerHTML = html;
-                }
-            }
+
         } catch(e) {
             console.error('Error loading Acharya page data:', e);
         }

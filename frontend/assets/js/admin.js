@@ -59,12 +59,9 @@ const AdminApp = {
                 { title: 'Copper Sri Yantra', desc: 'For Wealth & Lakshmi Blessings', image: 'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=500', icon: 'fa-dharmachakra', oldPrice: '', newPrice: '2,100', link: 'store.html', imgFit: 'cover', imgScale: 1 }
             ],
             pooja: [
-                { title: 'Navagraha Shanti Pooja', desc: 'Pacify malefic planets & remove obstacles. 4-5 Hours with Live Streaming.', image: 'https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=400&q=80', icon: 'fa-sun', oldPrice: '', newPrice: '5,100', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
-                { title: 'Maha Mrityunjaya Jaap', desc: 'Powerful mantra for health & longevity. 11 Days, 1.25 Lakh Chants.', image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=400&q=80', icon: 'fa-hands-praying', oldPrice: '', newPrice: '21,000', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
-                { title: 'Kaal Sarp Dosh Nivaran', desc: 'Neutralize Kaal Sarp Dosh effects. 3-4 Hours with Live Streaming.', image: 'https://images.unsplash.com/photo-1604608672516-f1b9b1d79072?auto=format&fit=crop&w=400&q=80', icon: 'fa-dragon', oldPrice: '', newPrice: '7,500', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
-                { title: 'Lakshmi Narayan Pooja', desc: 'Attract wealth & prosperity. 2-3 Hours with Live Streaming.', image: 'https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=400&q=80', icon: 'fa-coins', oldPrice: '', newPrice: '3,100', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
-                { title: 'Vastu Shanti Pooja', desc: 'Harmonize your home or office. 5-6 Hours at Your Location.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80', icon: 'fa-house', oldPrice: '', newPrice: '11,000', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
-                { title: 'Mangal Dosh Nivaran', desc: 'Remove Manglik Dosh for marriage. 3-4 Hours with Live Streaming.', image: 'https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=400&q=80', icon: 'fa-ring', oldPrice: '', newPrice: '5,500', link: 'pooja.html', imgFit: 'cover', imgScale: 1 }
+                { title: 'Navagraha Shanti', desc: 'Pacify malefic planets and enhance benefic ones for removing obstacles and bringing harmony.', image: 'https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=600&q=80', icon: 'fa-sun', oldPrice: '', newPrice: '5,100', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
+                { title: 'Maha Mrityunjaya', desc: 'Powerful life-saving mantra jaap for severe health issues, longevity, and averting accidents.', image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80', icon: 'fa-hands-praying', oldPrice: '', newPrice: '21,000', link: 'pooja.html', imgFit: 'cover', imgScale: 1 },
+                { title: 'Kaal Sarp Dosh', desc: 'Specialized ritual to nullify negative effects of Kaal Sarp Dosh in your birth chart.', image: 'https://images.unsplash.com/photo-1604608672516-f1b9b1d79072?auto=format&fit=crop&w=600&q=80', icon: 'fa-dragon', oldPrice: '', newPrice: '7,500', link: 'pooja.html', imgFit: 'cover', imgScale: 1 }
             ],
             courses: [
                 { title: 'Vedic Astrology Foundations', desc: 'Start your journey into Jyotish Shastra. 12 Weeks, Live Online, Hindi + English. Beginner level.', image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&q=80', icon: 'fa-book-open', oldPrice: '', newPrice: '14,999', link: 'https://wa.me/911253354445?text=I%20want%20to%20enroll%20in%20Vedic%20Astrology%20Beginners%20course', imgFit: 'cover', imgScale: 1 },
@@ -72,18 +69,17 @@ const AdminApp = {
                 { title: 'Maha Vastu Shastra', desc: 'Master the science of spatial energy. 8 Weeks, Live Online. Specialized course.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80', icon: 'fa-compass', oldPrice: '', newPrice: '11,999', link: 'https://wa.me/911253354445?text=I%20want%20to%20enroll%20in%20Maha%20Vastu%20Shastra%20course', imgFit: 'cover', imgScale: 1 }
             ],
             services: [
-                { title: 'Kundli / Birth Chart', desc: 'Complete Vedic birth chart analysis covering all 12 houses, planetary positions, dashas, and yogas to reveal your life\'s blueprint.', image: 'https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f0?auto=format&fit=crop&w=600&q=80', icon: 'fa-scroll', oldPrice: '', newPrice: '', link: 'services/kundli-reading.html', imgFit: 'cover', imgScale: 1, category: 'astrology' },
-                { title: 'Kundli Milan / Match Making', desc: 'Comprehensive Ashtakoota Guna matching, Mangal Dosha check, and Nadi analysis for marriage compatibility.', image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80', icon: 'fa-heart', oldPrice: '', newPrice: '', link: 'services/match-making.html', imgFit: 'cover', imgScale: 1, category: 'astrology' },
-                { title: 'Muhurta (Auspicious Time)', desc: 'Find the perfect timing for marriage, griha pravesh, business launch, or any important event based on Panchang.', image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=600&q=80', icon: 'fa-clock', oldPrice: '', newPrice: '', link: 'services/annual-predictions.html', imgFit: 'cover', imgScale: 1, category: 'astrology' },
-                { title: 'Career & Financial Astrology', desc: 'Detailed analysis of your 10th & 2nd houses to guide career choices, job timing, and wealth accumulation strategies.', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80', icon: 'fa-briefcase', oldPrice: '', newPrice: '', link: 'services/kundli-reading.html', imgFit: 'cover', imgScale: 1, category: 'astrology' },
-                { title: 'Love & Relationship Reading', desc: 'Understand relationship patterns, timing of marriage, and remedies for delayed or troubled partnerships.', image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80', icon: 'fa-heart-pulse', oldPrice: '', newPrice: '', link: 'services/match-making.html', imgFit: 'cover', imgScale: 1, category: 'astrology' },
-                { title: 'Health Astrology', desc: 'Medical astrology analysis identifying vulnerable areas and planetary remedies for better health and longevity.', image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80', icon: 'fa-heart-circle-check', oldPrice: '', newPrice: '', link: 'services/kundli-reading.html', imgFit: 'cover', imgScale: 1, category: 'astrology' },
-                { title: 'Residential Vastu', desc: 'Complete audit of your home\'s energy flow with practical, non-demolition remedies for peace, harmony, and prosperity.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80', icon: 'fa-house', oldPrice: '', newPrice: '', link: 'services/home-vastu.html', imgFit: 'cover', imgScale: 1, category: 'vastu' },
-                { title: 'Commercial Vastu', desc: 'Strategic Vastu consultation for offices, shops, and factories to enhance business growth and employee productivity.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80', icon: 'fa-building', oldPrice: '', newPrice: '', link: 'services/office-vastu.html', imgFit: 'cover', imgScale: 1, category: 'vastu' },
-                { title: 'Plot & Construction', desc: 'Vastu-compliant guidance for plot selection, building design, room placement, and directional planning from scratch.', image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80', icon: 'fa-drafting-compass', oldPrice: '', newPrice: '', link: 'services/plot-construction.html', imgFit: 'cover', imgScale: 1, category: 'vastu' },
-                { title: 'Gemstone Recommendation', desc: 'Get the right certified gemstone prescribed based on your Kundli for specific planetary strengthening.', image: 'https://images.unsplash.com/photo-1583484963886-cfe2bff2945f?auto=format&fit=crop&w=600&q=80', icon: 'fa-gem', oldPrice: '', newPrice: '', link: 'services/gemstone-therapy.html', imgFit: 'cover', imgScale: 1, category: 'remedies' },
-                { title: 'Rudraksha Therapy', desc: 'Authentic Nepali & Indonesian Rudraksha selection based on your planetary needs for spiritual & physical healing.', image: 'https://images.unsplash.com/photo-1601821765780-754fa98637c1?auto=format&fit=crop&w=600&q=80', icon: 'fa-circle-dot', oldPrice: '', newPrice: '', link: 'services/rudraksha.html', imgFit: 'cover', imgScale: 1, category: 'remedies' },
-                { title: 'Yantra Siddhi', desc: 'Energized copper and silver yantras for wealth (Shree Yantra), protection (Sudarshan), and spiritual awakening.', image: 'https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?auto=format&fit=crop&w=600&q=80', icon: 'fa-dharmachakra', oldPrice: '', newPrice: '', link: 'services/yantra-energization.html', imgFit: 'cover', imgScale: 1, category: 'remedies' }
+                { title: 'Kundli Reading', desc: 'Detailed birth chart analysis covering career, marriage, finance, and health based on your exact planetary positions.', image: 'https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f0?auto=format&fit=crop&w=600&q=80', icon: 'fa-scroll', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'astrology' },
+                { title: 'Match Making', desc: 'Comprehensive Kundli Milan & Guna matching for marriage compatibility with detailed Ashtakoota analysis.', image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80', icon: 'fa-heart', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'astrology' },
+                { title: 'Annual Predictions', desc: 'Year-ahead forecast with month-by-month breakdown of career opportunities, challenges, and auspicious timings.', image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80', icon: 'fa-clock', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'astrology' },
+                
+                { title: 'Home Vastu', desc: 'Complete Vastu audit of your residence with practical, non-demolition remedies for harmony.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80', icon: 'fa-house', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'vastu' },
+                { title: 'Office Vastu', desc: 'Strategic Vastu consultation for business premises to boost growth, productivity, and finances.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80', icon: 'fa-building', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'vastu' },
+                { title: 'Plot & Construction', desc: 'Vastu-compliant guidance for new construction, plot selection, and directional planning.', image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80', icon: 'fa-drafting-compass', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'vastu' },
+                
+                { title: 'Gemstone Therapy', desc: 'Lab-certified, energized gemstones prescribed based on your chart for specific planetary benefits.', image: 'https://images.unsplash.com/photo-1583484963886-cfe2bff2945f?auto=format&fit=crop&w=600&q=80', icon: 'fa-gem', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'remedies' },
+                { title: 'Rudraksha', desc: 'Authentic Nepali & Indonesian Rudraksha beads with certification for spiritual & health benefits.', image: 'https://images.unsplash.com/photo-1601821765780-754fa98637c1?auto=format&fit=crop&w=600&q=80', icon: 'fa-circle-dot', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'remedies' },
+                { title: 'Yantra Energization', desc: 'Siddhi yantras energized through Vedic rituals for wealth, protection, and spiritual growth.', image: 'https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?auto=format&fit=crop&w=600&q=80', icon: 'fa-dharmachakra', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'remedies' }
             ],
             blog: [
                 { title: 'Impact of Saturn Transit in Aquarius 2026', desc: 'How Saturn\'s transit will affect all 12 zodiac signs financially and emotionally.', image: 'https://images.unsplash.com/photo-1515943681423-731804f5b721?auto=format&fit=crop&w=600&q=80', icon: 'fa-pen-nib', oldPrice: '', newPrice: '', link: '', imgFit: 'cover', imgScale: 1, category: 'Planetary Transits', content: 'Saturn\'s transit into Aquarius in 2026 marks a significant celestial event that will affect every zodiac sign differently. As the great taskmaster of the zodiac, Saturn brings discipline, restructuring, and karmic lessons wherever it goes.\n\nFor Aries natives, this transit activates the 11th house of gains, bringing new friendships and financial opportunities through networking. Taurus will feel Saturn\'s influence in the 10th house, making career and reputation a major focus.\n\nGemini natives should prepare for transformation in their belief systems as Saturn transits their 9th house. Cancer signs will experience deep changes in shared resources and intimacy matters.\n\nLeo natives will see major developments in partnerships and marriage. Virgo will focus on health routines and daily work habits. Libra natives experience creativity boosts and romantic developments.\n\nScorpio faces home and family restructuring. Sagittarius focuses on communication and sibling relationships. Capricorn deals with financial restructuring. Aquarius experiences a complete personal transformation. Pisces focuses on solitude and spiritual growth.\n\nKey remedies during this transit include chanting the Shani mantra, wearing blue sapphire (after consultation), donating black items on Saturdays, and performing Hanuman Chalisa recitation.' },
@@ -119,6 +115,18 @@ const AdminApp = {
                 { icon: 'fa-hands-praying', target: 500, label: 'Poojas Performed' },
                 { icon: 'fa-award', target: 10, label: 'Years of Experience' }
             ],
+            homeServices: {
+                label: 'What We Offer',
+                heading: 'Our',
+                highlight: 'Services',
+                subtitle: 'Comprehensive astrological and spiritual solutions tailored for your peace and prosperity.',
+                tabs: [
+                    { name: 'Astrology', category: 'astrology', btnText: 'Learn More', count: 3 },
+                    { name: 'Pooja & Rituals', category: 'pooja', btnText: 'Book Now', count: 3 },
+                    { name: 'Remedies', category: 'remedies', btnText: 'Shop Now', count: 3 },
+                    { name: 'Vastu', category: 'vastu', btnText: 'Consult Now', count: 3 }
+                ]
+            },
             logoImage: '',
             logoWidth: 186,
             hero: {
@@ -544,6 +552,7 @@ const AdminApp = {
                     ${item.newPrice ? `<span style="color:var(--admin-success);font-size:12px;margin-left:8px;">₹${this.esc(item.newPrice)}</span>` : ''}
                     ${item.oldPrice ? `<span style="color:var(--admin-text-dim);font-size:11px;text-decoration:line-through;margin-left:4px;">₹${this.esc(item.oldPrice)}</span>` : ''}
                     ${item.urgentPrice ? `<span style="color:var(--admin-warning);font-size:11px;margin-left:6px;">⚡₹${this.esc(item.urgentPrice)}</span>` : ''}
+                    ${item.badge ? `<span style="background:var(--gold-gradient);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;margin-left:6px;text-transform:uppercase;font-weight:700;">${this.esc(item.badge)}</span>` : ''}
                     </h4>
                     <p>${this.esc(item.desc).substring(0, 90)}${item.desc.length > 90 ? '...' : ''}</p>
                 </div>
@@ -1071,6 +1080,22 @@ const AdminApp = {
             setVal('setCounter' + (ci + 1) + 'Label', c.label);
         }
 
+        // Populate Home Services Section
+        const hs = this.data.homeServices || {};
+        setVal('setHomeSvcLabel', hs.label);
+        setVal('setHomeSvcHeading', hs.heading);
+        setVal('setHomeSvcHighlight', hs.highlight);
+        setVal('setHomeSvcSubtitle', hs.subtitle);
+        const hsTabs = hs.tabs || [];
+        for (let ti = 0; ti < 4; ti++) {
+            const t = hsTabs[ti] || {};
+            setVal('setHomeSvcTab' + (ti + 1), t.name);
+            setVal('setHomeSvcCat' + (ti + 1), t.category);
+            setVal('setHomeSvcBtn' + (ti + 1), t.btnText);
+            const countEl = document.getElementById('setHomeSvcCount' + (ti + 1));
+            if (countEl) countEl.value = t.count || 3;
+        }
+
         // Populate logo preview from saved data
         if (this.data.logoImage) {
             const lp = document.getElementById('logoPreview');
@@ -1181,6 +1206,26 @@ const AdminApp = {
                 target: parseInt(document.getElementById('setCounter' + ci + 'Num')?.value) || 0,
                 label: document.getElementById('setCounter' + ci + 'Label')?.value || ''
             });
+        }
+        // Save Home Services Section
+        this.data.homeServices = {
+            label: document.getElementById('setHomeSvcLabel')?.value || 'What We Offer',
+            heading: document.getElementById('setHomeSvcHeading')?.value || 'Our',
+            highlight: document.getElementById('setHomeSvcHighlight')?.value || 'Services',
+            subtitle: document.getElementById('setHomeSvcSubtitle')?.value || '',
+            tabs: []
+        };
+        for (let ti = 1; ti <= 4; ti++) {
+            const name = document.getElementById('setHomeSvcTab' + ti)?.value || '';
+            const category = document.getElementById('setHomeSvcCat' + ti)?.value || '';
+            if (name || category) {
+                this.data.homeServices.tabs.push({
+                    name: name,
+                    category: category,
+                    btnText: document.getElementById('setHomeSvcBtn' + ti)?.value || 'Learn More',
+                    count: parseInt(document.getElementById('setHomeSvcCount' + ti)?.value) || 3
+                });
+            }
         }
         // Save video embed
         this.data.video = {
@@ -1864,7 +1909,9 @@ const AdminApp = {
             <div class="editable-item" style="margin-bottom:10px;">
                 ${p.image ? `<img src="${this.esc(p.image)}" style="width:50px;height:50px;border-radius:10px;object-fit:${this.esc(p.imgFit || 'cover')};object-position:${parseInt(p.imgPosX || 50, 10)}% ${parseInt(p.imgPosY || 50, 10)}%;transform:scale(${parseFloat(p.imgScale || 1)});flex-shrink:0;border:1px solid var(--admin-border);" onerror="this.style.display='none'">` : `<div style="width:50px;height:50px;border-radius:10px;background:rgba(200,135,62,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid ${this.esc(p.icon || 'fa-gem')}" style="color:var(--admin-accent);"></i></div>`}
                 <div class="editable-item-info" style="flex:1;">
-                    <h4>${this.esc(p.name)} <span style="color:var(--admin-text-dim);font-size:11px;font-weight:400;">${this.esc(p.cat || '')} · ${this.esc(p.price || '')}</span></h4>
+                    <h4>${this.esc(p.name)} <span style="color:var(--admin-text-dim);font-size:11px;font-weight:400;">${this.esc(p.cat || '')} · ${this.esc(p.price || '')}</span>
+                    ${p.badge ? `<span style="background:var(--gold-gradient);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;margin-left:6px;text-transform:uppercase;font-weight:700;">${this.esc(p.badge)}</span>` : ''}
+                    </h4>
                     <p>${this.esc(p.subtitle || '').substring(0, 70)}${(p.subtitle || '').length > 70 ? '...' : ''}</p>
                 </div>
                 <div class="editable-item-actions">

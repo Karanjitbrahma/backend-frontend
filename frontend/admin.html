@@ -477,6 +477,109 @@
                         </div>
                     </div>
 
+                    <!-- Home Services Section -->
+                    <div class="admin-panel">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-concierge-bell"></i> Home Page — Our Services Section</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p style="font-size:13px;color:var(--admin-text-dim);margin-bottom:16px;">Customize the "Our Services" section displayed on the home page. The cards are pulled from your <strong>Services</strong> and <strong>Pooja</strong> items based on their category.</p>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Section Label (above heading)</label>
+                                    <input class="form-input" id="setHomeSvcLabel" placeholder="e.g. What We Offer">
+                                </div>
+                                <div class="form-group">
+                                    <label>Heading</label>
+                                    <input class="form-input" id="setHomeSvcHeading" placeholder="e.g. Our">
+                                </div>
+                                <div class="form-group">
+                                    <label>Heading Highlight (colored)</label>
+                                    <input class="form-input" id="setHomeSvcHighlight" placeholder="e.g. Services">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Subtitle</label>
+                                    <input class="form-input" id="setHomeSvcSubtitle" placeholder="e.g. Comprehensive astrological and spiritual solutions...">
+                                </div>
+                            </div>
+                            <h4 style="font-size:13px;color:var(--admin-accent);text-transform:uppercase;letter-spacing:1px;margin:20px 0 14px;border-top:1px solid var(--admin-border);padding-top:16px;"><i class="fa-solid fa-folder-tree" style="margin-right:6px;"></i> Tab Configuration</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Tab 1 Name</label>
+                                    <input class="form-input" id="setHomeSvcTab1" placeholder="e.g. Astrology">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 1 Category Key</label>
+                                    <input class="form-input" id="setHomeSvcCat1" placeholder="e.g. astrology">
+                                    <span class="form-hint">Must match the category on your Service items</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 1 Button Text</label>
+                                    <input class="form-input" id="setHomeSvcBtn1" placeholder="e.g. Learn More">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cards to Show</label>
+                                    <input class="form-input" id="setHomeSvcCount1" placeholder="3" type="number" min="1" max="12">
+                                </div>
+                            </div>
+                            <div class="form-grid" style="border-top:1px solid var(--admin-border);padding-top:12px;">
+                                <div class="form-group">
+                                    <label>Tab 2 Name</label>
+                                    <input class="form-input" id="setHomeSvcTab2" placeholder="e.g. Pooja & Rituals">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 2 Category Key</label>
+                                    <input class="form-input" id="setHomeSvcCat2" placeholder="e.g. pooja">
+                                    <span class="form-hint">Use <strong>pooja</strong> to pull from the Pooja section</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 2 Button Text</label>
+                                    <input class="form-input" id="setHomeSvcBtn2" placeholder="e.g. Book Now">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cards to Show</label>
+                                    <input class="form-input" id="setHomeSvcCount2" placeholder="3" type="number" min="1" max="12">
+                                </div>
+                            </div>
+                            <div class="form-grid" style="border-top:1px solid var(--admin-border);padding-top:12px;">
+                                <div class="form-group">
+                                    <label>Tab 3 Name</label>
+                                    <input class="form-input" id="setHomeSvcTab3" placeholder="e.g. Remedies">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 3 Category Key</label>
+                                    <input class="form-input" id="setHomeSvcCat3" placeholder="e.g. remedies">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 3 Button Text</label>
+                                    <input class="form-input" id="setHomeSvcBtn3" placeholder="e.g. Shop Now">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cards to Show</label>
+                                    <input class="form-input" id="setHomeSvcCount3" placeholder="3" type="number" min="1" max="12">
+                                </div>
+                            </div>
+                            <div class="form-grid" style="border-top:1px solid var(--admin-border);padding-top:12px;">
+                                <div class="form-group">
+                                    <label>Tab 4 Name</label>
+                                    <input class="form-input" id="setHomeSvcTab4" placeholder="e.g. Vastu">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 4 Category Key</label>
+                                    <input class="form-input" id="setHomeSvcCat4" placeholder="e.g. vastu">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tab 4 Button Text</label>
+                                    <input class="form-input" id="setHomeSvcBtn4" placeholder="e.g. Consult Now">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cards to Show</label>
+                                    <input class="form-input" id="setHomeSvcCount4" placeholder="3" type="number" min="1" max="12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Counters Section -->
                     <div class="admin-panel">
                         <div class="panel-header">
@@ -956,6 +1059,10 @@
                             <input class="form-input" id="spName" placeholder="e.g. Yellow Sapphire (Pukhraj)" required>
                         </div>
                         <div class="form-group">
+                            <label>Badge (optional)</label>
+                            <input class="form-input" id="spBadge" placeholder="e.g. Bestseller, Popular">
+                        </div>
+                        <div class="form-group">
                             <label>Category</label>
                             <select class="form-select" id="spCat">
                                 <option value="gemstone">Gemstone</option>
@@ -1001,14 +1108,10 @@
                             <input class="form-input" id="spPrice" placeholder="e.g. ₹15,000/Ratti">
                         </div>
                         <div class="form-group">
-                            <label>Badge (optional)</label>
-                            <input class="form-input" id="spBadge" placeholder="e.g. Bestseller, Popular">
-                        </div>
-                        <div class="form-group">
                             <label>Card Style</label>
                             <select class="form-select" id="spStyle">
                                 <option value="standard">Standard</option>
-                                <option value="featured">Featured / Popular</option>
+                                <option value="popular">Featured / Popular</option>
                                 <option value="premium">Premium / Gold</option>
                             </select>
                         </div>
@@ -1266,6 +1369,12 @@
                             <label>Title</label>
                             <input class="form-input" id="fmTitle" placeholder="Item title..." required>
                         </div>
+                        <!-- Badge / Style Label -->
+                        <div class="form-group full-width">
+                            <label>Badge / Label</label>
+                            <input class="form-input" id="fmBadge" placeholder="e.g. Popular, New, Best Seller">
+                            <span class="form-hint">Optional highlight badge on card</span>
+                        </div>
                         <!-- Description -->
                         <div class="form-group full-width">
                             <label>Short Description (Snippet)</label>
@@ -1313,8 +1422,14 @@
                         <!-- Category -->
                         <div class="form-group">
                             <label>Category</label>
-                            <input class="form-input" id="fmCategory" placeholder="e.g. astrology, vastu, remedies">
-                            <span class="form-hint">Group items by category</span>
+                            <select class="form-select" id="fmCategory">
+                                <option value="">— None —</option>
+                                <option value="astrology">Astrology</option>
+                                <option value="pooja">Pooja & Rituals</option>
+                                <option value="remedies">Remedies</option>
+                                <option value="vastu">Vastu</option>
+                            </select>
+                            <span class="form-hint">Determines which Home Page tab this item appears in</span>
                         </div>
                         <!-- Course Specific Fields -->
                         <div id="courseSpecificGroup" style="display:none; width: 100%; border:1px solid rgba(200,135,62,0.3); padding:15px; border-radius:8px; margin-bottom:15px; background: rgba(200,135,62,0.05);">
@@ -1353,18 +1468,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Badge / Style Label -->
-                        <div class="form-group">
-                            <label>Badge / Label</label>
-                            <input class="form-input" id="fmBadge" placeholder="e.g. Popular, New, Best Seller">
-                            <span class="form-hint">Optional highlight badge on card</span>
-                        </div>
                         <!-- Card Style -->
                         <div class="form-group">
                             <label>Card Style</label>
                             <select class="form-select" id="fmStyle">
                                 <option value="standard">Standard</option>
-                                <option value="featured">Featured</option>
+                                <option value="popular">Featured / Popular</option>
                                 <option value="premium">Premium</option>
                             </select>
                         </div>

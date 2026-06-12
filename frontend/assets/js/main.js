@@ -554,6 +554,95 @@ function bindFaqAccordions(root = document) {
             const waLink = document.querySelector('.whatsapp-float');
             if (waLink && s.whatsapp) waLink.href = 'https://wa.me/' + s.whatsapp;
         }
+        
+        // Home Page: Our Services Tabs (fully editable from Admin > Settings)
+        const hs = data.homeServices || {};
+        const hsTabs = hs.tabs || [
+            { name: 'Astrology', category: 'astrology', btnText: 'Learn More', count: 3 },
+            { name: 'Pooja & Rituals', category: 'pooja', btnText: 'Book Now', count: 3 },
+            { name: 'Remedies', category: 'remedies', btnText: 'Shop Now', count: 3 },
+            { name: 'Vastu', category: 'vastu', btnText: 'Consult Now', count: 3 }
+        ];
+
+        // Update section header if editable fields exist
+        const svcSection = document.querySelector('.section.section-alt');
+        if (svcSection) {
+            const svcHeader = svcSection.querySelector('.section-header');
+            if (svcHeader) {
+                const labelEl = svcHeader.querySelector('.label');
+                if (labelEl && hs.label) labelEl.textContent = hs.label;
+                const h2El = svcHeader.querySelector('h2');
+                if (h2El && (hs.heading || hs.highlight)) {
+                    h2El.innerHTML = (hs.heading || 'Our') + ' <span>' + (hs.highlight || 'Services') + '</span>';
+                }
+                const pEl = svcHeader.querySelector('p');
+                if (pEl && hs.subtitle) pEl.textContent = hs.subtitle;
+            }
+
+            // Rebuild tabs navigation
+            const tabsNav = svcSection.querySelector('.tabs-nav');
+            if (tabsNav && hsTabs.length) {
+                tabsNav.innerHTML = hsTabs.map((tab, idx) =>
+                    `<button class="tab-btn ${idx === 0 ? 'active' : ''}" data-tab="tab-svc-${idx}">${tab.name}</button>`
+                ).join('');
+            }
+
+            // Remove old tab-content divs and rebuild
+            svcSection.querySelectorAll('.tab-content').forEach(el => el.remove());
+            const container = svcSection.querySelector('.container');
+
+            hsTabs.forEach((tab, idx) => {
+                const tabDiv = document.createElement('div');
+                tabDiv.id = 'tab-svc-' + idx;
+                tabDiv.className = 'tab-content' + (idx === 0 ? ' active' : '');
+
+                let items = [];
+                const maxCount = tab.count || 3;
+
+                if (tab.category === 'pooja' && data.pooja && data.pooja.length) {
+                    // Pull from Pooja section
+                    items = data.pooja.slice(0, maxCount).map((p, i) => ({
+                        title: p.title, desc: p.desc, image: p.image, imgFit: p.imgFit,
+                        link: 'pooja-detail.html#id=' + i
+                    }));
+                } else if (data.services && data.services.length) {
+                    // Pull from Services by category
+                    data.services.forEach((s, si) => {
+                        if (s.category === tab.category && items.length < maxCount) {
+                            items.push({
+                                title: s.title, desc: s.desc, image: s.image, imgFit: s.imgFit,
+                                link: 'service-detail.html?id=' + si
+                            });
+                        }
+                    });
+                }
+
+                tabDiv.innerHTML = '<div class="grid-3">' + items.map(s => `
+                    <div class="card" style="cursor:pointer;" onclick="window.location.href='${s.link}'">
+                        <img src="${s.image}" alt="${s.title}" class="card-img" style="object-fit:${s.imgFit||'cover'}">
+                        <div class="card-body">
+                            <h3>${s.title}</h3>
+                            <p>${s.desc}</p>
+                            <a href="${s.link}" class="header-btn btn-gold" style="margin-top:10px;">${tab.btnText || 'Learn More'}</a>
+                        </div>
+                    </div>
+                `).join('') + '</div>';
+
+                container.appendChild(tabDiv);
+            });
+
+            // Rebind tab click events for the new tabs
+            svcSection.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    svcSection.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    svcSection.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                    const target = document.getElementById(btn.dataset.tab);
+                    if (target) target.classList.add('active');
+                });
+            });
+        }
+    }
 
         // ─── REPORTS PAGE ───
         if (page === 'reports.html' && data.reports) {
@@ -800,7 +889,7 @@ function bindFaqAccordions(root = document) {
                 // Remove extra grids
                 for (let i = 1; i < grids.length; i++) grids[i].remove();
                 mainGrid.innerHTML = data.pooja.map((p, i) => `
-                    <div class="cp-pricing-card ${p.style === 'popular' || p.style === 'premium' ? p.style : ''}" data-type="online offline" style="cursor:pointer;" onclick="window.location.href='pooja-detail.html#id=${i}'">
+                    <div class="cp-pricing-card ${p.style === 'popular' || p.style === 'featured' ? 'popular' : p.style === 'premium' ? 'premium' : ''}" data-type="online offline" style="cursor:pointer;" onclick="window.location.href='pooja-detail.html#id=${i}'">
                         ${p.badge ? `<div class="cp-popular-badge">${p.badge}</div>` : ''}
                         <div class="cp-card-img-wrap"><img src="${p.image || 'https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=600&q=80'}" alt="${p.title}"${p.imgFit ? ` style="object-fit:${p.imgFit}"` : ''}></div>
                         <div class="cp-pricing-header">
@@ -829,7 +918,7 @@ function bindFaqAccordions(root = document) {
             const grid = document.querySelector('.cp-pricing-grid');
             if (grid) {
                 grid.innerHTML = data.courses.map((c, i) => `
-                    <div class="cp-pricing-card ${c.style === 'popular' || c.style === 'premium' ? c.style : ''}" style="cursor:pointer;" onclick="window.location.href='course-detail.html#id=${i}'">
+                    <div class="cp-pricing-card ${c.style === 'popular' || c.style === 'featured' ? 'popular' : c.style === 'premium' ? 'premium' : ''}" style="cursor:pointer;" onclick="window.location.href='course-detail.html#id=${i}'">
                         ${c.badge ? `<div class="cp-popular-badge">${c.badge}</div>` : ''}
                         <div class="cp-card-img-wrap"><img src="${c.image || 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80'}" alt="${c.title}"${c.imgFit ? ` style="object-fit:${c.imgFit}"` : ''}></div>
                         <div class="cp-pricing-header">
@@ -869,7 +958,7 @@ function bindFaqAccordions(root = document) {
                     const duration = c.desc && c.desc.match(/\d+\s*Minutes?/i) ? c.desc.match(/\d+\s*Minutes?/i)[0] : '30 Minutes';
                     const callType = c.desc && c.desc.match(/Video Call|Audio.*Video|Zoom|Meet/i) ? c.desc.match(/Video Call|Audio.*Video|Zoom|Meet/i)[0] : 'Audio / Video Call';
                     return `
-                    <div class="pricing-card ${c.style === 'popular' || c.style === 'premium' ? c.style : ''}">
+                    <div class="pricing-card ${c.style === 'popular' || c.style === 'featured' ? 'popular' : c.style === 'premium' ? 'premium' : ''}">
                         ${c.badge ? (c.style === 'premium' ? `<div class="premium-badge"><i class="fa-solid fa-crown"></i> ${c.badge}</div>` : `<div class="popular-badge">${c.badge}</div>`) : ''}
                         ${c.image ? `<div class="pricing-card-img"><img src="${c.image}" alt="${c.title}" style="object-fit:${c.imgFit||'cover'};transform:scale(${c.imgScale||1})" onerror="this.parentElement.style.display='none'"></div>` : ''}
                         <div class="pricing-header">
@@ -926,7 +1015,7 @@ function bindFaqAccordions(root = document) {
                 const grid = document.querySelector('.pricing-cards');
                 if (grid) {
                     grid.innerHTML = data.consultAcharya.map((c, i) => `
-                        <div class="pricing-card ${c.style === 'popular' || c.style === 'premium' ? c.style : ''}">
+                        <div class="pricing-card ${c.style === 'popular' || c.style === 'featured' ? 'popular' : c.style === 'premium' ? 'premium' : ''}">
                             ${c.badge ? (c.style === 'premium' ? `<div class="premium-badge"><i class="fa-solid fa-crown"></i> ${c.badge}</div>` : `<div class="popular-badge">${c.badge}</div>`) : ''}
                             <h3>${c.title}</h3>
                             <div class="duration">${c.desc.split(/[\n.]/)[0]}</div>
