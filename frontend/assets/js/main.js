@@ -929,12 +929,12 @@ function bindFaqAccordions(root = document) {
                         <div class="pricing-card ${c.style === 'popular' || c.style === 'premium' ? c.style : ''}">
                             ${c.badge ? (c.style === 'premium' ? `<div class="premium-badge"><i class="fa-solid fa-crown"></i> ${c.badge}</div>` : `<div class="popular-badge">${c.badge}</div>`) : ''}
                             <h3>${c.title}</h3>
-                            <div class="duration">${c.desc.split('.')[0]}</div>
+                            <div class="duration">${c.desc.split(/[\n.]/)[0]}</div>
                             <div class="price">${c.oldPrice ? `<del>₹${c.oldPrice}/-</del>` : ''}₹${c.newPrice}/-</div>
                             <ul>
-                                ${c.desc.split(',').map(f => `<li><i class="fa-solid fa-check"></i> ${f.trim()}</li>`).join('')}
+                                ${c.desc.split(/[\n,]/).filter(f => f.trim()).map(f => `<li><i class="fa-solid fa-check"></i> ${f.trim()}</li>`).join('')}
                             </ul>
-                            <button class="book-btn" onclick="if(window.openBooking)openBooking('${c.title}','${c.desc.split('.')[0]}',${parseInt(String(c.newPrice||'0').replace(/[^0-9]/g,''))*100},'₹${c.newPrice||'0'}');else window.location.href='${c.link || '#'}'"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                            <button class="book-btn" onclick="if(window.openBooking)openBooking('${c.title}','${c.desc.split(/[\n.]/)[0]}',${parseInt(String(c.newPrice||'0').replace(/[^0-9]/g,''))*100},'₹${c.newPrice||'0'}');else window.location.href='${c.link || '#'}'"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
                         </div>
                     `).join('');
                 }
