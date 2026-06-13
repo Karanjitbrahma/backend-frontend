@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details - Bhartiya Sidhant</title>
+    <meta name="description" content="Expert Vedic Astrology services by Bhartiya Sidhant. Get detailed readings, remedies, and guidance.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sd-hero{position:relative;min-height:380px;display:flex;align-items:center;padding:100px 20px 60px;background:linear-gradient(135deg,rgba(77,15,15,.92),rgba(30,5,5,.95)),url('') center/cover no-repeat;color:#fff;overflow:hidden}
+        .sd-hero::before{content:'☸';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:280px;opacity:.04;pointer-events:none}
+        .sd-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+        .sd-hero-text .sd-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,135,62,.15);border:1px solid rgba(200,135,62,.35);color:var(--primary-light);padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px}
+        .sd-hero-text h1{font-size:40px;color:#fff;margin-bottom:14px;line-height:1.15}
+        .sd-hero-text h1 span{color:var(--primary-light)}
+        .sd-hero-text>p{color:rgba(255,255,255,.75);font-size:15px;margin-bottom:25px;line-height:1.7}
+        .sd-hero-img{border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);border:3px solid rgba(200,135,62,.25)}
+        .sd-hero-img img{width:100%;height:340px;object-fit:cover;display:block}
+        .sd-price-box{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(200,135,62,.2);border-radius:16px;padding:24px;margin-top:25px}
+        .sd-price{font-size:34px;font-weight:800;color:var(--primary-light)}.sd-old-price{font-size:16px;color:rgba(255,255,255,.4);text-decoration:line-through;margin-left:10px}
+        .sd-cta-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+        .sd-cta-row a, .sd-cta-row button{flex:1;min-width:140px;justify-content:center}
+        .sd-section{padding:70px 0}.sd-section-alt{background:var(--bg-white)}
+        .sd-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+        .sd-about p{color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:15px}
+        .sd-features{list-style:none;padding:0;margin:20px 0 0}
+        .sd-features li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:15px;color:var(--text-dark)}
+        .sd-features li:last-child{border-bottom:none}
+        .sd-features li i{color:var(--primary);font-size:16px;flex-shrink:0}
+        .sd-includes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+        .sd-include{background:var(--bg-cream);border-radius:14px;padding:24px 20px;text-align:center;border:1px solid rgba(200,135,62,.08);transition:all .3s}
+        .sd-include:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(200,135,62,.12)}
+        .sd-include i{font-size:24px;color:var(--primary);margin-bottom:10px;display:block}
+        .sd-include h4{font-size:15px;color:var(--secondary);margin-bottom:4px}
+        .sd-include p{font-size:13px;color:var(--text-light)}
+        .sd-side-stack{display:grid;gap:22px}
+        .sd-note-card{background:linear-gradient(135deg,rgba(77,15,15,.95),rgba(30,5,5,.97));color:#fff;border-radius:16px;padding:24px;box-shadow:var(--shadow-md)}
+        .sd-note-card h3{color:#fff;font-size:20px;margin-bottom:10px}
+        .sd-note-card p{color:rgba(255,255,255,.78);font-size:14px;line-height:1.7}
+        .sd-note-list{margin-top:14px;display:grid;gap:10px}
+        .sd-note-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.82)}
+        .sd-note-item i{color:var(--primary-light);margin-top:3px}
+        .sd-reveal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .sd-reveal-card{background:var(--bg-white);border:1px solid rgba(200,135,62,.12);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+        .sd-reveal-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(200,135,62,.14)}
+        .sd-reveal-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(200,135,62,.15),rgba(200,135,62,.05));color:var(--primary);font-size:22px;margin-bottom:14px}
+        .sd-reveal-card h4{font-size:18px;color:var(--secondary);margin-bottom:8px}
+        .sd-reveal-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+        .sd-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .sd-process-card{background:linear-gradient(180deg,#fff,#fff8f0);border:1px solid rgba(200,135,62,.14);border-radius:16px;padding:24px;position:relative;overflow:hidden}
+        .sd-process-card::before{content:'';position:absolute;inset:auto -16px -16px auto;width:110px;height:110px;border-radius:50%;background:rgba(200,135,62,.08);pointer-events:none}
+        .sd-process-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--gold-gradient);color:#fff;font-weight:800;margin-bottom:14px}
+        .sd-process-card h4{font-size:18px;color:var(--secondary);margin-bottom:8px}
+        .sd-process-card p{font-size:14px;color:var(--text-light);line-height:1.7}
+        .sd-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+        .sd-related-card{background:#fff;border:1px solid rgba(200,135,62,.12);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+        .sd-related-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(200,135,62,.14)}
+        .sd-related-card img{width:100%;height:170px;object-fit:cover;display:block}
+        .sd-related-body{padding:18px}
+        .sd-related-body h4{font-size:17px;color:var(--secondary);margin-bottom:6px}
+        .sd-related-body p{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:12px}
+        .sd-related-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+        .sd-related-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--gold-gradient);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+
+        .sd-cta-bottom{background:var(--maroon-gradient);padding:60px 0;text-align:center;color:#fff}
+        .sd-cta-bottom h2{color:#fff;font-size:34px;margin-bottom:12px}.sd-cta-bottom h2 span{color:var(--primary-light)}
+        .sd-cta-bottom p{color:rgba(255,255,255,.7);margin-bottom:30px;font-size:16px}
+        @media(max-width:1024px){.sd-hero-inner{grid-template-columns:1fr}.sd-hero-img{max-width:500px}.sd-reveal-grid,.sd-process-grid,.sd-related-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.sd-hero-text h1{font-size:28px}.sd-grid{grid-template-columns:1fr}.sd-cta-row{flex-direction:column}.sd-cta-row a{min-width:auto}.sd-reveal-grid,.sd-process-grid,.sd-related-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 12533 54445</div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html" class="active">Services</a><a href="reports.html">Reports</a><a href="store.html">Store</a><a href="courses.html">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <!-- HERO -->
+    <section class="sd-hero">
+        <div class="sd-hero-inner container">
+            <div class="sd-hero-text">
+                <div class="sd-badge"><i class="fa-solid fa-star" id="sdBadgeIcon"></i> <span id="sdBadge">Astrology Service</span></div>
+                <h1 id="sdTitle">Loading <span>Service...</span></h1>
+                <p id="sdSubtitle">Loading service details...</p>
+                <div class="sd-price-box" id="sdPriceBox" style="display:none;">
+                    <span class="sd-price" id="sdPrice"></span>
+                    <span class="sd-old-price" id="sdOldPrice"></span>
+                    <div class="sd-cta-row">
+                        <button onclick="window.openBuyRazorpay()" id="sdPayBtn" class="header-btn btn-gold" style="border:none;cursor:pointer;"><i class="fa-solid fa-lock"></i> Pay & Book Now</button>
+                        <a href="#" id="sdWaBtn" class="header-btn btn-outline" target="_blank" style="border-color:rgba(255,255,255,.3);color:#fff;"><i class="fa-brands fa-whatsapp"></i> Enquire</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sd-hero-img">
+                <img id="sdImage" src="https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f0?auto=format&fit=crop&w=800&q=80" alt="Service">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="sd-section">
+        <div class="container">
+            <div class="sd-grid">
+                <div class="sd-about">
+                    <div class="section-header" style="text-align:left;margin-bottom:25px;">
+                        <div class="label">About This Service</div>
+                        <h2 id="sdAboutHeading">Service <span>Details</span></h2>
+                    </div>
+                    <div id="sdAboutContent"><p>Loading service details...</p></div>
+                </div>
+                <div class="sd-side-stack">
+                    <div>
+                        <h3 style="font-size:22px;margin-bottom:20px;">Key <span style="color:var(--primary);">Features</span></h3>
+                        <ul class="sd-features" id="sdFeaturesList"></ul>
+                    </div>
+                    <div class="sd-note-card">
+                        <h3>Why This Service Matters</h3>
+                        <p id="sdNoteText">A structured consultation with practical guidance can remove uncertainty and help you act with confidence.</p>
+                        <div class="sd-note-list" id="sdNoteList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sd-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">What You Gain</div>
+                <h2>Service <span>Highlights</span></h2>
+                <p>The most important outcomes and support points, made easy to scan before you book.</p>
+            </div>
+            <div class="sd-reveal-grid" id="sdRevealGrid"></div>
+        </div>
+    </section>
+
+    <section class="sd-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">How It Works</div>
+                <h2>Simple <span>Booking Process</span></h2>
+                <p>Choose the service, share your details, and get the right guidance without confusion.</p>
+            </div>
+            <div class="sd-process-grid">
+                <div class="sd-process-card"><div class="sd-process-num">1</div><h4>Choose the Service</h4><p>Review the service overview, features, and benefit cards before booking.</p></div>
+                <div class="sd-process-card"><div class="sd-process-num">2</div><h4>Share Your Details</h4><p>Send us your birth details or location details so we can tailor the guidance correctly.</p></div>
+                <div class="sd-process-card"><div class="sd-process-num">3</div><h4>Receive the Guidance</h4><p>We confirm your booking, deliver the service, and share practical next steps or remedies.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sd-section sd-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Suggested Services</div>
+                <h2>You May Also <span>Like These</span></h2>
+                <p>Related services that can complement the one you are viewing right now.</p>
+            </div>
+            <div class="sd-related-grid" id="sdRelatedGrid"></div>
+        </div>
+    </section>
+
+    <!-- INCLUDES -->
+    <section class="sd-section sd-section-alt" id="sdIncludesSection" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">What You Get</div>
+                <h2>What's <span>Included</span></h2>
+            </div>
+            <div class="sd-includes-grid" id="sdIncludesGrid"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sd-cta-bottom">
+        <div class="container">
+            <h2>Ready to Transform Your <span>Life?</span></h2>
+            <p>Talk to our expert astrologers today. Get personalized guidance for your unique situation.</p>
+            <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
+                <a href="#" id="sdCtaWhatsapp" target="_blank" class="header-btn btn-gold" style="padding:16px 40px;font-size:16px;"><i class="fa-solid fa-lock"></i> Pay & Book Now</a>
+                <a href="services.html" class="header-btn btn-outline" style="padding:16px 40px;font-size:16px;border-color:#fff;color:#fff;"><i class="fa-solid fa-arrow-left"></i> All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div><p>Preserving and promoting the authentic science of Vedic Astrology.</p><div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-telegram"></i></a></div></div>
+                <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-conditions.html">Terms & Conditions</a></li><li><a href="faq.html">FAQ</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+                <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="services.html">All Services</a></li><li><a href="consultation.html">Consultation</a></li><li><a href="pooja.html">Book Pooja</a></li><li><a href="store.html">Gemstones</a></li></ul></div>
+                <div><h4 class="footer-title">Contact Us</h4><ul class="footer-links"><li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li><li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 12533 54445</li><li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> DDA Market, Pocket 1, Sector D, Vasant Kunj, New Delhi, 110070, Delhi</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <div class="floating-social-sidebar">
+    <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+</div>
+<a href="consult-acharya.html" class="floating-book-btn"><i class="fa-solid fa-phone"></i><span>Book Now</span></a>
+    <a href="https://wa.me/911253354445" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script src="assets/js/razorpay-pay.js?v=20260609a"></script>
+    <script>
+    (function(){
+        const fallbackServices = [
+            {
+                title: 'Kundli / Birth Chart',
+                category: 'astrology',
+                desc: 'Complete Vedic birth chart analysis covering all 12 houses, planetary positions, dashas, and yogas to reveal your life blueprint.',
+                image: 'https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f0?auto=format&fit=crop&w=800&q=80',
+                newPrice: '1499',
+                oldPrice: '2999',
+                detailDesc: 'A full Janam Kundli reading gives clarity on your strengths, challenges, and life timing.\nOur astrologers analyze houses, yogas, dashas, and transits with practical guidance.',
+                features: '12-house analysis\nPlanetary dasha and transit timing\nCareer, marriage, and finance guidance\nHealth and wellbeing indicators\nPersonalized remedies'
+            },
+            {
+                title: 'Kundli Milan / Match Making',
+                category: 'astrology',
+                desc: 'Comprehensive Ashtakoota guna matching, Mangal dosha check, and Nadi analysis for marriage compatibility.',
+                image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
+                newPrice: '1999',
+                oldPrice: '2999',
+                detailDesc: 'Compatibility is checked across all major factors of Vedic matching.\nYou receive practical insights about emotional harmony, family life, and long-term stability.',
+                features: 'Ashtakoota guna matching\nMangal dosha analysis\nNadi, Bhakoot and Yoni checks\nStrength-risk summary\nMarriage remedy guidance'
+            },
+            {
+                title: 'Muhurta (Auspicious Time)',
+                category: 'astrology',
+                desc: 'Find the right timing for marriage, griha pravesh, business launch, and other important events based on Panchang.',
+                image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80',
+                newPrice: '999',
+                oldPrice: '1499',
+                detailDesc: 'Choosing the right muhurta improves outcomes and reduces avoidable delays.\nWe align your event with tithi, nakshatra, yoga, and lagna.',
+                features: 'Event-specific muhurta selection\nPanchang-based timing\nLagna suitability checks\nAvoidance of inauspicious windows\nDate and time options'
+            },
+            {
+                title: 'Career & Financial Astrology',
+                category: 'astrology',
+                desc: 'Detailed analysis of 10th and 2nd houses to guide career direction, job timing, and wealth growth.',
+                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
+                newPrice: '1499',
+                oldPrice: '2499',
+                detailDesc: 'Understand your strongest professional path and financial timing cycles.\nThis service helps with career changes, promotions, and money planning windows.',
+                features: 'Career path analysis\nPromotion and switch timing\nJob vs business suitability\nIncome and savings trends\nRemedial recommendations'
+            },
+            {
+                title: 'Love & Relationship Reading',
+                category: 'astrology',
+                desc: 'Understand relationship patterns, marriage timing, and remedies for delays or conflicts.',
+                image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80',
+                newPrice: '1499',
+                oldPrice: '2499',
+                detailDesc: 'This reading focuses on emotional compatibility, commitment patterns, and future relationship trends.\nUseful for singles, couples, and marriage planning.',
+                features: 'Relationship pattern analysis\nMarriage timing insights\nPartner compatibility markers\nConflict and healing guidance\nVedic remedies'
+            },
+            {
+                title: 'Health Astrology',
+                category: 'astrology',
+                desc: 'Medical astrology insights highlighting vulnerable periods and supportive remedies for wellbeing.',
+                image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80',
+                newPrice: '1499',
+                oldPrice: '2499',
+                detailDesc: 'Health astrology can indicate stress-prone phases and preventive focus areas.\nGuidance includes practical spiritual remedies and lifestyle-aware timing.',
+                features: 'House and planet health indicators\nSensitive timing windows\nStress and vitality trends\nPreventive guidance\nSupportive remedies'
+            },
+            {
+                title: 'Residential Vastu',
+                category: 'vastu',
+                desc: 'Complete audit of your home with practical non-demolition remedies for harmony and prosperity.',
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+                newPrice: '2999',
+                oldPrice: '4999',
+                detailDesc: 'Residential Vastu improves energy flow for peace and stability.\nRecommendations are practical and tailored to your current layout.',
+                features: 'Entrance and room energy check\nDirection-wise corrections\nNon-demolition remedies\nFamily harmony focus\nProsperity activation points'
+            },
+            {
+                title: 'Commercial Vastu',
+                category: 'vastu',
+                desc: 'Strategic Vastu consultation for offices, shops, and factories to support growth and productivity.',
+                image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+                newPrice: '4999',
+                oldPrice: '6999',
+                detailDesc: 'Commercial Vastu aligns workspaces for better decisions and smoother operations.\nIt is useful for offices, retail spaces, and industrial setups.',
+                features: 'Office layout and seating guidance\nCashflow and sales zones\nDecision and leadership direction\nStaff productivity alignment\nBusiness growth remedies'
+            },
+            {
+                title: 'Plot & Construction',
+                category: 'vastu',
+                desc: 'Vastu-compliant guidance for plot selection, building design, room placement, and directional planning.',
+                image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80',
+                newPrice: '3999',
+                oldPrice: '5999',
+                detailDesc: 'Early planning with Vastu helps avoid costly mistakes later.\nYou get direction-wise recommendations before construction begins.',
+                features: 'Plot suitability analysis\nSite orientation planning\nRoom and staircase direction\nKitchen and bedroom placement\nConstruction stage guidance'
+            },
+            {
+                title: 'Gemstone Recommendation',
+                category: 'remedies',
+                desc: 'Get certified gemstone recommendations based on your birth chart for specific planetary support.',
+                image: 'https://images.unsplash.com/photo-1583484963886-cfe2bff2945f?auto=format&fit=crop&w=800&q=80',
+                newPrice: '999',
+                oldPrice: '1499',
+                detailDesc: 'Gemstones are recommended only after proper chart analysis.\nYou receive metal, finger, day, and mantra guidance for wearing.',
+                features: 'Planet-strength analysis\nStone suitability screening\nWeight and quality guidance\nWearing method instructions\nActivation mantra guidance'
+            },
+            {
+                title: 'Rudraksha Therapy',
+                category: 'remedies',
+                desc: 'Authentic Rudraksha selection based on planetary needs for spiritual and emotional wellbeing.',
+                image: 'https://images.unsplash.com/photo-1601821765780-754fa98637c1?auto=format&fit=crop&w=800&q=80',
+                newPrice: '999',
+                oldPrice: '1499',
+                detailDesc: 'Rudraksha therapy is personalized based on your chart and intention.\nGuidance includes mukhi type, energization, and wearing protocol.',
+                features: 'Mukhi selection by chart\nAuthenticity guidance\nWearing and maintenance rules\nMantra and activation support\nDaily usage recommendations'
+            },
+            {
+                title: 'Yantra Siddhi',
+                category: 'remedies',
+                desc: 'Energized yantras for wealth, protection, and spiritual growth based on your specific goals.',
+                image: 'https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?auto=format&fit=crop&w=800&q=80',
+                newPrice: '2100',
+                oldPrice: '3100',
+                detailDesc: 'Yantras are selected and energized as per your need and chart indications.\nYou receive placement direction and daily worship guidance.',
+                features: 'Purpose-based yantra selection\nEnergization support\nCorrect placement direction\nDaily worship method\nFollow-up guidance'
+            }
+        ];
+
+        function getId() {
+            const h = location.hash.replace('#','');
+            const hp = new URLSearchParams(h);
+            if (hp.get('id') !== null) return parseInt(hp.get('id')) || 0;
+            const qp = new URLSearchParams(location.search);
+            if (qp.get('id') !== null) return parseInt(qp.get('id')) || 0;
+            return 0;
+        }
+        const id = getId();
+        let service = null, waNum = '911253354445';
+        try {
+            const d = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (d && d.services && d.services[id]) service = d.services[id];
+            if (d && d.site && d.site.whatsapp) waNum = d.site.whatsapp;
+        } catch(e){}
+        if (!service) service = fallbackServices[id] || fallbackServices[0];
+        if (!service) { document.getElementById('sdTitle').innerHTML = 'Service <span>Not Found</span>'; return; }
+
+        const wa = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent('I want to book ' + service.title + ' service');
+        const $ = s => document.getElementById(s);
+        const cat = service.category || 'astrology';
+        const catLabels = {astrology:'Astrology Service',vastu:'Vastu Service',remedies:'Spiritual Remedy'};
+        const catIcons = {astrology:'fa-star',vastu:'fa-compass',remedies:'fa-gem'};
+
+        document.title = service.title + ' - Bhartiya Sidhant';
+        $('sdBadge').textContent = catLabels[cat] || 'Service';
+        $('sdBadgeIcon').className = 'fa-solid ' + (catIcons[cat] || service.icon || 'fa-star');
+        const words = service.title.split(' ');
+        const last = words.pop();
+        $('sdTitle').innerHTML = words.join(' ') + ' <span>' + last + '</span>';
+        $('sdSubtitle').textContent = service.desc || '';
+        $('sdImage').src = service.image || '';
+        $('sdImage').alt = service.title;
+        if (service.newPrice) {
+            $('sdPriceBox').style.display = '';
+            $('sdPrice').textContent = '₹' + service.newPrice;
+            if (service.oldPrice) $('sdOldPrice').textContent = '₹' + service.oldPrice;
+        }
+        if ($('sdWaBtn')) $('sdWaBtn').href = wa;
+        $('sdCtaWhatsapp').href = wa;
+        $('sdAboutHeading').innerHTML = 'About <span>' + service.title + '</span>';
+
+        // About content
+        const detailDesc = service.detailDesc || service.desc || '';
+        const paragraphs = detailDesc.split('\n').filter(p => p.trim());
+        $('sdAboutContent').innerHTML = paragraphs.map(p => '<p>' + p.trim() + '</p>').join('');
+
+        // Features
+        const features = service.features ? service.features.split('\n').filter(f => f.trim()) : service.desc.split(',').filter(f => f.trim()).slice(0,7);
+        $('sdFeaturesList').innerHTML = features.map(f => '<li><i class="fa-solid fa-check-circle"></i> ' + f.trim() + '</li>').join('');
+        
+        // Checkout Features
+        if ($('checkoutFeatures')) {
+            $('checkoutFeatures').innerHTML = features.slice(0, 4).map(f => '<div class="feature-tile"><strong><i class="fa-solid fa-check"></i> ' + f.trim() + '</strong><span>Included in this service.</span></div>').join('');
+        }
+        
+        $('sdNoteText').textContent = cat === 'vastu'
+            ? 'This service is meant to improve spatial harmony, reduce friction, and guide your decisions with practical Vastu-based clarity.'
+            : cat === 'remedies'
+                ? 'This service focuses on the right remedy or energized support so you are not guessing what to choose.'
+                : 'This service is built to give you a practical astrology-based roadmap, not just a generic reading.';
+        const noteItems = service.signs !== undefined && service.signs
+            ? service.signs.split('\n').filter(s => s.trim())
+            : cat === 'vastu'
+            ? ['Direction-wise corrections and practical fixes', 'Support for home, office, or plot planning', 'Non-demolition guidance wherever possible']
+            : cat === 'remedies'
+                ? ['Authentic recommendation and activation support', 'Simple wearing or placement instructions', 'Planet-focused energetic assistance']
+                : ['Chart-based consultation or reading', 'Clear next steps and remedies', 'Follow-up support when applicable'];
+        $('sdNoteList').innerHTML = noteItems.map(item => `<div class="sd-note-item"><i class="fa-solid fa-check-circle"></i><span>${item}</span></div>`).join('');
+
+        const serviceReveal = cat === 'vastu'
+            ? [
+                ['fa-house','Space Harmony','Improve energy flow for home, office, or property planning.'],
+                ['fa-compass','Direction Clarity','Know which placements and directions need attention.'],
+                ['fa-shield-halved','Practical Remedies','Get non-demolition and easy-to-follow corrections.']
+            ]
+            : cat === 'remedies'
+                ? [
+                    ['fa-gem','Right Remedy Selection','Choose the proper gemstone, Rudraksha, or yantra support.'],
+                    ['fa-om','Energization Support','Many items need proper ritual activation before use.'],
+                    ['fa-headset','Usage Guidance','Receive simple instructions for wearing or placing it correctly.']
+                ]
+                : [
+                    ['fa-scroll','Detailed Reading','Go deeper into the factors that matter most in your chart.'],
+                    ['fa-chart-line','Timing & Trends','Understand what to do now and what to do later.'],
+                    ['fa-lightbulb','Actionable Advice','Leave with practical steps instead of vague predictions.']
+                ];
+        $('sdRevealGrid').innerHTML = serviceReveal.map(r => `<div class="sd-reveal-card"><div class="sd-reveal-icon"><i class="fa-solid ${r[0]}"></i></div><h4>${r[1]}</h4><p>${r[2]}</p></div>`).join('');
+
+        // Includes
+        if (service.includes) {
+            const includes = service.includes.split('\n').filter(i => i.trim());
+            if (includes.length) {
+                $('sdIncludesSection').style.display = '';
+                const icons = ['fa-file-lines','fa-headset','fa-gem','fa-certificate','fa-book','fa-video','fa-shield-halved','fa-hand-holding-heart'];
+                $('sdIncludesGrid').innerHTML = includes.map((inc, i) => `
+                    <div class="sd-include"><i class="fa-solid ${icons[i % icons.length]}"></i><h4>${inc.trim()}</h4><p>Included with this service</p></div>
+                `).join('');
+            }
+        }
+
+        const related = fallbackServices.map((item, index) => ({ item, index })).filter(entry => entry.index !== id).slice(0, 3);
+        $('sdRelatedGrid').innerHTML = related.map(entry => `
+            <article class="sd-related-card">
+                <img src="${entry.item.image}" alt="${entry.item.title}">
+                <div class="sd-related-body">
+                    <h4>${entry.item.title}</h4>
+                    <p>${entry.item.desc}</p>
+                    <div class="sd-related-meta">
+                        <a class="sd-related-btn" href="service-detail.html#id=${entry.index}"><i class="fa-solid fa-arrow-right"></i> View</a>
+                    </div>
+                </div>
+            </article>
+        `).join('');
+
+        window.openBuyRazorpay = function() {
+            const priceNum = String(service.newPrice || '1499').replace(/[^0-9.]/g, '') || '1499';
+            const pricePaise = Math.round(parseFloat(priceNum) * 100);
+            
+            let globalFallback = null;
+            try {
+                const d = JSON.parse(localStorage.getItem('bs_admin_data'));
+                if (d && d.settings && d.settings.checkoutForm && d.settings.checkoutForm.service) {
+                    globalFallback = d.settings.checkoutForm.service;
+                }
+            } catch(e){}
+
+            openRazorpayModal({
+                name: service.title,
+                price: pricePaise,
+                priceLabel: '₹' + service.newPrice,
+                description: service.category === 'astrology' ? 'Vedic Astrology Service' : (service.category === 'vastu' ? 'Vastu Service' : 'Spiritual Remedy'),
+                image: service.image || 'assets/images/astrologer.png',
+                type: 'service',
+                reqShipping: service.reqShipping,
+                reqBirth: service.reqBirth,
+                reqNotes: service.reqNotes,
+                checkoutFields: service.checkoutFields || globalFallback
+            });
+        };
+
+        // Update hero buttons to go to checkout
+        if (service.newPrice) {
+            if ($('sdPayBtn')) {
+                $('sdPayBtn').innerHTML = '<i class="fa-solid fa-lock"></i> Pay & Book';
+            }
+            if ($('sdCtaWhatsapp')) {
+                $('sdCtaWhatsapp').innerHTML = '<i class="fa-solid fa-lock"></i> Pay & Book';
+                $('sdCtaWhatsapp').href = 'javascript:void(0)';
+                $('sdCtaWhatsapp').removeAttribute('target');
+                $('sdCtaWhatsapp').onclick = window.openBuyRazorpay;
+            }
+        }
+
+        window.addEventListener('hashchange', () => location.reload());
+    })();
+    </script>
+</body>
+</html>

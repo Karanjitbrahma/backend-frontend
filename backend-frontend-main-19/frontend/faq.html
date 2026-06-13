@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Frequently Asked Questions | Bhartiya Sidhant</title>
+    <meta name="description" content="Frequently Asked Questions about Bhartiya Sidhant's astrology consultations, pooja bookings, reports, courses, refunds, and more.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faq-page-content { max-width: 860px; margin: 0 auto; padding: 60px 20px 80px; }
+        .faq-category { margin-bottom: 50px; }
+        .faq-category-title { font-size: 26px; color: var(--secondary); margin-bottom: 25px; padding-bottom: 12px; border-bottom: 2px solid rgba(200,135,62,.2); display: flex; align-items: center; gap: 12px; }
+        .faq-category-title i { color: var(--primary); font-size: 22px; }
+        .faq-item { border: 1px solid rgba(0,0,0,.06); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; background: var(--bg-white); transition: all .3s; }
+        .faq-item:hover { box-shadow: var(--shadow-sm); }
+        .faq-question { width: 100%; padding: 20px 25px; background: none; border: none; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--text-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; text-align: left; transition: all .3s; }
+        .faq-question:hover { color: var(--primary); }
+        .faq-question i { font-size: 12px; color: var(--primary); transition: transform .3s; flex-shrink: 0; margin-left: 15px; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s ease; }
+        .faq-answer p { padding: 0 25px 20px; color: var(--text-light); font-size: 14px; line-height: 1.8; margin: 0; }
+        .faq-item.open .faq-question { color: var(--primary); }
+        .faq-item.open .faq-question i { transform: rotate(180deg); }
+        .faq-item.open .faq-answer { max-height: 300px; }
+        .faq-cta { text-align: center; margin-top: 50px; padding: 40px; background: linear-gradient(135deg, rgba(200,135,62,.06), rgba(200,135,62,.02)); border-radius: var(--radius); border: 1px solid rgba(200,135,62,.15); }
+        .faq-cta h3 { font-size: 24px; margin-bottom: 10px; }
+        .faq-cta p { color: var(--text-light); margin-bottom: 20px; font-size: 15px; }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 12533 54445</div></div></div>
+
+    <!-- Header -->
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html">Reports</a><a href="store.html">Store</a><a href="courses.html">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to the most common questions about our services</p>
+        <div class="breadcrumb"><a href="index.html">Home</a> / FAQ</div>
+    </section>
+
+    <!-- Content -->
+    <div class="faq-page-content">
+
+        <!-- General -->
+        <div class="faq-category">
+            <h2 class="faq-category-title"><i class="fa-solid fa-circle-info"></i> General Questions</h2>
+            <div class="faq-item">
+                <button class="faq-question"><span>What services does Bhartiya Sidhant offer?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We offer a comprehensive range of Vedic spiritual services including astrology consultations, numerology analysis, Vastu consultation, Kundli analysis, matchmaking, online & offline Pooja services, personalized remedies, gemstones, Rudraksha, yantras, and professional astrology courses.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Are your astrologers certified and experienced?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Yes! Our team consists of experienced Vedic astrologers with 10+ years of practice. Our methods are rooted in classical texts like Brihat Parashara Hora Shastra. Every consultation is thorough, accurate, and guided by deep expertise.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Do you provide services in Hindi and English?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Yes! Our astrologers are fluent in both Hindi and English. You can choose your preferred language at the time of booking.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Is my personal information kept confidential?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Absolutely. We take privacy very seriously. Your birth data, consultation content, and personal details are 100% confidential and are never shared with any third party. Please read our <a href="privacy-policy.html" style="color:var(--primary);">Privacy Policy</a> for details.</p></div>
+            </div>
+        </div>
+
+        <!-- Consultation -->
+        <div class="faq-category">
+            <h2 class="faq-category-title"><i class="fa-solid fa-headset"></i> Consultation</h2>
+            <div class="faq-item">
+                <button class="faq-question"><span>How do I book a consultation?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Simply visit our <a href="consultation.html" style="color:var(--primary);">Consultation page</a>, choose your preferred package, and click "Book Now". You'll be connected via WhatsApp where our team will confirm your time slot, collect your birth details, and schedule the session.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>What details do I need to provide for a consultation?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We need your full name, date of birth, exact time of birth, and place of birth. If you have specific questions about career, marriage, health, etc., please share those too so the astrologer can prepare in advance.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>What is the difference between Normal and Urgent consultation?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Normal consultations are typically scheduled within 2-3 business days. Urgent/Priority consultations are fast-tracked and scheduled within 24 hours for time-sensitive matters.</p></div>
+            </div>
+        </div>
+
+        <!-- Pooja -->
+        <div class="faq-category">
+            <h2 class="faq-category-title"><i class="fa-solid fa-hands-praying"></i> Pooja Services</h2>
+            <div class="faq-item">
+                <button class="faq-question"><span>How does online pooja work?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We perform the pooja at a sacred temple with learned Brahmins. You join via Zoom/Google Meet for live streaming, participate in the Sankalp (pledge), and watch the entire ritual. Prasad is couriered to you afterwards.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Will I receive Prasad after the pooja?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Yes! Sacred Prasad from your pooja is carefully packed and couriered to your address within 3-5 business days after the ritual. Delivery is included in the price.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>How do you pick the pooja date?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Our astrologers select the most auspicious Muhurat (date and time) based on your birth chart and the Panchang. We always consult you before finalizing the date.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Can I book a pooja for someone else?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Absolutely! Many people book poojas for family members. Just provide the beneficiary's name, gotra, and birth details during booking.</p></div>
+            </div>
+        </div>
+
+        <!-- Courses -->
+        <div class="faq-category">
+            <h2 class="faq-category-title"><i class="fa-solid fa-graduation-cap"></i> Courses</h2>
+            <div class="faq-item">
+                <button class="faq-question"><span>Do I need any prior knowledge of astrology to enroll?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>No! Our Beginners course starts from absolute zero. You only need curiosity and willingness to learn. We explain everything step-by-step.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>What if I miss a live class?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>All live sessions are recorded and shared within 24 hours. You get lifetime access to all recordings, so you can catch up anytime.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Is the certification recognized?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Yes, our certificate is recognized by astrology institutions and valued by clients. Many of our graduates are now practicing professional astrologers.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Can I pay in installments?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>Yes, we offer EMI options and installment plans. Contact us on WhatsApp to discuss a payment plan that works for you.</p></div>
+            </div>
+        </div>
+
+        <!-- Refunds & Payments -->
+        <div class="faq-category">
+            <h2 class="faq-category-title"><i class="fa-solid fa-credit-card"></i> Payments & Refunds</h2>
+            <div class="faq-item">
+                <button class="faq-question"><span>What payment methods do you accept?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>We accept UPI, bank transfers, and all major payment methods. All services are prepaid. Contact us on WhatsApp for payment details.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Can I get a refund if I'm not satisfied?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>If the consultation hasn't taken place yet, we offer a full refund. Post-consultation refunds are evaluated on a case-by-case basis. For full details, please read our <a href="refund-policy.html" style="color:var(--primary);">Refund Policy</a>.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Are your services refundable after delivery?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer"><p>All services including reports, consultations, poojas, and courses are non-refundable once initiated or delivered. Rescheduling for consultations is allowed if requested at least 24 hours in advance.</p></div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="faq-cta">
+            <h3>Still Have Questions?</h3>
+            <p>Can't find what you're looking for? Reach out to us directly — we're happy to help!</p>
+            <a href="https://wa.me/911253354445?text=Hi%2C%20I%20have%20a%20question" target="_blank" class="header-btn btn-gold" style="padding:14px 35px;font-size:15px;"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+        <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div>
+                    <p>Preserving and promoting the authentic science of Vedic Astrology. Our mission is to bring the divine wisdom of Jyotish Shastra to every household for peace, prosperity, and spiritual growth.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">All Services</a></li>
+                        <li><a href="consultation.html">Consultation</a></li>
+                        <li><a href="pooja.html">Book Pooja</a></li>
+                        <li><a href="store.html">Gemstones</a></li>
+                        <li><a href="services.html">Vastu Shastra</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li>
+                        <li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 12533 54445</li>
+                        <li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> DDA Market, Pocket 1, Sector D, Vasant Kunj, New Delhi, 110070, Delhi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved. | <a href="privacy-policy.html" style="color:var(--primary-light);">Privacy Policy</a> | <a href="terms-conditions.html" style="color:var(--primary-light);">Terms & Conditions</a> | <div class="floating-social-sidebar">
+    <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+</div>
+<a href="consult-acharya.html" class="floating-book-btn"><i class="fa-solid fa-phone"></i><span>Book Now</span></a>
+    <a href="refund-policy.html" style="color:var(--primary-light);">Refund Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/911253354445" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    </script>
+</body>
+</html>

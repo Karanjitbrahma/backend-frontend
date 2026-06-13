@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual Store - Bhartiya Sidhant | Certified Gemstones, Rudraksha & Yantras</title>
+    <meta name="description" content="Buy 100% certified gemstones, Rudraksha, yantras and spiritual products. Lab-tested, energized with Vedic mantras.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260608g">
+    <link rel="stylesheet" href="assets/css/courses-pooja.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .store-hero{position:relative;min-height:460px;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 20px 70px;background:linear-gradient(135deg,rgba(77,15,15,.9),rgba(30,5,5,.94)),url('https://images.unsplash.com/photo-1599643478524-fb5244098795?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;color:#fff;overflow:hidden}
+        .store-hero::before{content:'💎';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:300px;opacity:.04;pointer-events:none}
+        .store-hero-content{position:relative;z-index:2;max-width:780px;margin:0 auto}
+        .store-hero-content h1{font-size:46px;color:#fff;margin-bottom:16px;line-height:1.15}
+        .store-hero-content h1 span{color:var(--primary-light)}
+        .store-hero-content>p{color:rgba(255,255,255,.75);font-size:17px;margin-bottom:30px;line-height:1.7}
+        .store-trust{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-top:30px}
+        .store-trust-item{text-align:center}
+        .store-trust-item i{font-size:28px;color:var(--primary-light);display:block;margin-bottom:6px}
+        .store-trust-item span{font-size:12px;color:rgba(255,255,255,.65);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+        .store-filter{display:flex;justify-content:center;gap:0;margin-bottom:40px;background:var(--bg-white);border-radius:50px;padding:5px;max-width:520px;margin-left:auto;margin-right:auto;border:1px solid rgba(200,135,62,.15);box-shadow:var(--shadow-sm)}
+        .store-filter-btn{flex:1;padding:12px 20px;border:none;background:transparent;border-radius:50px;font-family:var(--font-body);font-weight:600;font-size:13px;cursor:pointer;transition:all .3s;color:var(--text-light);white-space:nowrap}
+        .store-filter-btn.active{background:var(--gold-gradient);color:#fff;box-shadow:0 4px 12px rgba(200,135,62,.3)}
+        .store-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+        .store-card{background:var(--bg-white);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.05);transition:all .35s;position:relative}
+        .store-card:hover{transform:translateY(-8px);box-shadow:0 15px 45px rgba(200,135,62,.15)}
+        .store-card-featured{border-color:rgba(200,135,62,.35);box-shadow:0 12px 35px rgba(200,135,62,.14)}
+        .store-card-premium{border-color:rgba(77,15,15,.2);background:linear-gradient(180deg,#fff,#fff8f0)}
+        .store-card-minimal{box-shadow:none;border-color:rgba(0,0,0,.08)}
+        .store-card-badge{position:absolute;top:14px;left:14px;background:var(--gold-gradient);color:#fff;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:2}
+        .store-card-img{height:220px;overflow:hidden;position:relative}
+        .store-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+        .store-card:hover .store-card-img img{transform:scale(1.08)}
+        .store-card-body{padding:20px}
+        .store-card-category{font-size:11px;color:var(--primary);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+        .store-card-body h3{font-size:17px;font-family:var(--font-body);font-weight:700;color:var(--secondary);margin-bottom:4px}
+        .store-card-body>p{font-size:13px;color:var(--text-light);margin-bottom:14px;line-height:1.5}
+        .store-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
+        .store-card-price{font-size:22px;font-weight:800;color:var(--primary);font-family:var(--font-body)}
+        .store-card-price small{font-size:12px;font-weight:400;color:var(--text-light)}
+        .store-card-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--gold-gradient);color:#fff;border-radius:10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:all .3s;text-decoration:none;border:none;cursor:pointer}
+        .store-card-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(200,135,62,.35)}
+        @media(max-width:1024px){.store-grid{grid-template-columns:repeat(3,1fr)}}
+        @media(max-width:768px){
+            .store-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+            .store-hero-content h1{font-size:28px}
+            .store-hero-content>p{font-size:14px}
+            .store-filter{max-width:100%;border-radius:16px;padding:4px}
+            .store-filter-btn{padding:10px 12px;font-size:12px}
+            .store-card-body{padding:16px}
+            .store-card-body h3{font-size:15px}
+            .store-card-body>p{font-size:12px}
+            .store-card-footer{flex-direction:column;gap:10px;align-items:flex-start}
+            .store-card-btn{width:100%;justify-content:center;text-align:center}
+            .store-card-price{font-size:18px}
+            .store-trust{gap:20px}
+            .store-trust-item span{font-size:10px}
+        }
+        @media(max-width:480px){
+            .store-grid{grid-template-columns:1fr;max-width:380px;margin-left:auto;margin-right:auto}
+            .store-hero-content h1{font-size:22px}
+            .store-card-img{height:200px}
+            .store-filter{flex-wrap:wrap;border-radius:12px}
+            .store-filter-btn{flex:0 1 auto;min-width:60px}
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container"><div><i class="fa-solid fa-envelope"></i> info@bhartiyasidhant.com &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> +91 12533 54445</div></div></div>
+    <header><div class="container nav-container"><a href="index.html" class="logo"><i class="fa-solid fa-om"></i> Bhartiya <span>Sidhant</span></a><button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="reports.html">Reports</a><a href="store.html" class="active">Store</a><a href="courses.html">Courses</a><a href="consultation.html">Consultation</a><a href="pooja.html">Pooja</a><a href="blog.html">Blog</a></nav><a href="consult-acharya.html" class="header-btn btn-gold"><i class="fa-solid fa-phone"></i> Book Now</a></div></header>
+
+    <!-- HERO -->
+    <section class="store-hero">
+        <div class="hero-bg-rotating" aria-hidden="true"></div>
+        <div class="store-hero-content">
+            <div class="cp-hero-badge"><i class="fa-solid fa-gem"></i> 100% Certified & Lab-Tested Products</div>
+            <h1>Sacred <span>Spiritual Store</span></h1>
+            <p>Authentic gemstones, Rudraksha, yantras and spiritual products — all lab-certified, energized with Vedic mantras, and delivered with a certificate of authenticity.</p>
+            <div class="store-trust">
+                <div class="store-trust-item"><i class="fa-solid fa-certificate"></i><span>Lab Certified</span></div>
+                <div class="store-trust-item"><i class="fa-solid fa-om"></i><span>Mantra Energized</span></div>
+                <div class="store-trust-item"><i class="fa-solid fa-truck-fast"></i><span>Free Shipping</span></div>
+                <div class="store-trust-item"><i class="fa-solid fa-shield-halved"></i><span>100% Original</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Our Collection</div>
+                <h2>Browse <span>Products</span></h2>
+                <p>Every product is handpicked, lab-tested, and energized before delivery.</p>
+            </div>
+
+            <div class="store-filter">
+                <button class="store-filter-btn active" data-cat="all">All</button>
+                <button class="store-filter-btn" data-cat="gemstone">Gemstones</button>
+                <button class="store-filter-btn" data-cat="rudraksha">Rudraksha</button>
+                <button class="store-filter-btn" data-cat="yantra">Yantras</button>
+                <button class="store-filter-btn" data-cat="mala">Malas</button>
+            </div>
+
+            <div class="store-grid" id="storeGrid">
+                <div class="store-card" data-cat="gemstone">
+                    <div class="store-card-badge">Bestseller</div>
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1599643478524-fb5244098795?auto=format&fit=crop&w=500&q=80" alt="Yellow Sapphire"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Gemstone</div>
+                        <h3>Yellow Sapphire (Pukhraj)</h3>
+                        <p>For Jupiter — Prosperity, wisdom & marital bliss</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹15,000<small>/Ratti</small></span>
+                            <a href="product-detail.html#id=0" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="gemstone">
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1588661608906-880026e79d1a?auto=format&fit=crop&w=500&q=80" alt="Blue Sapphire"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Gemstone</div>
+                        <h3>Blue Sapphire (Neelam)</h3>
+                        <p>For Saturn — Discipline, fortune & career growth</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹20,000<small>/Ratti</small></span>
+                            <a href="product-detail.html#id=1" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="gemstone">
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1583937443566-6b18fba3e5a4?auto=format&fit=crop&w=500&q=80" alt="Ruby"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Gemstone</div>
+                        <h3>Ruby (Manik)</h3>
+                        <p>For Sun — Authority, confidence & leadership</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹12,000<small>/Ratti</small></span>
+                            <a href="product-detail.html#id=2" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="gemstone">
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1551122089-4e3e72477432?auto=format&fit=crop&w=500&q=80" alt="Emerald"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Gemstone</div>
+                        <h3>Emerald (Panna)</h3>
+                        <p>For Mercury — Intelligence, business & communication</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹10,000<small>/Ratti</small></span>
+                            <a href="product-detail.html#id=3" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="rudraksha">
+                    <div class="store-card-badge">Popular</div>
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1601821765780-754fa98637c1?auto=format&fit=crop&w=500&q=80" alt="5 Mukhi Rudraksha"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Rudraksha</div>
+                        <h3>5 Mukhi Rudraksha</h3>
+                        <p>For health, peace of mind & spiritual growth</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹1,500</span>
+                            <a href="product-detail.html#id=4" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="rudraksha">
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1515943681423-731804f5b721?auto=format&fit=crop&w=500&q=80" alt="1 Mukhi Rudraksha"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Rudraksha</div>
+                        <h3>1 Mukhi Rudraksha</h3>
+                        <p>Rarest bead — Supreme consciousness & moksha</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹51,000</span>
+                            <a href="product-detail.html#id=5" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="yantra">
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1516088235288-0d195ba2476d?auto=format&fit=crop&w=500&q=80" alt="Sri Yantra"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Yantra</div>
+                        <h3>Copper Sri Yantra</h3>
+                        <p>For wealth, Lakshmi blessings & abundance</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹2,100</span>
+                            <a href="product-detail.html#id=6" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-card" data-cat="mala">
+                    <div class="store-card-img"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=500&q=80" alt="Rudraksha Mala"></div>
+                    <div class="store-card-body">
+                        <div class="store-card-category">Mala</div>
+                        <h3>108 Bead Rudraksha Mala</h3>
+                        <p>For meditation, mantra jaap & spiritual practice</p>
+                        <div class="store-card-footer">
+                            <span class="store-card-price">₹3,500</span>
+                            <a href="product-detail.html#id=7" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY BUY FROM US -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Our Guarantee</div>
+                <h2>Why Buy From <span>Bhartiya Sidhant?</span></h2>
+            </div>
+            <div class="cp-features-grid">
+                <div class="cp-feature-card"><div class="cp-feature-icon"><i class="fa-solid fa-microscope"></i></div><h3>Lab Certified</h3><p>Every gemstone comes with a government-recognized lab certificate verifying its authenticity and quality.</p></div>
+                <div class="cp-feature-card"><div class="cp-feature-icon"><i class="fa-solid fa-om"></i></div><h3>Mantra Energized</h3><p>All products are energized with proper Vedic mantras by experienced Brahmins before dispatch.</p></div>
+                <div class="cp-feature-card"><div class="cp-feature-icon"><i class="fa-solid fa-rotate-left"></i></div><h3>Easy Returns</h3><p>Not satisfied? Return within 7 days for a full refund. No questions asked.</p></div>
+                <div class="cp-feature-card"><div class="cp-feature-icon"><i class="fa-solid fa-truck-fast"></i></div><h3>Free Insured Shipping</h3><p>Free delivery across India with full insurance. International shipping available.</p></div>
+                <div class="cp-feature-card"><div class="cp-feature-icon"><i class="fa-solid fa-headset"></i></div><h3>Expert Guidance</h3><p>Unsure which gemstone suits you? Our astrologers recommend based on your birth chart.</p></div>
+                <div class="cp-feature-card"><div class="cp-feature-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>100% Genuine</h3><p>We guarantee every product is natural, untreated, and exactly as described.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="label">Simple Process</div>
+                <h2>How to <span>Order</span></h2>
+            </div>
+            <div class="cp-steps-grid">
+                <div class="cp-step-card"><div class="cp-step-badge">Step 1</div><div class="cp-step-icon"><i class="fa-solid fa-hand-pointer"></i></div><h3>Choose Your Product</h3><p>Browse our collection, check details, and select the product that resonates with your needs.</p></div>
+                <div class="cp-step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="cp-step-card"><div class="cp-step-badge">Step 2</div><div class="cp-step-icon"><i class="fa-brands fa-whatsapp"></i></div><h3>Order via WhatsApp</h3><p>Click "Order Now" to connect with us. We'll confirm availability, share payment details, and process your order.</p></div>
+                <div class="cp-step-connector"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="cp-step-card"><div class="cp-step-badge">Step 3</div><div class="cp-step-icon"><i class="fa-solid fa-box-open"></i></div><h3>Receive & Wear</h3><p>Get your energized product with certificate. We'll guide you on the auspicious day and method to wear it.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="cp-bottom-cta">
+        <div class="container" style="text-align:center;">
+            <h2>Need Help Choosing the <span>Right Product?</span></h2>
+            <p>Our astrologers can recommend the perfect gemstone or Rudraksha based on your birth chart.</p>
+            <div class="cp-cta-buttons">
+                <a href="https://wa.me/911253354445?text=I%20need%20help%20choosing%20a%20gemstone" target="_blank" class="header-btn btn-gold" style="padding:16px 40px;font-size:16px;"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+                <a href="tel:+911253354445" class="header-btn btn-outline" style="padding:16px 40px;font-size:16px;border-color:#fff;color:#fff;"><i class="fa-solid fa-phone"></i> Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo" style="color:#fff;font-size:24px;"><i class="fa-solid fa-om" style="color:var(--primary-light);"></i> Bhartiya <span style="color:var(--primary-light);">Sidhant</span></div><p>Preserving and promoting the authentic science of Vedic Astrology.</p><div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-telegram"></i></a></div></div>
+                <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-conditions.html">Terms & Conditions</a></li><li><a href="faq.html">FAQ</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+                <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="services.html">All Services</a></li><li><a href="consultation.html">Consultation</a></li><li><a href="pooja.html">Book Pooja</a></li><li><a href="store.html">Gemstones</a></li></ul></div>
+                <div><h4 class="footer-title">Contact Us</h4><ul class="footer-links"><li><i class="fa-solid fa-envelope" style="color:var(--primary-light);margin-right:8px;"></i> info@bhartiyasidhant.com</li><li><i class="fa-solid fa-phone" style="color:var(--primary-light);margin-right:8px;"></i> +91 12533 54445</li><li><i class="fa-solid fa-location-dot" style="color:var(--primary-light);margin-right:8px;"></i> DDA Market, Pocket 1, Sector D, Vasant Kunj, New Delhi, 110070, Delhi</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Bhartiya Sidhant. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <div class="floating-social-sidebar">
+    <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+</div>
+<a href="consult-acharya.html" class="floating-book-btn"><i class="fa-solid fa-phone"></i><span>Book Now</span></a>
+    <a href="https://wa.me/911253354445" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <script src="assets/js/main.js?v=20260608g"></script>
+    <script>
+    // CMS Sync — render products from admin data
+    (async function() {
+        try {
+            const BACKEND_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                ? 'http://127.0.0.1:3001'
+                : 'https://bhartiya-backend.onrender.com';
+            const resp = await fetch(`${BACKEND_URL}/api/cms-data?t=${Date.now()}`, { cache: 'no-store' });
+            if (resp.ok) {
+                const fetchedData = await resp.json();
+                if (fetchedData && Object.keys(fetchedData).length > 0) {
+                    localStorage.setItem('bs_admin_data', JSON.stringify(fetchedData));
+                }
+            }
+        } catch(e) {}
+
+        try {
+            const data = JSON.parse(localStorage.getItem('bs_admin_data'));
+            if (data && data.storeProducts && data.storeProducts.length) {
+                const grid = document.getElementById('storeGrid');
+                if (grid) {
+                    const esc = s => (s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+                    // Default images as fallback
+                    const defaultImgs = [
+                        'https://images.pexels.com/photos/5370706/pexels-photo-5370706.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/3641056/pexels-photo-3641056.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/1616793/pexels-photo-1616793.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/6431096/pexels-photo-6431096.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/6431082/pexels-photo-6431082.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=500',
+                        'https://images.pexels.com/photos/6431063/pexels-photo-6431063.jpeg?auto=compress&cs=tinysrgb&w=500'
+                    ];
+                    // Also check if data.store has updated images (from homepage admin)
+                    const storeImgs = (data.store || []).map(s => s.image);
+                    grid.innerHTML = data.storeProducts.map((p, i) => {
+                        // Use storeProducts image first, then store (homepage) image, then default
+                        const img = p.image || storeImgs[i] || defaultImgs[i] || defaultImgs[0];
+                        return `
+                        <div class="store-card store-card-${esc(p.style || 'standard')}" data-cat="${esc(p.cat)}">
+                            ${p.badge ? `<div class="store-card-badge">${esc(p.badge)}</div>` : ''}
+                            <div class="store-card-img"><img src="${esc(img)}" alt="${esc(p.name)}" style="object-fit:${esc(p.imgFit || 'cover')};object-position:${parseInt(p.imgPosX || 50, 10)}% ${parseInt(p.imgPosY || 50, 10)}%;transform:scale(${parseFloat(p.imgScale || 1)});" onerror="this.src='https://images.pexels.com/photos/5370706/pexels-photo-5370706.jpeg?auto=compress&cs=tinysrgb&w=500'"></div>
+                            <div class="store-card-body">
+                                <div class="store-card-category"><i class="fa-solid ${esc(p.icon || 'fa-gem')}" style="margin-right:6px;"></i>${esc(p.cat)}</div>
+                                <h3>${esc(p.name)}</h3>
+                                <p>${esc(p.subtitle)}</p>
+                                <div class="store-card-footer">
+                                    <span class="store-card-price">${esc(p.price)}</span>
+                                    <a href="product-detail.html#id=${i}" class="store-card-btn">View <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>`;
+                    }).join('');
+                }
+            }
+        } catch(e) {}
+        // Category filter
+        document.querySelectorAll('.store-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.store-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.dataset.cat;
+                document.querySelectorAll('.store-card').forEach(card => {
+                    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+                });
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
